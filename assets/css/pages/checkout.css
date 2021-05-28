@@ -1,9 +1,30 @@
-.checkout-wrapper {
-  background-color: white;
+.main-content {
   width: 100%;
-  flex-grow: 1;
-  border-radius: 0.25rem;
-  padding: 5rem;
+  min-height: 100vh;
   display: flex;
-  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.main-content .cart-summary {
+  flex-basis: 75%;
+  border-right: 1px solid #eee;
+  padding: 5rem 10rem;
+}
+
+.main-content .customer-info {
+  flex: 1;
+  padding: 5rem 2rem;
+}
+
+.place-order-btn.btn {
+  background-color: #ffb76e;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-top: 2rem;
+  font-weight: bold;
+  padding: 1.5rem 3rem;
 }

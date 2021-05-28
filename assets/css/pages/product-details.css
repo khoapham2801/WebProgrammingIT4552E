@@ -1,223 +1,225 @@
 .main-content {
-  padding: 2rem 10%;
-  width: 100%;
-  background: url(../../images/background.jpg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  display: flex;
-  flex-direction: column;
+    padding: 2rem 10%;
+    width: 100%;
+    background: url(../../images/dreamworld.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
 }
 
 .product-wrapper {
-  background-color: white;
-  width: 100%;
-  flex-grow: 1;
-  border-radius: 0.25rem;
-  padding: 5rem;
-  display: flex;
-  flex-wrap: wrap;
+    background-color: white;
+    width: 100%;
+    flex-grow: 1;
+    border-radius: .25rem;
+    padding: 5rem;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .slideshow {
-  display: flex;
-  flex-wrap: wrap;
-  flex: 0 0 50%;
-  height: 30rem;
-  position: relative;
-  border-radius: 0.25rem;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 0 50%;
+    height: 30rem;
+    position: relative;
+    border-radius: .25rem;
+    justify-content: center;
+    align-items: center;
 }
 
 .slideshow .slide-list {
-  width: 80%;
-  height: 100%;
-  border-radius: 0.25rem;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 0 5px #333a;
+    width: 80%;
+    height: 100%;
+    border-radius: .25rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 5px #333a;
 }
 
 /* tinter */
 .slideshow .slide-list:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-color: #ffffff33;
-  pointer-events: none;
-  z-index: 1;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #ffc87833;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .slideshow .slide {
-  width: 100%;
-  height: 100%;
-  overflow-y: hidden;
-  opacity: 0;
-  position: absolute;
-  left: 0;
-  top: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .slideshow .slide.active {
-  opacity: 100%;
+    opacity: 100%;
 }
 
 .slideshow .slide img {
-  max-width: 100%;
-  object-fit: contain;
+    max-width: 100%;
+    object-fit: contain;
 }
 
 .slideshow .slide-control {
-  position: absolute;
-  top: calc(50% - 1.5rem);
-  width: 3rem;
-  height: 3rem;
-  background-color: transparent;
-  color: transparent;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  user-select: none;
-  cursor: pointer;
-  transition: 0.25s;
-  z-index: 1;
+    position: absolute;
+    top: calc(50% - 1.5rem);
+    width: 3rem;
+    height: 3rem;
+    background-color: transparent;
+    color: transparent;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+    transition: .25s;
+    z-index: 1;
 }
 
 .slideshow:hover .slide-control {
-  box-shadow: 0 0 5px #333a;
-  background-color: #423e35;
-  color: white;
+    box-shadow: 0 0 5px #333a;
+    background-color: #423e35;
+    color: white;
 }
 
 .slideshow .slide-control.prev {
-  left: 0.5rem;
+    left: .5rem;
 }
 
 .slideshow .slide-control.next {
-  right: 0.5rem;
+    right: .5rem;
 }
 
 .slideshow .slide-indicators {
-  width: 20rem;
-  height: 1rem;
-  /* background-color: red; */
-  margin-top: 0.25rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 20rem;
+    height: 1rem;
+    /* background-color: red; */
+    margin-top: .25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .slideshow .slide-indicators .slide-indicator {
-  max-width: 1rem;
-  height: 0.25rem;
-  flex-grow: 1;
-  background-color: #423e3555;
+    max-width: 1rem;
+    height: .25rem;
+    flex-grow: 1;
+    background-color: #423e3555;
 }
 
 .slideshow .slide-indicators .slide-indicator.active {
-  background-color: #423e35;
+    background-color: #423e35;
 }
 
 .slideshow .slide-indicators .slide-indicator + .slide-indicator {
-  margin-left: 0.25rem;
+    margin-left: .25rem;
 }
 
 .add-to-cart-wrapper {
-  margin-top: 2rem;
+    margin-top: 2rem;
 }
 
 .product-details {
-  padding-left: 5rem;
-  flex-grow: 1;
-  height: 30rem;
-  max-width: 50%;
+    padding-left: 5rem;
+    flex-grow: 1;
+    height: 30rem;
+    max-width: 50%;
 }
 
 .product-details .product-quantity {
-  display: flex;
-  flex-grow: 1;
-  align-items: center;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
 }
 
 .product-details .product-quantity input {
-  border: none !important;
-  outline: none !important;
-  height: 3rem;
-  direction: rtl;
-  padding: 0 1rem 0 0;
-  width: 5rem;
-  background-color: #6a5a4a0a;
-  flex-grow: 1;
+    border: none !important;
+    outline: none !important;
+    height: 3rem;
+    direction: rtl;
+    padding: 0 1rem 0 0;
+    width: 5rem;
+    background-color: #6a5a4a0a;
+    flex-grow: 1;
 }
 
 .product-details .product-quantity input:focus {
-  border: none !important;
+    border: none !important;
 }
 
 .product-details .product-quantity button {
-  height: 3rem;
-  width: 2rem;
-  border-radius: 0;
-  border: none;
-  background-color: #423e35;
-  color: white;
-  user-select: none;
-  cursor: pointer;
+    height: 3rem;
+    width: 2rem;
+    border-radius: 0;
+    border: none;
+    background-color: #423e35;
+    color: white;
+    user-select: none;
+    cursor: pointer;
 }
 
 .product-details .add-to-cart {
-  margin-left: 2rem;
-  border: none !important;
-  outline: none !important;
-  padding: 1rem 2rem;
-  background-color: #423e35;
-  color: white;
-  user-select: none;
-  cursor: pointer;
-  text-transform: uppercase;
-  width: 10rem;
-  flex: 0 0 50%;
-  max-width: 50%;
+    margin-left: 2rem;
+    border: none !important;
+    outline: none !important;
+    padding: 1rem 2rem;
+    background-color: #423e35;
+    color: white;
+    user-select: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    width: 10rem;
+    flex: 0 0 50%;
+    max-width: 50%;
 }
 
 .product-details .buy-now-btn {
-  border: none !important;
-  outline: none !important;
-  padding: 1rem 2rem;
-  background-color: #423e35;
-  color: white;
-  user-select: none;
-  cursor: pointer;
-  text-transform: uppercase;
-  width: 100%;
-  margin-top: 2rem;
+    border: none !important;
+    outline: none !important;
+    padding: 1rem 2rem;
+    background-color: #423e35;
+    color: white;
+    user-select: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    width: 100%;
+    margin-top: 2rem;
+    text-decoration: none;
+    font-size: 13.3333px;;
 }
 
 .product-details .product-options select {
-  padding: 1rem 2rem;
-  width: 100%;
-  margin-top: 2rem;
+    padding: 1rem 2rem;
+    width: 100%;
+    margin-top: 2rem;
 }
 
 .section {
-  padding-left: 5rem;
-  flex-grow: 1;
+    padding-left: 5rem;
+    flex-grow: 1;
 }
 
 .section .section-title {
-  user-select: none;
-  cursor: pointer;
+    user-select: none;
+    cursor: pointer;
 }
 
 .section .section-body {
-  transition: 0.25s !important;
-  padding: 0 2rem;
+    transition: .1s !important;
+    padding: 0 2rem;
 }

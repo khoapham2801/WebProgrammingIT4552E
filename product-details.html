@@ -4,31 +4,40 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mobile Store</title>
+    <title>Product</title>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Raleway"
     />
     <link rel="stylesheet" href="assets/css/gg.css" />
-    <!-- <link rel="stylesheet" href="assets/css/calculated.css"> -->
-    <link rel="stylesheet" href="assets/css/layout.css" />
-    <link rel="stylesheet" href="assets/css/pages/product-details.css" />
+    <link rel="stylesheet" href="assets/css/core.css?nocache=true" />
+    <link rel="stylesheet" href="assets/css/layout.css?nocache=true" />
+    <link
+      rel="stylesheet"
+      href="assets/css/pages/product-details.css?nocache=true"
+    />
     <script src="assets/js/shitty.bundle.js" defer></script>
-    <script src="assets/js/calculate-style.js" defer></script>
-    <script src="assets/js/components.js" defer></script>
-    <script src="assets/js/layout.js" defer></script>
-    <script src="assets/js/pages/product-details.js" defer></script>
+    <script src="assets/js/components.js?nocache=true" defer></script>
+    <script src="assets/js/layout.js?nocache=true" defer></script>
+    <script
+      src="assets/js/pages/product-details.js?nocache=true"
+      defer
+    ></script>
   </head>
   <body>
     <div class="navbar-placeholder"></div>
     <div class="navbar">
-      <div class="logo d-flex justify-center align-center">
-        <a href="/"> LKK Mobile Store </a>
+      <div class="search-and-logo">
+        <div class="search" style="visibility: hidden">
+          <i class="gg-search"></i>
+        </div>
+        <div class="logo d-flex align-center">
+          <a href=""> LKK Mobile Shop </a>
+        </div>
       </div>
       <div class="navbar-items">
-        <a href="javascript:;" class="navbar-item">Products</a>
-        <a href="javascript:;" class="navbar-item">Blog</a>
-        <a href="javascript:;" class="navbar-item">About Us</a>
+        <a href="/" class="navbar-item">Homepage</a>
+        <a href="#" onclick="OnClickAboutUs()" class="navbar-item">About Us</a>
       </div>
       <div class="shopping-cart">
         <i class="gg-shopping-cart"></i>
@@ -59,19 +68,18 @@
             </div>
           </div>
           <div class="product-details">
-            <h2 class="product-title">Iphone X</h2>
-            <span class="product-price">8.699.000</span>
+            <h2 class="product-title">しゅうごう</h2>
+            <span class="product-price">10 Chaos</span>
             <div class="product-options">
               <select name="" id="">
-                <option value="">-- Select Color --</option>
-                <option value="">Black</option>
-                <option value="">White</option>
+                <option value="">-- 選択肢一つを選択してください --</option>
+                <option value="">はつでん</option>
+                <option value="">かがくしゃ</option>
               </select>
               <select name="" id="">
-                <option value="">-- Select storage size --</option>
-                <option value="">64Gb</option>
-                <option value="">128Gb</option>
-                <option value="">512Gb</option>
+                <option value="">-- 選択肢一つを選択してください --</option>
+                <option value="">きこく</option>
+                <option value="">あける</option>
               </select>
             </div>
             <div class="d-flex add-to-cart-wrapper">
@@ -82,7 +90,11 @@
               </div>
               <button class="add-to-cart">Add to cart</button>
             </div>
-            <button class="buy-now-btn">Buy now</button>
+            <a
+              href="checkout.html"
+              class="d-flex justify-center align-center buy-now-btn"
+              >Buy now</a
+            >
           </div>
           <div class="product-description section mt-5">
             <h2 class="section-title d-flex align-center">
@@ -90,40 +102,35 @@
             </h2>
             <div class="section-body collapsible">
               <p>
-                The iPhone X, pronounced "iPhone 10," was introduced at Apple's
-                September 2017 event as a classic "One more thing..." addition
-                to the iPhone 8 and 8 Plus product lineup. The iPhone X has
-                since been replaced by the iPhone XR, iPhone XS, and iPhone XS
-                Max, and Apple has discontinued the device to focus on the newer
-                iPhones. Apple's aim with the iPhone X was to create an iPhone
-                that's all display, blurring the line between physical object
-                and experience. The 5.8-inch front screen melts into a highly
-                polished curved-edge stainless steel band encircling a durable
-                all-glass body available in two pearlescent finishes: Space Gray
-                and Silver. Both feature a black front panel.
+                Lora poured over the book as she held the torch ahead of her.
+                This labyrinth was growing intensely difficult to solve and the
+                book was beginning to run out of map lines.
               </p>
               <p>
-                The edge-to-edge top-to-bottom Super Retina display adopts OLED
-                technology for true-to-life colors, deep blacks, and a
-                million-to-one contrast ratio. It features a 2436 x 1125
-                resolution and 458 pixels per inch. It supports HDR, wide color,
-                3D Touch, and True Tone for adjusting the white balance of the
-                display to match the ambient lighting. At 5.8 inches diagonally,
-                the iPhone X has a larger display than prior-generation iPhones,
-                but with no bezels aside from a notch housing the camera and
-                sensors, it fits comfortably in the hand. At 143.6mm tall by
-                70.9mm wide by 7.7mm deep, it's not much bigger than an iPhone
-                8, and it's smaller than an iPhone 8 Plus. The glass body of the
-                device is IP67 water and dust resistant and it enables support
-                for inductive wireless charging. The iPhone X adopts the Qi
-                wireless standard and can charge through the glass back using
-                any Qi-certified charging accessory.
+                “Do you even know where you are going Lora Tableditch?” Johnas
+                asked.
+              </p>
+              <p>
+                “Johnas, I know exactly where I’m going. If I didn’t then I
+                wouldn’t be using a book in order to make sure that I’m going in
+                the right direction.” Lora stated.
+              </p>
+              <p>
+                “We’ve been down here for a month and we’ve lost four men...
+                basically it’s just me and you.” Johnas complained.
+              </p>
+              <p>
+                Lora ignored him and continued forward, following the map laid
+                out in the book diligently. When they began a month ago, there
+                was always the distinct skeleton to show how unprepared their
+                competition had been. The gross and disgusting odor of rotting
+                meat filled the hallways...
               </p>
             </div>
           </div>
           <div class="section">
             <h2 class="section-title d-flex align-center">
-              <i class="gg-math-minus mr-4"></i> Customer reviews
+              <i class="gg-math-minus mr-4"></i> Adventurer thoughts
             </h2>
             <div class="section-body collapsible">
               <span>This product currently has no reviews</span>
@@ -131,14 +138,37 @@
           </div>
         </div>
       </div>
-      <div class="footer">
-        <span>
-          <small
-            >Copyright &copy; 2021 LKK Mobile Store. All Rights Reserved</small
-          >
-        </span>
+    </div>
+    <!-- Site footer -->
+    <div class="footer-wrapper">
+      <div class="footer-content">
+        <div class="about-content">
+          <h6>About us</h6>
+          <p class="text-justify">LKK Mobile Shop</p>
+          <br />
+          <p class="text-justify">
+            We provide the best flagships and smartphones from top branches in
+            the world with the best price.
+          </p>
+        </div>
+        <div class="right-content">
+          <div class="categories-content">
+            <h6>Categories</h6>
+            <li>Iphone</li>
+            <li>Samsung</li>
+            <li>Xiaomi</li>
+            <li>Oppo</li>
+          </div>
+          <div class="quicklinks-content">
+            <h6>Quick links</h6>
+            <li>Homepage</li>
+            <li>Checkout</li>
+          </div>
+        </div>
       </div>
     </div>
+    <small>Copyright © 2021 LKK Mobile Shop. All Rights Reserved</small>
+
     <div class="scroll-top-btn">
       <i class="gg-chevron-double-up"></i>
     </div>
@@ -146,6 +176,19 @@
       <div class="modal-backdrop"></div>
       <div class="cart-sidebar modal">
         <div class="modal-body">{{body}}</div>
+      </div>
+    </div>
+    <div class="confirm-modal-wrapper modal-wrapper">
+      <div class="modal-backdrop"></div>
+      <div class="confirm-modal modal">
+        <div class="modal-header">
+          <span class="modal-title">{{title | uppercase}}</span>
+          <span class="close">
+            <i class="gg-close"></i>
+          </span>
+        </div>
+        <div class="modal-body">{{body}}</div>
+        <div class="modal-footer">{{footer}}</div>
       </div>
     </div>
   </body>

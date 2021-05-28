@@ -1,0 +1,124 @@
+body {
+    margin: 0;
+    overflow-y: scroll;
+}
+
+body * {
+    box-sizing: border-box !important;
+    font-family: Raleway;
+}
+
+body :is(
+    p, span, h1, h2, h3, h4, h5, h6, label, a
+) {
+    color: #6a5a4a;
+}
+
+.main-content {
+    width: 100%;
+    height: 100vh;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form-wrapper {
+    width: 70rem;
+    display: flex;
+    height: 50rem;
+    align-items: stretch;
+}
+
+.login-form {
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    flex-basis: 50%;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-side-image {
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    flex-basis: 50%;
+    background: url(../../images/dreamworld.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.login-side-image::before {
+    content: '';
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #ddd3;
+    backdrop-filter: grayscale(0.2);
+}
+
+.login-form form {
+    width: 80%;
+}
+
+.login-form .form-group label {
+    display: block;
+    padding-left: 1rem;
+}
+
+.login-form .form-group :is(input[type="text"], input[type="password"]) {
+    font-size: 1rem;
+    padding: .5rem 2rem;
+    outline: none;
+    border: 1px solid #ddd;
+    border-radius: 1rem;
+    width: 100%;
+    margin-top: .25rem;
+    line-height: 1.5;
+}
+
+.login-form .form-group {
+    margin: 1rem 0;
+}
+
+.login-form-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-btn {
+    margin: 1rem 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem 2rem;
+    border-radius: 1rem;
+    font-size: 1rem;
+    outline: none;
+    border: none;
+    background-color: #555;
+    color: white;
+    line-height: 1.5;
+    user-select: none;
+    cursor: pointer;
+}
+
+.remember-me {
+    user-select: none;
+}
+
+
+.remember-me :is(label, input) {
+    cursor: pointer;
+}
+

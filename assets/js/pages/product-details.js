@@ -4,8 +4,13 @@ const quantitySelect = new Shitonen({
         qty: 1
     },
     init() {
+        this.shit.on('init change', 'qty', _ => {
+            this.query('input').value = +this.shit.qty;
+        });
         this.query('input').onchange = _ => {
-            this.shit.qty = +this.query('input').value;
+            let value = ''+this.query('input').value;
+            if(!value.match(/[0-9]+/g)) value = 1;
+            this.shit.qty = +value;
         };
         this.query('.inc-qty').onclick = _ => {
             this.shit.qty += 1;
@@ -34,7 +39,7 @@ for(const section of document.querySelectorAll('.section')) {
                     this.element.classList.remove('expanded');
                     this.query('i').className = "gg-math-plus mr-4";
                 }
-            }
+            };
         }
     });
 }
