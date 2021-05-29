@@ -253,6 +253,15 @@ select {
   text-decoration: none;
 }
 
+.search-sidebar .apply-search-btn.btn {
+  background-color: #ffb76e;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
 .cart-sidebar .cart-sidebar-item {
   display: flex;
   align-items: center;
