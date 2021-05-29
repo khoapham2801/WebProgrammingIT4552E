@@ -20,8 +20,8 @@ CREATE TABLE mobileshopdb.mobile (
   screen decimal(19, 2) DEFAULT NULL,
   discount int(3) DEFAULT NULL,
   img varchar(255) DEFAULT NULL,
-  PRIMARY KEY (id)
-  FOREIGN KEY (brandId) REFERENCES Groups(groupid)
+  PRIMARY KEY (id),
+  FOREIGN KEY (brandId) REFERENCES brand(id)
 );
 
 INSERT INTO mobileshopdb.brand (name, img) VALUES

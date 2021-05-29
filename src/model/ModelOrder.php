@@ -2,11 +2,13 @@
 include_once("EntityMobile.php"); 
 
 class ModelMobile {  
+    private $server = 'localhost';
+    private $user = 'root';
+    private $pass = '';
+    private $mydb = 'mobileshopdb';
+
     public function getAPI ($SQLcmd, $errorMessage) {
-        $server = 'localhost';
-        $user = 'root';
-        $pass = '';
-        $mydb = 'mobileshopdb';
+        
         $connect = mysqli_connect($server, $user, $pass);
         if (!$connect) {
             die ("Cannot connect to $server using $user");
@@ -25,27 +27,24 @@ class ModelMobile {
         }
     }
 
-    public function getAllMobiles()  
-    {  
-        $SQLcmd = "SELECT * FROM mobile";
-        $errorMessage = "Can not get all mobiles";
-        return $this -> getAPI ($SQLcmd, $errorMessage);
-    }  
-  
-    public function getMobileById($id)  
-    {  
-        $SQLcmd = "SELECT * FROM mobile WHERE (mobile.id = '$id')";
-        $errorMessage = "Cannot get the specific mobile";
-        return $this -> getAPI ($SQLcmd, $errorMessage)[0];
-    } 
-    
-    public function getMobilesByBrand($brand)  
-    {  
-        $SQLcmd = $SQLcmd = "SELECT * FROM mobile, brand 
-        WHERE (mobile.brandId = brand.id AND brand.name = '$brand')";
-        $errorMessage = "Cannot get the mobiles of the brand $brand";
-        return $this -> getAPI ($SQLcmd, $errorMessage);
-    }  
+    public function insertOrder ($SQLcmd, $errorMessage) {
+        $connect = mysqli_connect($server, $user, $pass);
+        if (!$connect) {
+            die ("Cannot connect to $server using $user");
+        } else {
+            mysqli_select_db($connect, $database);
+            print '<br><font size="4" color="blue">';
+            if (mysqli_query($connect, $query)){
+                print "Insert into $database was successful!</font>";
+            } else {
+                print "Insert order into $database failed!</font>";
+            } 
+            mysqli_close ($connect);
+        }
+        $table_name = 'Order';
+        $query = "INSERT INTO $table_name VALUES ('0','$Item','$Cost','$Weight','$Quantity')";
+        
+    }
 }  
 
 ?>
