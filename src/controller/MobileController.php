@@ -1,18 +1,24 @@
 <?php 
-include_once("../model/ModelMobile.php");  
+include_once("src/model/ModelMobile.php");  
   
-class Controller {  
+class MobileController {  
     public $modelMobile;   
 
     public function __construct()  
     {  
-        $this->model = new ModelMobile();  
+        $this -> modelMobile = new ModelMobile();  
     }   
 
-    public function init()  
+    public function getAllMobile()  
     {  
-        
+        $mobileList = $this -> modelMobile -> getAllMobiles();
+        return $mobileList;
     }  
+
+    public function getMobileById($id) {
+        $mobile = $this -> modelMobile -> getMobileById($id);
+        return $mobile;
+    }
 }  
 
 ?>
