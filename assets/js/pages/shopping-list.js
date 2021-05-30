@@ -30,51 +30,51 @@ document.body.querySelector('.shopnow-btn').onclick = _ => {
 
 const demoProducts = [
     {
-        title: 'Iphone 12 Pro',
+        title: 'いけばな',
         thumbnail: 'assets/images/product-1.jpg'
     },
     {
-        title: 'Iphone 11 Pro Max',
-        thumbnail: 'assets/images/iphone11promax.jpg'
+        title: 'ぎむ',
+        thumbnail: 'assets/images/product-2.jpg'
     },
     {
-        title: 'Samsung Galaxy S21 Ultra',
-        thumbnail: 'assets/images/samsungs21ultra.jpg'
+        title: 'すてき',
+        thumbnail: 'assets/images/product-3.jpg'
     },
     {
-        title: 'Google Pixel 4a',
-        thumbnail: 'assets/images/googlepixel4a.jpg'
+        title: 'しゃしん',
+        thumbnail: 'assets/images/product-4.jpg'
     },
     {
-        title: 'OnePlus 9 Pro',
-        thumbnail: 'assets/images/oneplus9pro.jpg'
+        title: 'ぞんざい',
+        thumbnail: 'assets/images/product-5.jpg'
     },
     {
-        title: 'Samsung Galaxy Note 20 Ultra',
-        thumbnail: 'assets/images/iphone11promax.jpg'
+        title: 'ひじょうに',
+        thumbnail: 'assets/images/product-6.jpg'
     },
     {
-        title: 'Samsung Galaxy S20 Plus',
-        thumbnail: 'assets/images/iphone11promax.jpg'
+        title: 'つち',
+        thumbnail: 'assets/images/product-7.jpg'
     },
     {
-        title: 'Google Pixel 5',
-        thumbnail: 'assets/images/iphone11promax.jpg'
+        title: 'こーひー',
+        thumbnail: 'assets/images/product-8.jpg'
     },
     {
-        title: 'Iphone 12',
-        thumbnail: 'assets/images/iphone11promax.jpg'
+        title: 'しゅくだい',
+        thumbnail: 'assets/images/product-9.jpg'
     },
     {
-        title: 'Xiaomi Mi 11 5G',
-        thumbnail: 'assets/images/iphone11promax.jpg'
+        title: 'わたしたち',
+        thumbnail: 'assets/images/product-10.jpg'
     },
     {
-        title: 'Xiaomi Mi 10T Pro 5G',
-        thumbnail: 'assets/images/iphone11promax.jpg'
+        title: 'みやこ',
+        thumbnail: 'assets/images/product-11.jpg'
     },
     {
-        thumbnail: 'assets/images/iphone11promax.jpg'
+        thumbnail: 'assets/images/product-12.jpg'
     },
 ];
 

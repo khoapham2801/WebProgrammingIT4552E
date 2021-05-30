@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Raleway"
+    />
+    <link rel="stylesheet" href="../../assets/css/gg.css" />
+    <link rel="stylesheet" href="../../assets/css/core.css?nocache=true" />
+    <link rel="stylesheet" href="../../assets/css/layout.css?nocache=true" />
+    <link
+      rel="stylesheet"
+      href="../../assets/css/pages/product-details.css?nocache=true"
+    />
+    <script src="../../assets/js/shitty.bundle.js" defer></script>
+    <script src="../../assets/js/components.js?nocache=true" defer></script>
+    <script src="../../assets/js/layout.js?nocache=true" defer></script>
+    <script
+      src="../../assets/js/pages/product-details.js?nocache=true"
+      defer
+    ></script>
+  </head>
+  <body>
+    <div class="navbar-placeholder"></div>
+    <div class="navbar">
+      <div class="search-and-logo">
+        <div class="search" style="visibility: hidden">
+          <i class="gg-search"></i>
+        </div>
+        <div class="logo d-flex align-center">
+          <a href=""> LKK Mobile Shop </a>
+        </div>
+      </div>
+      <div class="navbar-items">
+        <a href="/" class="navbar-item">Homepage</a>
+        <a href="#" onclick="OnClickAboutUs()" class="navbar-item">About Us</a>
+      </div>
+      <div class="shopping-cart">
+        <i class="gg-shopping-cart"></i>
+      </div>
+    </div>
+    <div class="background"></div>
+    <div class="main-content-wrapper">
+      <div class="main-content">
+        <div class="product-wrapper">
+          <div class="slideshow">
+            <div class="slide-list">
+              <div class="slide">
+                <img src="assets/images/product-1.jpg" />
+              </div>
+              <div class="slide active">
+                <img src="assets/images/product-12.jpg" />
+              </div>
+            </div>
+            <div class="slide-control prev">
+              <i class="gg-chevron-left"></i>
+            </div>
+            <div class="slide-control next">
+              <i class="gg-chevron-right"></i>
+            </div>
+            <div class="slide-indicators">
+              <div class="slide-indicator active"></div>
+              <div class="slide-indicator"></div>
+            </div>
+          </div>
+          <div class="product-details">
+            <h2 class="product-title">しゅうごう</h2>
+            <span class="product-price">10 Chaos</span>
+            <div class="product-options">
+              <select name="" id="">
+                <option value="">-- 選択肢一つを選択してください --</option>
+                <option value="">はつでん</option>
+                <option value="">かがくしゃ</option>
+              </select>
+              <select name="" id="">
+                <option value="">-- 選択肢一つを選択してください --</option>
+                <option value="">きこく</option>
+                <option value="">あける</option>
+              </select>
+            </div>
+            <div class="d-flex add-to-cart-wrapper">
+              <div class="product-quantity">
+                <button class="dec-qty">-</button>
+                <input type="number" value="{{qty}}" min="1" />
+                <button class="inc-qty">+</button>
+              </div>
+              <button class="add-to-cart">Add to cart</button>
+            </div>
+            <a
+              href="checkout.html"
+              class="d-flex justify-center align-center buy-now-btn"
+              >Buy now</a
+            >
+          </div>
+          <div class="product-description section mt-5">
+            <h2 class="section-title d-flex align-center">
+              <i class="gg-math-minus mr-4"></i> Product description
+            </h2>
+            <div class="section-body collapsible">
+              <p>
+                Lora poured over the book as she held the torch ahead of her.
+                This labyrinth was growing intensely difficult to solve and the
+                book was beginning to run out of map lines.
+              </p>
+              <p>
+                “Do you even know where you are going Lora Tableditch?” Johnas
+                asked.
+              </p>
+              <p>
+                “Johnas, I know exactly where I’m going. If I didn’t then I
+                wouldn’t be using a book in order to make sure that I’m going in
+                the right direction.” Lora stated.
+              </p>
+              <p>
+                “We’ve been down here for a month and we’ve lost four men...
+                basically it’s just me and you.” Johnas complained.
+              </p>
+              <p>
+                Lora ignored him and continued forward, following the map laid
+                out in the book diligently. When they began a month ago, there
+                was always the distinct skeleton to show how unprepared their
+                competition had been. The gross and disgusting odor of rotting
+                meat filled the hallways...
+              </p>
+            </div>
+          </div>
+          <div class="section">
+            <h2 class="section-title d-flex align-center">
+              <i class="gg-math-minus mr-4"></i> Adventurer thoughts
+            </h2>
+            <div class="section-body collapsible">
+              <span>This product currently has no reviews</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Site footer -->
+    <div class="footer-wrapper">
+      <div class="footer-content">
+        <div class="about-content">
+          <h6>About us</h6>
+          <p class="text-justify">LKK Mobile Shop</p>
+          <br />
+          <p class="text-justify">
+            We provide the best flagships and smartphones from top branches in
+            the world with the best price.
+          </p>
+        </div>
+        <div class="right-content">
+          <div class="categories-content">
+            <h6>Categories</h6>
+            <li>Iphone</li>
+            <li>Samsung</li>
+            <li>Xiaomi</li>
+            <li>Oppo</li>
+            <li>Realme</li>
+            <li>Vivo</li>
+            <li>Vsmart</li>
+          </div>
+          <div class="quicklinks-content">
+            <h6>Quick links</h6>
+            <li>Homepage</li>
+            <li>Checkout</li>
+          </div>
+        </div>
+      </div>
+    </div>
+    <small>Copyright © 2021 LKK Mobile Shop. All Rights Reserved</small>
+
+    <div class="scroll-top-btn">
+      <i class="gg-chevron-double-up"></i>
+    </div>
+    <div class="cart-sidebar-wrapper modal-wrapper">
+      <div class="modal-backdrop"></div>
+      <div class="cart-sidebar modal">
+        <div class="modal-body">{{body}}</div>
+      </div>
+    </div>
+    <div class="confirm-modal-wrapper modal-wrapper">
+      <div class="modal-backdrop"></div>
+      <div class="confirm-modal modal">
+        <div class="modal-header">
+          <span class="modal-title">{{title | uppercase}}</span>
+          <span class="close">
+            <i class="gg-close"></i>
+          </span>
+        </div>
+        <div class="modal-body">{{body}}</div>
+        <div class="modal-footer">{{footer}}</div>
+      </div>
+    </div>
+  </body>
+</html>
