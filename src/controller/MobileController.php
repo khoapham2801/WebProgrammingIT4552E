@@ -1,5 +1,5 @@
 <?php 
-include_once("src/model/ModelMobile.php");  
+include_once(__DIR__."/../model/ModelMobile.php");  
   
 class MobileController {  
     public $modelMobile;   
@@ -9,7 +9,7 @@ class MobileController {
         $this -> modelMobile = new ModelMobile();  
     }   
 
-    public function getAllMobile()  
+    public function getAllMobiles()  
     {  
         $mobileList = $this -> modelMobile -> getAllMobiles();
         return $mobileList;

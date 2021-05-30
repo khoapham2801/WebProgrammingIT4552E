@@ -8,6 +8,12 @@
     include_once("src/controller/MobileController.php");
 
     $controller = new MobileController();
-    $data = $controller -> init();
+    $data = $controller -> getALLMobiles();
     print_r($data);
+
 ?>
+<!-- <!DOCTYPE html>
+<body>
+	<br>
+	<img src="<?php echo $data->img;?>"/>
+</body> -->
