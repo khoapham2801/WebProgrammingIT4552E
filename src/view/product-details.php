@@ -1,11 +1,38 @@
 <?php
- include_once(__DIR__. "/../controller/MobileController.php");
+  session_start();
+  include_once(__DIR__. "/../controller/MobileController.php");
 
-    $controller = new MobileController();
-    $id = $_GET["id"];
-    $id = substr($id, 3);
-    $data = $controller -> getMobileById($id);
+  $controller = new MobileController();
+  $id = $_GET["id"];
+  $id = substr($id, 3);
+  $data = $controller -> getMobileById($id);
 
+  function super_encode_utf8($var,$deep=TRUE){
+    if(is_array($var)){
+        foreach($var as $key => $value){
+            if($deep){
+                $var[$key] = super_encode_utf8($value,$deep);
+            }elseif(!is_array($value) && !is_object($value) && !mb_detect_encoding($value,'utf-8',true)){
+                 $var[$key] = utf8_encode($var);
+            }
+        }
+        return $var;
+    }elseif(is_object($var)){
+        foreach($var as $key => $value){
+            if($deep){
+                $var->$key = super_encode_utf8($value,$deep);
+            }elseif(!is_array($value) && !is_object($value) && !mb_detect_encoding($value,'utf-8',true)){
+                 $var->$key = utf8_encode($var);
+            }
+        }
+        return $var;
+    }else{
+        return (!mb_detect_encoding($var,'utf-8',true))?utf8_encode($var):$var;
+    }
+}
+
+  $data_utf8 = super_encode_utf8($data);
+  $data_encode = json_encode($data_utf8,JSON_FORCE_OBJECT);
 ?>
 
 
@@ -28,6 +55,9 @@
     <script src="../../assets/js/calculate-style.js" defer></script>
     <script src="../../assets/js/components.js" defer></script>
     <script src="../../assets/js/layout.js" defer></script>
+    <script type="text/javascript">
+      var mobileObj = JSON.parse('<?= $data_encode; ?>');
+    </script>
     <script src="../../assets/js/pages/product-details.js" defer></script>
   </head>
   <body>
@@ -88,12 +118,12 @@
             <div class="d-flex add-to-cart-wrapper">
               <div class="product-quantity">
                 <button class="dec-qty">-</button>
-                <input type="number" value="{{qty}}" min="1" />
+                <input id="quantity-mobiles" type="number" value="{{qty}}" min="1" />
                 <button class="inc-qty">+</button>
               </div>
-              <button class="add-to-cart">Add to cart</button>
+              <button onclick="addToCart()" class="add-to-cart">Add to cart</button>
             </div>
-            <button class="buy-now-btn">Buy now</button>
+            <button onclick="buyNow()" class="buy-now-btn">Buy now</button>
           </div>
           <div class="product-description section mt-5">
             <h2 class="section-title d-flex align-center">
