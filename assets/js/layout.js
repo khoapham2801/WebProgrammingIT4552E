@@ -52,7 +52,7 @@ searchSidebar.shit.body = `
         </div>
     </div>
     <div class="d-flex justify-center align-center mb-1" style="height:5rem;border-top: 1px solid #eee;">
-        <a href="" class="search-btn btn btn-warning w-100" style="line-height:2"><strong>Apply Search</strong></a>
+        <a class="apply-search-btn btn btn-warning w-100" style="line-height:2"><strong>Apply Search</strong></a>
     </div>
 </div>
 `;
@@ -137,6 +137,16 @@ if(document.body.querySelector('.scroll-top-btn')) {
     };
 }
 
+document.body.querySelector('.apply-search-btn').onclick = _ => {
+    const mainContentTop = document.querySelector('.main-content').offsetTop;
+    const navbarHeight = remToPixels(4);
+    window.scrollTo({
+        left: 0,
+        top: mainContentTop - navbarHeight,
+        behavior: 'smooth',
+    });
+};
+
 const OnClickAboutUs = ()=>{
     window.scrollTo({
         left: 0,
@@ -151,6 +161,12 @@ const fakeDB = {
         price: 10
     }
 };
+// if(document.body.querySelector('.place-order-btn')){
+//     document.getElementsId("place-order-btn").onclick = function () {
+//     location.href = "order-confirm.html";
+// };
+// }
+
 
 function addToCart(itemID) {
     // demo id

@@ -1,5 +1,5 @@
 <?php 
-include_once("src/model/ModelMobile.php");  
+include_once(__DIR__."/../model/ModelMobile.php");  
   
 class MobileController {  
     public $modelMobile;   

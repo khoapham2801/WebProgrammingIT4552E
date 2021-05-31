@@ -1,0 +1,45 @@
+.main-content {
+  display: flex;
+  flex-basis: 100%;
+  padding: 5rem 10rem;
+  flex-flow: column;
+}
+
+.order-number {
+  flex-basis: 30%;
+}
+
+.order-info {
+  flex-basis: 70%;
+  display: flex;
+  flex-flow: row;
+  /* justify-content: space-between; */
+}
+
+.order-table-info {
+  flex-basis: 50%;
+  margin-right: 50px;
+}
+
+.billing-info {
+  flex-basis: 50%;
+  margin-left: 50px;
+  display: block;
+}
+
+li {
+  margin-right: 10px;
+}
+
+.billing-info span.info {
+  display: inline-block;
+  width: 10rem;
+}
+
+.billing-info-line {
+  margin: 0.5rem;
+}
+
+h4 {
+  text-align: left;
+}
