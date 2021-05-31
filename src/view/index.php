@@ -1,3 +1,36 @@
+<?php
+ include_once(__DIR__. "/../controller/MobileController.php");
+
+    $controller = new MobileController();
+    $data = $controller -> getAllMobiles();
+    function super_encode_utf8($var,$deep=TRUE){
+            if(is_array($var)){
+                foreach($var as $key => $value){
+                    if($deep){
+                        $var[$key] = super_encode_utf8($value,$deep);
+                    }elseif(!is_array($value) && !is_object($value) && !mb_detect_encoding($value,'utf-8',true)){
+                         $var[$key] = utf8_encode($var);
+                    }
+                }
+                return $var;
+            }elseif(is_object($var)){
+                foreach($var as $key => $value){
+                    if($deep){
+                        $var->$key = super_encode_utf8($value,$deep);
+                    }elseif(!is_array($value) && !is_object($value) && !mb_detect_encoding($value,'utf-8',true)){
+                         $var->$key = utf8_encode($var);
+                    }
+                }
+                return $var;
+            }else{
+                return (!mb_detect_encoding($var,'utf-8',true))?utf8_encode($var):$var;
+            }
+        }
+
+    $data_utf8 = super_encode_utf8($data);
+    $data_encode = json_encode($data_utf8,JSON_FORCE_OBJECT);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,10 +50,13 @@
       rel="stylesheet"
       href="../../assets/css/pages/shopping-list.css?nocache=true"
     />
+    <script type="text/javascript">
+      var obj = JSON.parse('<?= $data_encode; ?>');
+    </script>
     <script src="../../assets/js/shitty.bundle.js" defer></script>
     <script src="../../assets/js/components.js?nocache=true" defer></script>
     <script src="../../assets/js/layout.js?nocache=true" defer></script>
-    <script src="../../assets/js/pages/shopping-list.js?nocache=true" defer></script>
+    <script type="text/javascript" src="../../assets/js/pages/shopping-list.js?nocache=true" defer></script>
   </head>
   <body>
     <div class="navbar-placeholder">
@@ -36,8 +72,8 @@
         </div>
       </div>
       <div class="navbar-items">
-        <a href="index.html" class="navbar-item">Homepage</a>
-        <a href="#" onclick="OnClickAboutUs()" class="navbar-item">About Us</a>
+        <a href="index.php" class="navbar-item">Homepage</a>
+        <a href="" onclick="OnClickAboutUs()" class="navbar-item">About Us</a>
       </div>
       <div class="shopping-cart">
         <i class="gg-shopping-cart"></i>
@@ -49,13 +85,13 @@
         <div class="d-flex justify-center mt-5">
           <span class="main-content-title"> Products </span>
         </div>
-        <div class="product-list"></div>
-        <div class="pagination">
-          <span class="pagination-item prev disabled">Prev</span>
-          <span class="pagination-item active">1</span>
-          <span class="pagination-item">2</span>
-          <span class="pagination-item disabled">...</span>
-          <span class="pagination-item next">Next</span>
+        <div class="product-list" id="product-list"></div>
+        <div class="pagination" id="pagination">
+          <!-- <a class="pagination-item prev disabled">Prev</a>
+          <a class="pagination-item active">1</a>
+          <a class="pagination-item">2</a>
+          <a class="pagination-item disabled">...</a>
+          <a class="pagination-item">next</a> -->
         </div>
       </div>
     </div>
