@@ -2,7 +2,10 @@
  include_once(__DIR__. "/../controller/MobileController.php");
 
     $controller = new MobileController();
-    $data = $controller -> getMobileById(70);
+    $id = $_GET["id"];
+    $id = substr($id, 3);
+    $data = $controller -> getMobileById($id);
+
 ?>
 
 

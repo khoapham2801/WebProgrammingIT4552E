@@ -68,16 +68,16 @@ var y = Array.from(x);
 
 
 // for(var i = 0; i<10;i++){
-//  y[i].style.display = "block";
+// 	y[i].style.display = "block";
 // }
 // for(var i = 10; i<y.length;i++){
-//  y[i].style.display = "none";
+// 	y[i].style.display = "none";
 // }
 var Pagination = {
-    
+	
 
     
-    code: '',
+	code: '',
     // --------------------
     // Utility
     // --------------------
@@ -108,28 +108,28 @@ var Pagination = {
     },
 
     OnclickProduct: function(){
-        //alert(Pagination.page);
-        var start = (Pagination.page-1)*8;
-        var end = Pagination.page*8-1;
-        if(Pagination.page == 1){
-            for(var i = start;i<=end;i++){
-                y[i].style.display = "flex";
-            }
-            for(var j = end+1; j<y.length;j++){
-                y[j].style.display = "none";
-            }
-        }
-        else{
-            for(var i = 0 ; i<start;i++){
-                y[i].style.display = "none";
-            }
-            for(var j = start; j<=end;j++){
-                y[j].style.display = "flex";
-            }
-            for(var k = end+1; k<y.length ;k++){
-                y[k].style.display = "none";
-            }
-        }
+    	//alert(Pagination.page);
+    	var start = (Pagination.page-1)*8;
+    	var end = Pagination.page*8-1;
+    	if(Pagination.page == 1){
+    		for(var i = start;i<=end;i++){
+    			y[i].style.display = "flex";
+    		}
+    		for(var j = end+1; j<y.length;j++){
+    			y[j].style.display = "none";
+    		}
+    	}
+    	else{
+    		for(var i = 0 ; i<start;i++){
+    			y[i].style.display = "none";
+    		}
+    		for(var j = start; j<=end;j++){
+    			y[j].style.display = "flex";
+    		}
+    		for(var k = end+1; k<y.length ;k++){
+    			y[k].style.display = "none";
+    		}
+    	}
     },
 
     // --------------------
