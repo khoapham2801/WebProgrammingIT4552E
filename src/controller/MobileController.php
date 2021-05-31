@@ -9,7 +9,7 @@ class MobileController {
         $this -> modelMobile = new ModelMobile();  
     }   
 
-    public function getAllMobile()  
+    public function getAllMobiles()  
     {  
         $mobileList = $this -> modelMobile -> getAllMobiles();
         return $mobileList;

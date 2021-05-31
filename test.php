@@ -8,6 +8,6 @@
     include_once("src/controller/MobileController.php");
 
     $controller = new MobileController();
-    $data = $controller -> init();
+    $data = $controller -> getAllMobiles();
     print_r($data);
 ?>
