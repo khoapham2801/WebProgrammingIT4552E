@@ -64,7 +64,7 @@
     <div class="navbar-placeholder"></div>
     <div class="navbar">
       <div class="logo d-flex justify-center align-center">
-        <a href="index.html"> LKK Mobile Store </a>
+        <a href="index.php"> LKK Mobile Store </a>
       </div>
       <div class="navbar-items">
         <a href="javascript:;" class="navbar-item">Products</a>

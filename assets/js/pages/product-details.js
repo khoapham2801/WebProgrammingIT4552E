@@ -73,7 +73,7 @@ function addToCart() {
 }
 
 function buyNow() {
-    self.addToCart();
+    //self.addToCart();
     window.location.href = "checkout.php";
 }
 
