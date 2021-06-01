@@ -6,9 +6,13 @@
     // print_r($data);
 
     include_once("src/controller/MobileController.php");
+    include_once("src/controller/BrandController.php");
 
-    $controller = new MobileController();
-    $data = $controller -> getALLMobiles();
+    $mobileController = new MobileController();
+    $brandController = new BrandController();
+
+    $mobiles = $mobileController -> getALLMobiles();
+    $brands  = $brandController -> getAllBrands();
     
     function super_encode_utf8($var,$deep=TRUE){
             if(is_array($var)){
@@ -34,12 +38,12 @@
             }
         }
 
-    $data_utf8 = super_encode_utf8($data);
-    $data_encode = json_encode($data_utf8,JSON_FORCE_OBJECT);
+    $mobiles_utf8 = super_encode_utf8($mobiles);
+    $mobiles_encode = json_encode($mobiles_utf8,JSON_FORCE_OBJECT);
     //print(gettype($data));
     //print(json_last_error());
     //print(gettype($data_encode));
-    //print($data_encode);
+    //print($brands_encode);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,7 +65,8 @@
       href="assets/css/pages/shopping-list.css?nocache=true"
     />
     <script type="text/javascript">
-      var obj = JSON.parse('<?= $data_encode; ?>');
+      var mobiles = JSON.parse('<?= $mobiles_encode; ?>');
+      var brands = JSON.parse('<?= $brands; ?>');
     </script>
     <script src="assets/js/shitty.bundle.js" defer></script>
     <script src="assets/js/components.js?nocache=true" defer></script>

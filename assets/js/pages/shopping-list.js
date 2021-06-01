@@ -16,14 +16,15 @@ searchSidebar.shit.body = `
             <div class="custom-select"  style="order: 2">
             <label class="search-sidebar-label">Brand: </label>
             <select id="brands" name="brands">
-            <option value="iphone">Iphone</option>
+            <option value="iphone">Iphonetest</option>
             <option value="samsung">Samsung</option>
             <option value="xiaomi">Xiaomi</option>
             <option value="oppo">Oppo</option>
             </select>
             </div>
             <div class="custom-select"  style="order: 3">
-            <label class="search-sidebar-label">Memory size: </label>            <select id="mem-size" name="mem-size">
+            <label class="search-sidebar-label">Memory size: </label>            
+            <select id="mem-size" name="mem-size">
             <option value="64gb">64GB</option>
             <option value="128gb">128GB</option>
             <option value="521gb">512GB</option>
@@ -49,6 +50,7 @@ searchSidebar.shit.body = `
 </div>
 `;
 
+
 document.body.querySelector('.shopnow-btn').onclick = _ => {
     const mainContentTop = document.querySelector('.main-content').offsetTop;
     const navbarHeight = remToPixels(4);
@@ -67,6 +69,15 @@ document.body.querySelector('.apply-search-btn').onclick = _ => {
         behavior: 'smooth',
     });
 };
+
+var x = document.getElementById("brands");
+var option = document.createElement("option");
+option.text = "Vsmart";
+x.add(option);
+
+
+
+
 
 var demoProducts = [];
 for(var i = 0; i < Object.keys(obj).length;i++){
@@ -103,8 +114,8 @@ const productContainer = new Shitonen({
 });
 
 
-var x = document.getElementsByClassName("product");
-var y = Array.from(x);
+var productCollection = document.getElementsByClassName("product");
+var productArray = Array.from(productCollection);
 
 
 // for(var i = 0; i<10;i++){
@@ -153,21 +164,21 @@ var Pagination = {
         var end = Pagination.page*9-1;
         if(Pagination.page == 1){
             for(var i = start;i<=end;i++){
-                y[i].style.display = "flex";
+                productArray[i].style.display = "flex";
             }
-            for(var j = end+1; j<y.length;j++){
-                y[j].style.display = "none";
+            for(var j = end+1; j<productArray.length;j++){
+                productArray[j].style.display = "none";
             }
         }
         else{
             for(var i = 0 ; i<start;i++){
-                y[i].style.display = "none";
+                productArray[i].style.display = "none";
             }
             for(var j = start; j<=end;j++){
-                y[j].style.display = "flex";
+                productArray[j].style.display = "flex";
             }
-            for(var k = end+1; k<y.length ;k++){
-                y[k].style.display = "none";
+            for(var k = end+1; k<productArray.length ;k++){
+                productArray[k].style.display = "none";
             }
         }
     },

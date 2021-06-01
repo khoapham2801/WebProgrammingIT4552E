@@ -1,21 +1,54 @@
-modal = Modal();
-modal.shit.title = `
-    Notification
-`;
-modal.shit.body = `
-    <p>Hi there!</p>
-    <p>This is a demo modal.</p>
-    <p>Do you like it?</p>
-`;
-modal.shit.footer = `
-    <div class="d-flex justify-end">
-        <button class="btn btn-success">Yes</button>
-        <button class="btn btn-warning">No</button>
+const searchSidebar = Modal({
+    element: document.querySelector('.search-sidebar-wrapper'),
+});
+searchSidebar.shit.show =false;
+searchSidebar.shit.body = `
+<div class="d-flex flex-column justify-space-between" style="height: 100vh;">
+    <div class="d-flex justify-center align-center" style="height:5rem;border-bottom: 1px solid #eee;">
+        <span><strong>Search</strong></span>
     </div>
-`
-modal.shit.show = false;
+    <div class="flex-1 pt-5 pb-5">
+        <div class="search-sidebar-item">
+            <div class="custom-search-bar">
+            <input type="text" placeholder="Search product name" style="height: 30px;
+            width: 400px;margin-bottom: 10px;">
+            </div>
+            <div class="custom-select"  style="order: 2">
+            <label class="search-sidebar-label">Brand: </label>
+            <select id="brands" name="brands">
+            </select>
+            </div>
+            <div class="custom-select"  style="order: 3">
+            <label class="search-sidebar-label">Memory size: </label>            
+            <select id="mem-size" name="mem-size">
+            <option value="16">16GB</option>
+            <option value="32">32GB</option>
+            <option value="64gb">64GB</option>
+            <option value="128gb">128GB</option>
+            <option value="256">256GB</option>
+            <option value="521gb">512GB</option>
+            </select>
+            </div>
+            <div class="custom-select"  style="order: 4">
+            <label class="search-sidebar-label">Year Release: </label>
+            <select id="year-release" name="year-release">
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            </select>
+            </div>
+        </div>
+        <div class="cart-sidebar-item">
+            
+        </div>
+    </div>
+    <div class="d-flex justify-center align-center mb-1" style="height:5rem;border-top: 1px solid #eee;">
+        <a class="apply-search-btn btn btn-warning w-100" style="line-height:2"><strong>Apply Search</strong></a>
+    </div>
+</div>
+`;
 
-document.body.appendChild(modal.element);
 
 document.body.querySelector('.shopnow-btn').onclick = _ => {
     const mainContentTop = document.querySelector('.main-content').offsetTop;
@@ -26,20 +59,51 @@ document.body.querySelector('.shopnow-btn').onclick = _ => {
         behavior: 'smooth',
     });
 };
+document.body.querySelector('.apply-search-btn').onclick = _ => {
+    const mainContentTop = document.querySelector('.main-content').offsetTop;
+    const navbarHeight = remToPixels(4);
+    window.scrollTo({
+        left: 0,
+        top: mainContentTop - navbarHeight,
+        behavior: 'smooth',
+    });
+};
+
+var demoBrand = [];
+for(var i = 0 ; i<Object.keys(brands).length; i++){
+	var tmp = {
+		"title":brands[i].name,
+	};
+	demoBrand.push(tmp);
+}
+
+var brandSelect = document.getElementById("brands");
+for(var i = 0; i<Object.keys(brands).length; i++){
+
+	var option = document.createElement("option");
+	option.value = brands[i].name;
+	option.text = brands[i].name;
+	brandSelect.add(option);
+}
+// var option = document.createElement("option");
+// x.add(option);
+
+
+
 
 
 var demoProducts = [];
-for(var i = 0; i < Object.keys(obj).length;i++){
+for(var i = 0; i < Object.keys(mobiles).length;i++){
     var tmp = {
-        "id":obj[i].id,
-        "title":obj[i].name,
-        "thumbnail":obj[i].img,
+        "id":mobiles[i].id,
+        "title":mobiles[i].name,
+        "thumbnail":mobiles[i].img,
     };
     demoProducts.push(tmp);
 }
 
 function onclickProduct(id){
-    location.href = "product-details.php" + "?id=" + id;
+    location.href = "src/view/product-details.php" + "?id=" + id;
 };
 
 const productContainer = new Shitonen({
@@ -48,7 +112,7 @@ const productContainer = new Shitonen({
         this.element.innerHTML = '';
         for(const product of demoProducts) {
             const title = product.title || 'しゅうごう';
-            const id = "obj" +product.id;
+            const id = "mobile" +product.id;
             const productEl = htmlToElement(`
                 <a onclick="onclickProduct(id)" class="product">
                     <img class="product-thumbnail" src="${product.thumbnail}" onerror="this.src=''">
@@ -63,21 +127,21 @@ const productContainer = new Shitonen({
 });
 
 
-var x = document.getElementsByClassName("product");
-var y = Array.from(x);
+var productCollection = document.getElementsByClassName("product");
+var productArray = Array.from(productCollection);
 
 
 // for(var i = 0; i<10;i++){
-// 	y[i].style.display = "block";
+//  y[i].style.display = "block";
 // }
 // for(var i = 10; i<y.length;i++){
-// 	y[i].style.display = "none";
+//  y[i].style.display = "none";
 // }
 var Pagination = {
-	
+    
 
     
-	code: '',
+    code: '',
     // --------------------
     // Utility
     // --------------------
@@ -108,28 +172,28 @@ var Pagination = {
     },
 
     OnclickProduct: function(){
-    	//alert(Pagination.page);
-    	var start = (Pagination.page-1)*8;
-    	var end = Pagination.page*8-1;
-    	if(Pagination.page == 1){
-    		for(var i = start;i<=end;i++){
-    			y[i].style.display = "flex";
-    		}
-    		for(var j = end+1; j<y.length;j++){
-    			y[j].style.display = "none";
-    		}
-    	}
-    	else{
-    		for(var i = 0 ; i<start;i++){
-    			y[i].style.display = "none";
-    		}
-    		for(var j = start; j<=end;j++){
-    			y[j].style.display = "flex";
-    		}
-    		for(var k = end+1; k<y.length ;k++){
-    			y[k].style.display = "none";
-    		}
-    	}
+        //alert(Pagination.page);
+        var start = (Pagination.page-1)*9;
+        var end = Pagination.page*9-1;
+        if(Pagination.page == 1){
+            for(var i = start;i<=end;i++){
+                productArray[i].style.display = "flex";
+            }
+            for(var j = end+1; j<productArray.length;j++){
+                productArray[j].style.display = "none";
+            }
+        }
+        else{
+            for(var i = 0 ; i<start;i++){
+                productArray[i].style.display = "none";
+            }
+            for(var j = start; j<=end;j++){
+                productArray[j].style.display = "flex";
+            }
+            for(var k = end+1; k<productArray.length ;k++){
+                productArray[k].style.display = "none";
+            }
+        }
     },
 
     // --------------------
@@ -202,6 +266,14 @@ var Pagination = {
             Pagination.Last();
         }
         Pagination.Finish();
+        const mainContentTop = document.querySelector('.main-content').offsetTop;
+        const navbarHeight = remToPixels(4);
+        window.scrollTo({
+            left: 0,
+            top: mainContentTop - navbarHeight,
+            behavior: 'smooth',
+        });
+
     },
 
 
@@ -247,7 +319,7 @@ var Pagination = {
 
 var init = function() {
     Pagination.Init(document.getElementById('pagination'), {
-        size:12, // pages size
+        size:11, // pages size
         page: 1,  // selected page
         step: 1   // pages before and after current
     });
