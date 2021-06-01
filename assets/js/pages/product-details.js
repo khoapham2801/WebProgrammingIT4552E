@@ -70,6 +70,7 @@ function addToCart() {
     console.log(4);
     console.log( mobiles);
     sessionStorage.setItem("mobiles", JSON.stringify(mobiles));
+    alert("Successfully added to cart!")
 }
 
 function buyNow() {

@@ -1,0 +1,106 @@
+.edit-wrapper {
+  display: block;
+  padding: 5rem 5rem;
+  flex-basis: 100%;
+  margin-top: 7rem;
+}
+
+.table-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.table-head h4 {
+  align-self: flex-start;
+}
+.table-head .addbtn {
+  align-self: flex-end;
+  margin-bottom: 18px;
+  background-color: #ffb76e;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  /* margin-top: 2rem; */
+  font-weight: bold;
+  padding: 10px 10px;
+  border-color: #ffb76e;
+}
+.editbtn,
+.removebtn {
+  align-self: flex-end;
+  /* margin-bottom: 18px; */
+  background-color: #ffb76e;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  margin-right: 5px;
+  font-weight: bold;
+  padding: 10px 10px;
+  border-color: #ffb76e;
+}
+
+.edit-popup-wrapper .custom-edit-field {
+  display: flex;
+  flex-basis: 10%;
+  flex-direction: column;
+}
+.edit-popup-wrapper .custom-edit-field label {
+  flex-basis: 20%;
+}
+.edit-popup-wrapper .custom-edit-field input[type="text"] {
+  flex-basis: 80%;
+  height: 50px;
+  font-size: 13pt;
+  width: 300px;
+  margin-bottom: 15px;
+}
+
+.edit-popup .apply-edit-btn {
+  background-color: #ffb76e;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.navbar .admin-icon {
+  width: 5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 2rem;
+  justify-self: right;
+  color: #6a5a4a;
+  user-select: none;
+  cursor: pointer;
+}
+
+@keyframes editpopup-slidein {
+  from {
+    left: -500px;
+    opacity: 0;
+  }
+  to {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+.edit-popup-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.edit-popup {
+  width: 400px !important;
+  top: 0 !important;
+  margin-top: 0 !important;
+  height: 100vh !important;
+  animation-name: editpopup-slidein !important;
+}
