@@ -1,21 +1,53 @@
-modal = Modal();
-modal.shit.title = `
-    Notification
-`;
-modal.shit.body = `
-    <p>Hi there!</p>
-    <p>This is a demo modal.</p>
-    <p>Do you like it?</p>
-`;
-modal.shit.footer = `
-    <div class="d-flex justify-end">
-        <button class="btn btn-success">Yes</button>
-        <button class="btn btn-warning">No</button>
+const searchSidebar = Modal({
+    element: document.querySelector('.search-sidebar-wrapper'),
+});
+searchSidebar.shit.show =false;
+searchSidebar.shit.body = `
+<div class="d-flex flex-column justify-space-between" style="height: 100vh;">
+    <div class="d-flex justify-center align-center" style="height:5rem;border-bottom: 1px solid #eee;">
+        <span><strong>Search</strong></span>
     </div>
-`
-modal.shit.show = false;
-
-document.body.appendChild(modal.element);
+    <div class="flex-1 pt-5 pb-5">
+        <div class="search-sidebar-item">
+            <div class="custom-search-bar">
+            <input type="text" placeholder="Search product name" style="height: 30px;
+            width: 400px;margin-bottom: 10px;">
+            </div>
+            <div class="custom-select"  style="order: 2">
+            <label class="search-sidebar-label">Brand: </label>
+            <select id="brands" name="brands">
+            <option value="iphone">Iphone</option>
+            <option value="samsung">Samsung</option>
+            <option value="xiaomi">Xiaomi</option>
+            <option value="oppo">Oppo</option>
+            </select>
+            </div>
+            <div class="custom-select"  style="order: 3">
+            <label class="search-sidebar-label">Memory size: </label>            <select id="mem-size" name="mem-size">
+            <option value="64gb">64GB</option>
+            <option value="128gb">128GB</option>
+            <option value="521gb">512GB</option>
+            </select>
+            </div>
+            <div class="custom-select"  style="order: 4">
+            <label class="search-sidebar-label">Year Release: </label>
+            <select id="year-release" name="year-release">
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            </select>
+            </div>
+        </div>
+        <div class="cart-sidebar-item">
+            
+        </div>
+    </div>
+    <div class="d-flex justify-center align-center mb-1" style="height:5rem;border-top: 1px solid #eee;">
+        <a class="apply-search-btn btn btn-warning w-100" style="line-height:2"><strong>Apply Search</strong></a>
+    </div>
+</div>
+`;
 
 document.body.querySelector('.shopnow-btn').onclick = _ => {
     const mainContentTop = document.querySelector('.main-content').offsetTop;
@@ -26,7 +58,15 @@ document.body.querySelector('.shopnow-btn').onclick = _ => {
         behavior: 'smooth',
     });
 };
-
+document.body.querySelector('.apply-search-btn').onclick = _ => {
+    const mainContentTop = document.querySelector('.main-content').offsetTop;
+    const navbarHeight = remToPixels(4);
+    window.scrollTo({
+        left: 0,
+        top: mainContentTop - navbarHeight,
+        behavior: 'smooth',
+    });
+};
 
 var demoProducts = [];
 for(var i = 0; i < Object.keys(obj).length;i++){
@@ -109,8 +149,8 @@ var Pagination = {
 
     OnclickProduct: function(){
         //alert(Pagination.page);
-        var start = (Pagination.page-1)*8;
-        var end = Pagination.page*8-1;
+        var start = (Pagination.page-1)*9;
+        var end = Pagination.page*9-1;
         if(Pagination.page == 1){
             for(var i = start;i<=end;i++){
                 y[i].style.display = "flex";
@@ -202,6 +242,14 @@ var Pagination = {
             Pagination.Last();
         }
         Pagination.Finish();
+        const mainContentTop = document.querySelector('.main-content').offsetTop;
+        const navbarHeight = remToPixels(4);
+        window.scrollTo({
+            left: 0,
+            top: mainContentTop - navbarHeight,
+            behavior: 'smooth',
+        });
+
     },
 
 
@@ -247,7 +295,7 @@ var Pagination = {
 
 var init = function() {
     Pagination.Init(document.getElementById('pagination'), {
-        size:12, // pages size
+        size:11, // pages size
         page: 1,  // selected page
         step: 1   // pages before and after current
     });
