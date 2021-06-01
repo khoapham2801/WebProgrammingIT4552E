@@ -48,13 +48,13 @@ for(const section of document.querySelectorAll('.section')) {
 
 function addToCart() {
     mobileObj['quantity'] = parseInt(document.getElementById("quantity-mobiles").value);
-
+    console.log(mobileObj);
     var mobiles = [];
     if (sessionStorage.length != 0) {
         mobiles = JSON.parse(sessionStorage.getItem("mobiles"));
         console.log(1);
         console.log(mobiles);
-        var tmpMobile = mobiles.find(mobile => mobile['id'] = mobileObj['id']);
+        var tmpMobile = mobiles.find(mobile => mobile['id'] == mobileObj['id']);
         console.log(2);
         console.log(mobiles);
         if (tmpMobile) {

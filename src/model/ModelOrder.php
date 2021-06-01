@@ -1,7 +1,7 @@
 <?php
-include_once("EntityMobile.php"); 
+include_once("EntityOrder.php"); 
 
-class ModelMobile {  
+class ModelOrder {  
     private $server = 'localhost';
     private $user = 'root';
     private $pass = '';
@@ -15,11 +15,11 @@ class ModelMobile {
         } else {
             mysqli_select_db($connect, $mydb);
             if ($resource = mysqli_query($connect, $SQLcmd)){
-                $mobileList = [];
+                $ordersList = [];
                 while ($row = mysqli_fetch_object($resource) ) {
-                    array_push($mobileList, new EntityMobile($row->id, $row->brandId, $row->name, $row->platform, $row->chip, $row->rear_camera, $row->front_camera, $row->memory, $row->price, $row->screen, $row->discount, $row->img));
+                    array_push($ordersList, new EntityOrder($row->id, $row->mobileId, $row->clientName, $row->address, $row->phoneNumber, $row->date, $row->shipFee, $row->VAT, $row->totalCost, $row->paymentStatus));
                 }
-                return $mobileList;
+                return $ordersList;
             } else {
                 die ($errorMessage);
             }

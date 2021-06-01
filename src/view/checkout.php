@@ -58,7 +58,7 @@
           </tfoot>
         </table>
         <div class="d-flex justify-end">
-          <button class="place-order-btn btn btn-warning" onclick="location.href = 'order-confirm.html';">
+          <button class="place-order-btn btn btn-warning" onclick="placeOrder()">
             Place Order
             <i class="gg-arrow-right ml-3"></i>
           </button>
@@ -69,32 +69,20 @@
           <span><strong>Customer Info</strong></span>
         </div>
         <div class="form-group">
-          <label>First name</label>
-          <input type="text" class="form-control" />
+          <label>Full Name</label>
+          <input type="text" class="form-control txt-name"/>
         </div>
         <div class="form-group mt-3">
-          <label>Last name</label>
-          <input type="text" class="form-control" />
+          <label>Email</label>
+          <input type="text" class="form-control txt-email"/>
         </div>
         <div class="form-group mt-3">
           <label>Address</label>
-          <input type="text" class="form-control" />
-        </div>
-        <div class="form-group mt-3">
-          <label>City</label>
-          <input type="text" class="form-control" />
-        </div>
-        <div class="form-group mt-3">
-          <label>Country</label>
-          <input type="text" class="form-control" />
-        </div>
-        <div class="form-group mt-3">
-          <label>Postal code</label>
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control txt-address"/>
         </div>
         <div class="form-group mt-3">
           <label>Phone</label>
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control txt-phone"/>
         </div>
       </div>
     </div>
