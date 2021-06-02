@@ -117,7 +117,7 @@ function onclickApply(){
 
 
 
-    alert(textSearch);
+    //alert(textSearch);
 
     if(textSearch == "none" && selectBrand ==0 && selectMem =="none" && selectPrice =="none"){
         onSearch = 0;      
@@ -462,7 +462,7 @@ function onclickApply(){
     }
 
     //alert(searchResult.length);   
-    alert(onSearch);
+    //alert(onSearch);
     testCollection = document.getElementsByName("onSearch");
     testArray = Array.from(testCollection);
     //location.reload(document.getElementById("pagination"));
