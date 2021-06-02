@@ -39,45 +39,44 @@ $data_encode = json_encode($data_utf8, JSON_FORCE_OBJECT);
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mobile Store</title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Raleway"
-    />
-    <link rel="stylesheet" href="../../assets/css/gg.css" />
-    <!-- <link rel="stylesheet" href="assets/css/calculated.css"> -->
-    <link rel="stylesheet" href="../../assets/css/layout.css" />
-    <link rel="stylesheet" href="../../assets/css/pages/product-details.css" />
-    <script src="../../assets/js/shitty.bundle.js" defer></script>
-    <script src="../../assets/js/calculate-style.js" defer></script>
-    <script src="../../assets/js/components.js" defer></script>
-    <script src="../../assets/js/layout.js" defer></script>
-    <script type="text/javascript">
-      var mobileObj = JSON.parse('<?= $data_encode; ?>');
-    </script>
-    <script src="../../assets/js/pages/product-details.js" defer></script>
-  </head>
-  <body>
-    <div class="navbar-placeholder"></div>
-    <div class="navbar">
-      <div class="logo d-flex justify-center align-center">
-        <a href="index.php"> LKK Mobile Store </a>
-      </div>
-      <div class="navbar-items">
-        <a href="javascript:;" class="navbar-item">Products</a>
-        <a href="javascript:;" class="navbar-item">Blog</a>
-        <a href="javascript:;" class="navbar-item">About Us</a>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mobile Store</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
+  <link rel="stylesheet" href="../../assets/css/gg.css" />
+  <!-- <link rel="stylesheet" href="assets/css/calculated.css"> -->
+  <link rel="stylesheet" href="../../assets/css/core.css?nocache=true" />
+
+  <link rel="stylesheet" href="../../assets/css/layout.css" />
+  <link rel="stylesheet" href="../../assets/css/pages/product-details.css" />
+  <script src="../../assets/js/shitty.bundle.js" defer></script>
+  <script src="../../assets/js/calculate-style.js" defer></script>
+  <script src="../../assets/js/components.js" defer></script>
+  <script src="../../assets/js/layout.js" defer></script>
+  <script type="text/javascript">
+    var mobileObj = JSON.parse('<?= $data_encode; ?>');
+  </script>
+  <script src="../../assets/js/pages/product-details.js" defer></script>
+</head>
+
+<body>
+  <div class="navbar-placeholder">
+    <div class="shopnow-btn">SHOP NOW!</div>
+  </div>
+  <div class="navbar">
+    <div class="search-and-logo">
+      <div class="search" style="visibility: hidden;">
+        <i class="gg-search"></i>
       </div>
       <div class="logo d-flex align-center">
         <a href="index.php"> LKK Mobile Shop </a>
       </div>
     </div>
     <div class="navbar-items">
-      <a href="index.php" class="navbar-item">Products</a>
+      <a href="index.php" class="navbar-item">Homepage</a>
       <a onclick="OnClickAboutUs()" class="navbar-item">About Us</a>
     </div>
     <div class="shopping-cart">
@@ -111,19 +110,6 @@ $data_encode = json_encode($data_utf8, JSON_FORCE_OBJECT);
         <div class="product-details">
           <h2 class="product-title"><?php echo $data->name; ?></h2>
           <span class="product-price"><?php echo $data->price; ?></span>
-          <div class="product-options">
-            <select name="" id="">
-              <option value="">-- Select Color --</option>
-              <option value="">Black</option>
-              <option value="">White</option>
-            </select>
-            <select name="" id="">
-              <option value="">-- Select storage size --</option>
-              <option value="">64Gb</option>
-              <option value="">128Gb</option>
-              <option value="">512Gb</option>
-            </select>
-          </div>
           <div class="d-flex add-to-cart-wrapper">
             <div class="product-quantity">
               <button class="dec-qty">-</button>
@@ -221,6 +207,22 @@ $data_encode = json_encode($data_utf8, JSON_FORCE_OBJECT);
 
         {{body}}
       </div>
+    </div>
+  </div>
+  <div class="confirm-modal-wrapper modal-wrapper">
+    <div class="modal-backdrop"></div>
+    <div class="confirm-modal modal">
+      <div class="modal-header">
+        <span class="modal-title">{{title | uppercase}}</span>
+        <span class="close">
+          <i class="gg-close"></i>
+        </span>
+      </div>
+      <div class="modal-body">
+
+        {{body}}
+      </div>
+      <div class="modal-footer">{{footer}}</div>
     </div>
   </div>
 </body>

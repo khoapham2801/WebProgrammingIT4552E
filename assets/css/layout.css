@@ -91,7 +91,7 @@ input::-webkit-inner-spin-button {
 
 .logo {
   user-select: none;
-  flex-basis: 70%;
+  flex-basis: 50%;
 }
 
 .navbar .logo a {
