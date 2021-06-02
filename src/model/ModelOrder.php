@@ -2,13 +2,11 @@
 include_once("EntityOrder.php"); 
 
 class ModelOrder {  
-    private $server = 'localhost';
-    private $user = 'root';
-    private $pass = '';
-    private $mydb = 'mobileshopdb';
-
     public function getAPI ($SQLcmd, $errorMessage) {
-        
+        $server = 'localhost';
+        $user = 'root';
+        $pass = '';
+        $mydb = 'mobileshopdb';
         $connect = mysqli_connect($server, $user, $pass);
         if (!$connect) {
             die ("Cannot connect to $server using $user");
@@ -17,33 +15,44 @@ class ModelOrder {
             if ($resource = mysqli_query($connect, $SQLcmd)){
                 $ordersList = [];
                 while ($row = mysqli_fetch_object($resource) ) {
-                    array_push($ordersList, new EntityOrder($row->id, $row->mobileId, $row->clientName, $row->address, $row->phoneNumber, $row->date, $row->shipFee, $row->VAT, $row->totalCost, $row->paymentStatus));
+                    array_push($ordersList, new EntityOrder($row->id, $row->name,  $row->email, $row->address, $row->phone, $row->date, $row->totalCost));
                 }
                 return $ordersList;
             } else {
                 die ($errorMessage);
             }
-            mysqli_close($connect);
         }
+        mysqli_close($connect);
     }
 
-    public function insertOrder ($SQLcmd, $errorMessage) {
+    public function insertAPI ($SQLcmd, $errorMessage) {
+        $server = 'localhost';
+        $user = 'root';
+        $pass = '';
+        $mydb = 'mobileshopdb';
         $connect = mysqli_connect($server, $user, $pass);
         if (!$connect) {
             die ("Cannot connect to $server using $user");
         } else {
-            mysqli_select_db($connect, $database);
-            print '<br><font size="4" color="blue">';
-            if (mysqli_query($connect, $query)){
-                print "Insert into $database was successful!</font>";
+            mysqli_select_db($connect, $mydb);
+            
+            if (mysqli_query($connect, $SQLcmd)){
+                $last_id = $connect -> insert_id;
+                return $last_id;
             } else {
-                print "Insert order into $database failed!</font>";
+                echo "$SQLcmd";
+                die ($errorMessage);
             } 
-            mysqli_close ($connect);
+            
         }
-        $table_name = 'Order';
-        $query = "INSERT INTO $table_name VALUES ('0','$Item','$Cost','$Weight','$Quantity')";
-        
+        mysqli_close ($connect);
+    }
+
+    public function insertOrderToDB($name, $email, $address, $phone, $date, $totalCost) {
+        $table_name = 'order';
+        $SQLcmd = "INSERT INTO $table_name VALUES ('0','$name','$email','$address','$phone', '$date', $totalCost)";
+        $errorMessage = "Can not insert order to database";
+        return $this -> insertAPI($SQLcmd, $errorMessage); 
     }
 }  
 

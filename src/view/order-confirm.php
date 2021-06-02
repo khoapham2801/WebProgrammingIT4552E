@@ -75,7 +75,7 @@
                 <td>
                   <div class="as as-1-1">
                     <div>
-                      <img src="assets/images/product-1.jpg" />
+                      <img src="" />
                     </div>
                   </div>
                 </td>
@@ -87,7 +87,7 @@
                 <td>
                   <div class="as as-1-1">
                     <div>
-                      <img src="assets/images/product-2.jpg" />
+                      <img src="" />
                     </div>
                   </div>
                 </td>

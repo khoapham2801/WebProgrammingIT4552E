@@ -24,6 +24,17 @@ CREATE TABLE mobileshopdb.mobile (
   FOREIGN KEY (brandId) REFERENCES brand(id)
 );
 
+CREATE TABLE mobileshopdb.order (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  name varchar(50) DEFAULT NULL,
+  email varchar(50) DEFAULT NULL,
+  address varchar(255) DEFAULT NULL,
+  phone varchar(255) DEFAULT NULL,
+  date varchar(255) DEFAULT NULL,
+  totalCost decimal(19, 2) DEFAULT NULL,
+  PRIMARY KEY (id)
+);
+
 INSERT INTO mobileshopdb.brand (name, img) VALUES
 ('Xiaomi','assets/images/BrandLogo/xiaomi.png'),
 ('Samsung','assets/images/BrandLogo/samsung.png'),

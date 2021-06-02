@@ -41,7 +41,7 @@ class ModelMobile {
     
     public function getMobilesByBrand($brand)  
     {  
-        $SQLcmd = $SQLcmd = "SELECT * FROM mobile, brand 
+        $SQLcmd = "SELECT * FROM mobile, brand 
         WHERE (mobile.brandId = brand.id AND brand.name = '$brand')";
         $errorMessage = "Cannot get the mobiles of the brand $brand";
         return $this -> getAPI ($SQLcmd, $errorMessage);
