@@ -4,7 +4,7 @@ include_once(__DIR__ . "/../controller/MobileController.php");
 
 $controller = new MobileController();
 $id = $_GET["id"];
-$id = substr($id, 6);
+$id = substr($id, 3);
 $data = $controller->getMobileById($id);
 
 function super_encode_utf8($var, $deep = TRUE)
@@ -39,33 +39,38 @@ $data_encode = json_encode($data_utf8, JSON_FORCE_OBJECT);
 
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mobile Store</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
-  <link rel="stylesheet" href="../../assets/css/gg.css" />
-  <!-- <link rel="stylesheet" href="assets/css/calculated.css"> -->
-  <link rel="stylesheet" href="../../assets/css/layout.css" />
-  <link rel="stylesheet" href="../../assets/css/pages/product-details.css" />
-  <script src="../../assets/js/shitty.bundle.js" defer></script>
-  <script src="../../assets/js/calculate-style.js" defer></script>
-  <script src="../../assets/js/components.js" defer></script>
-  <script src="../../assets/js/layout.js" defer></script>
-  <script type="text/javascript">
-    var mobileObj = JSON.parse('<?= $data_encode; ?>');
-  </script>
-  <script src="../../assets/js/pages/product-details.js" defer></script>
-</head>
-
-<body>
-  <div class="navbar-placeholder"></div>
-  <div class="navbar">
-    <div class="search-and-logo">
-      <div class="search" style="visibility: hidden;">
-        <i class="gg-search"></i>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobile Store</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Raleway"
+    />
+    <link rel="stylesheet" href="../../assets/css/gg.css" />
+    <!-- <link rel="stylesheet" href="assets/css/calculated.css"> -->
+    <link rel="stylesheet" href="../../assets/css/layout.css" />
+    <link rel="stylesheet" href="../../assets/css/pages/product-details.css" />
+    <script src="../../assets/js/shitty.bundle.js" defer></script>
+    <script src="../../assets/js/calculate-style.js" defer></script>
+    <script src="../../assets/js/components.js" defer></script>
+    <script src="../../assets/js/layout.js" defer></script>
+    <script type="text/javascript">
+      var mobileObj = JSON.parse('<?= $data_encode; ?>');
+    </script>
+    <script src="../../assets/js/pages/product-details.js" defer></script>
+  </head>
+  <body>
+    <div class="navbar-placeholder"></div>
+    <div class="navbar">
+      <div class="logo d-flex justify-center align-center">
+        <a href="index.php"> LKK Mobile Store </a>
+      </div>
+      <div class="navbar-items">
+        <a href="javascript:;" class="navbar-item">Products</a>
+        <a href="javascript:;" class="navbar-item">Blog</a>
+        <a href="javascript:;" class="navbar-item">About Us</a>
       </div>
       <div class="logo d-flex align-center">
         <a href="index.php"> LKK Mobile Shop </a>

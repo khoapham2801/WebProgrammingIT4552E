@@ -14,8 +14,15 @@ class EntityOrder {
     public function __construct($id, $mobileId, $clientName, $address, $phoneNumber, $date, $shipFee, $VAT, $totalCost, $paymentStatus)  
     {  
         $this->id = $id;  
-        $this->name = $name;  
-        $this->img = $img;  
-    }  
+        $this->mobileId = $mobileId;  
+        $this->clientName = $clientName; 
+        $this->address = $address; 
+        $this->phoneNumber = $phoneNumber;
+        $this->date = $date; 
+        $this->shipFee = $shipFee;  
+        $this->VAT = $VAT; 
+        $this->totalCost = $totalCost;
+        $this->paymentStatus = $paymentStatus;
+    } 
 }  
 ?>

@@ -48,13 +48,13 @@ for(const section of document.querySelectorAll('.section')) {
 
 function addToCart() {
     mobileObj['quantity'] = parseInt(document.getElementById("quantity-mobiles").value);
-
+    console.log(mobileObj);
     var mobiles = [];
     if (sessionStorage.length != 0) {
         mobiles = JSON.parse(sessionStorage.getItem("mobiles"));
         console.log(1);
         console.log(mobiles);
-        var tmpMobile = mobiles.find(mobile => mobile['id'] = mobileObj['id']);
+        var tmpMobile = mobiles.find(mobile => mobile['id'] == mobileObj['id']);
         console.log(2);
         console.log(mobiles);
         if (tmpMobile) {
@@ -74,30 +74,7 @@ function addToCart() {
 }
 
 function buyNow() {
-    // self.addToCart();
-    mobileObj['quantity'] = parseInt(document.getElementById("quantity-mobiles").value);
-
-    var mobiles = [];
-    if (sessionStorage.length != 0) {
-        mobiles = JSON.parse(sessionStorage.getItem("mobiles"));
-        console.log(1);
-        console.log(mobiles);
-        var tmpMobile = mobiles.find(mobile => mobile['id'] = mobileObj['id']);
-        console.log(2);
-        console.log(mobiles);
-        if (tmpMobile) {
-            tmpMobile['quantity'] += mobileObj['quantity'];
-        } else {
-            mobiles.push(mobileObj);
-        }
-        console.log(3);
-        console.log(mobiles);
-    } else {
-        mobiles.push(mobileObj);
-    }
-    console.log(4);
-    console.log( mobiles);
-    sessionStorage.setItem("mobiles", JSON.stringify(mobiles));
+    //self.addToCart();
     window.location.href = "checkout.php";
 }
 
