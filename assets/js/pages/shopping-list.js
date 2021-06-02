@@ -1,3 +1,4 @@
+var self = this;
 const searchSidebar = Modal({
     element: document.querySelector('.search-sidebar-wrapper'),
 });
@@ -10,33 +11,34 @@ searchSidebar.shit.body = `
     <div class="flex-1 pt-5 pb-5">
         <div class="search-sidebar-item">
             <div class="custom-search-bar">
-            <input type="text" placeholder="Search product name" style="height: 30px;
+            <input type="text" id="text-search" placeholder="Search product name" style="height: 30px;
             width: 400px;margin-bottom: 10px;">
             </div>
             <div class="custom-select"  style="order: 2">
             <label class="search-sidebar-label">Brand: </label>
             <select id="brands" name="brands">
-            <option value="iphone">Iphonetest</option>
-            <option value="samsung">Samsung</option>
-            <option value="xiaomi">Xiaomi</option>
-            <option value="oppo">Oppo</option>
+            <option value="none">none</option>
             </select>
             </div>
             <div class="custom-select"  style="order: 3">
             <label class="search-sidebar-label">Memory size: </label>            
             <select id="mem-size" name="mem-size">
-            <option value="64gb">64GB</option>
-            <option value="128gb">128GB</option>
-            <option value="521gb">512GB</option>
+            <option value="none">none</option>
+            <option value="16">16GB</option>
+            <option value="32">32GB</option>
+            <option value="64">64GB</option>
+            <option value="128">128GB</option>
+            <option value="256">256GB</option>
+            <option value="512">512GB</option>
             </select>
             </div>
             <div class="custom-select"  style="order: 4">
-            <label class="search-sidebar-label">Year Release: </label>
-            <select id="year-release" name="year-release">
-            <option value="2018">2018</option>
-            <option value="2019">2019</option>
-            <option value="2020">2020</option>
-            <option value="2021">2021</option>
+            <label class="search-sidebar-label">Price: </label>
+            <select id="price" name="price">
+            <option value="none">none</option>
+            <option value="<10tr"><10tr</option>
+            <option value="10-20">10-20tr</option>
+            <option value=">20tr">>20tr</option>
             </select>
             </div>
         </div>
@@ -45,7 +47,7 @@ searchSidebar.shit.body = `
         </div>
     </div>
     <div class="d-flex justify-center align-center mb-1" style="height:5rem;border-top: 1px solid #eee;">
-        <a class="apply-search-btn btn btn-warning w-100" style="line-height:2"><strong>Apply Search</strong></a>
+        <a class="apply-search-btn btn btn-warning w-100" style="line-height:2" id="apply-search-btn"><strong>Apply Search</strong></a>
     </div>
 </div>
 `;
@@ -70,21 +72,412 @@ document.body.querySelector('.apply-search-btn').onclick = _ => {
     });
 };
 
-var x = document.getElementById("brands");
-var option = document.createElement("option");
-option.text = "Vsmart";
-x.add(option);
+var demoBrand = [];
+for(var i = 0 ; i<Object.keys(brands).length; i++){
+    var tmp = {
+        "title":brands[i].name,
+    };
+    demoBrand.push(tmp);
+}
 
+var brandSelect = document.getElementById("brands");
+for(var i = 0; i<Object.keys(brands).length; i++){
+
+    var option = document.createElement("option");
+    option.value = brands[i].id;
+    option.text = brands[i].name;
+    brandSelect.add(option);
+}
+
+
+document.getElementById("apply-search-btn").addEventListener("click", onclickApply);
+
+var onSearch = 0;
+
+var testCollection = [];
+var testArray = [];
+ 
+
+function onclickApply(){
+    //alert(onSearch);
+    onSearch = 1;
+    //alert(onSearch);
+    var textSearch = document.getElementById("text-search").value;
+    if (textSearch==='') textSearch = "none";
+    textSearch = textSearch.toLowerCase();
+    var selectBrand = document.getElementById("brands").value;
+    if (selectBrand == "none") selectBrand = 0;
+    var selectMem = document.getElementById("mem-size").value;
+    var selectPrice = document.getElementById("price").value;
+
+
+    var searchResult = [];
+
+
+
+
+
+    alert(textSearch);
+
+    if(textSearch == "none" && selectBrand ==0 && selectMem =="none" && selectPrice =="none"){
+        onSearch = 0;      
+    }
+    if(textSearch == "none" && selectBrand ==0 && selectMem =="none"){
+        if(selectPrice =="<10tr"){
+            for(var i = 0; i < Object.keys(mobiles).length;i++){
+                if(mobiles[i].price < 10000000){
+                    var tmpRes = {
+                        "id":mobiles[i].id,
+                    };
+                    searchResult.push(tmpRes);
+                }
+            }
+        }
+        if(selectPrice =="10-20"){
+            for(var i = 0; i < Object.keys(mobiles).length;i++){
+                if(mobiles[i].price >= 10000000 && mobiles[i].price <=20000000){
+                    var tmpRes = {
+                        "id":mobiles[i].id,
+                    };
+                    searchResult.push(tmpRes);
+                }
+            }
+        }
+        if(selectPrice ==">20tr"){
+            for(var i = 0; i < Object.keys(mobiles).length;i++){
+                if(mobiles[i].price > 20000000){
+                    var tmpRes = {
+                        "id":mobiles[i].id,
+                    };
+                    searchResult.push(tmpRes);
+                }
+            }
+        }
+    }
+    if(textSearch == "none" && selectBrand ==0 && selectPrice =="none"){
+        for(var i = 0; i < Object.keys(mobiles).length;i++){
+            if(mobiles[i].memory.includes(selectMem)){
+                var tmpRes = {
+                    "id":mobiles[i].id,
+                };
+                searchResult.push(tmpRes);
+            }
+        }
+    }
+    if(textSearch == "none" && selectBrand ==0 ){
+        if(selectPrice =="<10tr"){
+            for(var i = 0; i < Object.keys(mobiles).length;i++){
+                if(mobiles[i].price < 10000000 && mobiles[i].memory.includes(selectMem)){
+                    var tmpRes = {
+                        "id":mobiles[i].id,
+                    };
+                    searchResult.push(tmpRes);
+                }
+            }
+        }
+        if(selectPrice =="10-20"){
+            for(var i = 0; i < Object.keys(mobiles).length;i++){
+                if(mobiles[i].price >= 10000000 && mobiles[i].price <=20000000 && mobiles[i].memory.includes(selectMem)){
+                    var tmpRes = {
+                        "id":mobiles[i].id,
+                    };
+                    searchResult.push(tmpRes);
+                }
+            }
+        }
+        if(selectPrice ==">20tr"){
+            for(var i = 0; i < Object.keys(mobiles).length;i++){
+                if(mobiles[i].price > 20000000 && mobiles[i].memory.includes(selectMem)){
+                    var tmpRes = {
+                        "id":mobiles[i].id,
+                    };
+                    searchResult.push(tmpRes);
+                }
+            }
+        }
+    }
+    if(textSearch == "none" && selectMem == "none" && selectPrice =="none"){
+        for(var i = 0; i < Object.keys(mobiles).length;i++){
+            if(mobiles[i].brandId == selectBrand){
+                var tmpRes = {
+                    "id":mobiles[i].id,
+                };
+                searchResult.push(tmpRes);
+            }
+        }
+    }
+    if(textSearch == "none" && selectMem == "none"){
+        if(selectPrice =="<10tr"){
+            for(var i = 0; i < Object.keys(mobiles).length;i++){
+                if(mobiles[i].price < 10000000 && mobiles[i].brandId == selectBrand){
+                    var tmpRes = {
+                        "id":mobiles[i].id,
+                    };
+                    searchResult.push(tmpRes);
+                }
+            }
+        }
+        if(selectPrice =="10-20"){
+            for(var i = 0; i < Object.keys(mobiles).length;i++){
+                if(mobiles[i].price >= 10000000 && mobiles[i].price <=20000000 && mobiles[i].brandId == selectBrand){
+                    var tmpRes = {
+                        "id":mobiles[i].id,
+                    };
+                    searchResult.push(tmpRes);
+                }
+            }
+        }
+        if(selectPrice ==">20tr"){
+            for(var i = 0; i < Object.keys(mobiles).length;i++){
+                if(mobiles[i].price > 20000000 && mobiles[i].brandId == selectBrand){
+                    var tmpRes = {
+                        "id":mobiles[i].id,
+                    };
+                    searchResult.push(tmpRes);
+                }
+            }
+        }
+    }
+    if(textSearch == "none" && selectPrice =="none"){
+        for(var i = 0; i < Object.keys(mobiles).length;i++){
+            if(mobiles[i].memory.includes(selectMem) && mobiles[i].brandId == selectBrand){
+                var tmpRes = {
+                    "id":mobiles[i].id,
+                };
+                searchResult.push(tmpRes);
+            }
+        }
+    }
+    if(textSearch == "none"){
+        if(selectPrice =="<10tr"){
+            for(var i = 0; i < Object.keys(mobiles).length;i++){
+                if(mobiles[i].price < 10000000 && mobiles[i].brandId == selectBrand && mobiles[i].memory.includes(selectMem)){
+                    var tmpRes = {
+                        "id":mobiles[i].id,
+                    };
+                    searchResult.push(tmpRes);
+                }
+            }
+        }
+        if(selectPrice =="10-20"){
+            for(var i = 0; i < Object.keys(mobiles).length;i++){
+                if(mobiles[i].price >= 10000000 && mobiles[i].price <=20000000 && mobiles[i].brandId == selectBrand && mobiles[i].memory.includes(selectMem)){
+                    var tmpRes = {
+                        "id":mobiles[i].id,
+                    };
+                    searchResult.push(tmpRes);
+                }
+            }
+        }
+        if(selectPrice ==">20tr"){
+            for(var i = 0; i < Object.keys(mobiles).length;i++){
+                if(mobiles[i].price > 20000000 && mobiles[i].brandId == selectBrand && mobiles[i].memory.includes(selectMem)){
+                    var tmpRes = {
+                        "id":mobiles[i].id,
+                    };
+                    searchResult.push(tmpRes);
+                }
+            }
+        }
+    }
+    if(selectMem == "none" && selectBrand ==0 && selectPrice =="none"){
+        for(var i = 0; i < Object.keys(mobiles).length;i++){
+            if(mobiles[i].name.toLowerCase().includes(textSearch)){
+                var tmpRes = {
+                    "id":mobiles[i].id,
+                };
+                searchResult.push(tmpRes);
+            }
+        }
+    }
+    if(selectBrand == 0 && selectMem == "none"){
+        if(selectPrice =="<10tr"){
+            for(var i = 0; i < Object.keys(mobiles).length;i++){
+                if(mobiles[i].price < 10000000 && mobiles[i].name.toLowerCase().includes(textSearch)){
+                    var tmpRes = {
+                        "id":mobiles[i].id,
+                    };
+                    searchResult.push(tmpRes);
+                }
+            }
+        }
+        if(selectPrice =="10-20"){
+            for(var i = 0; i < Object.keys(mobiles).length;i++){
+                if(mobiles[i].price >= 10000000 && mobiles[i].price <=20000000 && mobiles[i].name.toLowerCase().includes(textSearch)){
+                    var tmpRes = {
+                        "id":mobiles[i].id,
+                    };
+                    searchResult.push(tmpRes);
+                }
+            }
+        }
+        if(selectPrice ==">20tr"){
+            for(var i = 0; i < Object.keys(mobiles).length;i++){
+                if(mobiles[i].price > 20000000 && mobiles[i].name.toLowerCase().includes(textSearch)){
+                    var tmpRes = {
+                        "id":mobiles[i].id,
+                    };
+                    searchResult.push(tmpRes);
+                }
+            }
+        }
+    }
+    if(selectBrand ==0 && selectPrice =="none"){
+        for(var i = 0; i < Object.keys(mobiles).length;i++){
+            if(mobiles[i].memory.includes(selectMem) && mobiles[i].name.toLowerCase().includes(textSearch)){
+                var tmpRes = {
+                    "id":mobiles[i].id,
+                };
+                searchResult.push(tmpRes);
+            }
+        }
+    }
+    if(selectBrand == 0){
+        if(selectPrice =="<10tr"){
+            for(var i = 0; i < Object.keys(mobiles).length;i++){
+                if(mobiles[i].price < 10000000 && mobiles[i].name.toLowerCase().includes(textSearch) && mobiles[i].memory.includes(selectMem)){
+                    var tmpRes = {
+                        "id":mobiles[i].id,
+                    };
+                    searchResult.push(tmpRes);
+                }
+            }
+        }
+        if(selectPrice =="10-20"){
+            for(var i = 0; i < Object.keys(mobiles).length;i++){
+                if(mobiles[i].price >= 10000000 && mobiles[i].price <=20000000 && mobiles[i].name.toLowerCase().includes(textSearch) && mobiles[i].memory.includes(selectMem)){
+                    var tmpRes = {
+                        "id":mobiles[i].id,
+                    };
+                    searchResult.push(tmpRes);
+                }
+            }
+        }
+        if(selectPrice ==">20tr"){
+            for(var i = 0; i < Object.keys(mobiles).length;i++){
+                if(mobiles[i].price > 20000000 && mobiles[i].name.toLowerCase().includes(textSearch) && mobiles[i].memory.includes(selectMem)){
+                    var tmpRes = {
+                        "id":mobiles[i].id,
+                    };
+                    searchResult.push(tmpRes);
+                }
+            }
+        }
+    }
+    if(selectMem == "none" && selectPrice =="none"){
+        for(var i = 0; i < Object.keys(mobiles).length;i++){
+            if(mobiles[i].name.toLowerCase().includes(textSearch) && mobiles[i].brandId == selectBrand){
+                var tmpRes = {
+                    "id":mobiles[i].id,
+                };
+                searchResult.push(tmpRes);
+            }
+        }
+    }
+    if(selectMem == "none"){
+        if(selectPrice =="<10tr"){
+            for(var i = 0; i < Object.keys(mobiles).length;i++){
+                if(mobiles[i].price < 10000000 && mobiles[i].name.toLowerCase().includes(textSearch) && mobiles[i].brandId == selectBrand){
+                    var tmpRes = {
+                        "id":mobiles[i].id,
+                    };
+                    searchResult.push(tmpRes);
+                }
+            }
+        }
+        if(selectPrice =="10-20"){
+            for(var i = 0; i < Object.keys(mobiles).length;i++){
+                if(mobiles[i].price >= 10000000 && mobiles[i].price <=20000000 && mobiles[i].name.toLowerCase().includes(textSearch) && mobiles[i].brandId == selectBrand){
+                    var tmpRes = {
+                        "id":mobiles[i].id,
+                    };
+                    searchResult.push(tmpRes);
+                }
+            }
+        }
+        if(selectPrice ==">20tr"){
+            for(var i = 0; i < Object.keys(mobiles).length;i++){
+                if(mobiles[i].price > 20000000 && mobiles[i].name.toLowerCase().includes(textSearch) && mobiles[i].brandId == selectBrand){
+                    var tmpRes = {
+                        "id":mobiles[i].id,
+                    };
+                    searchResult.push(tmpRes);
+                }
+            }
+        }
+    }
+    if(selectPrice =="none"){
+        for(var i = 0; i < Object.keys(mobiles).length;i++){
+            if(mobiles[i].name.toLowerCase().includes(textSearch) && mobiles[i].brandId == selectBrand && mobiles[i].memory.includes(selectMem)){
+                var tmpRes = {
+                    "id":mobiles[i].id,
+                };
+                searchResult.push(tmpRes);
+            }
+        }
+    }
+    if(selectMem != "none" && textSearch != "none" && selectPrice != "none" && selectBrand != 0){
+        if(selectPrice =="<10tr"){
+            for(var i = 0; i < Object.keys(mobiles).length;i++){
+                if(mobiles[i].price < 10000000 && mobiles[i].name.toLowerCase().includes(textSearch) && mobiles[i].brandId == selectBrand && mobiles[i].memory.includes(selectMem)){
+                    var tmpRes = {
+                        "id":mobiles[i].id,
+                    };
+                    searchResult.push(tmpRes);
+                }
+            }
+        }
+        if(selectPrice =="10-20"){
+            for(var i = 0; i < Object.keys(mobiles).length;i++){
+                if(mobiles[i].price >= 10000000 && mobiles[i].price <=20000000 && mobiles[i].name.toLowerCase().includes(textSearch) && mobiles[i].brandId == selectBrand && mobiles[i].memory.includes(selectMem)){
+                    var tmpRes = {
+                        "id":mobiles[i].id,
+                    };
+                    searchResult.push(tmpRes);
+                }
+            }
+        }
+        if(selectPrice ==">20tr"){
+            for(var i = 0; i < Object.keys(mobiles).length;i++){
+                if(mobiles[i].price > 20000000 && mobiles[i].name.toLowerCase().includes(textSearch) && mobiles[i].brandId == selectBrand && mobiles[i].memory.includes(selectMem)){
+                    var tmpRes = {
+                        "id":mobiles[i].id,
+                    };
+                    searchResult.push(tmpRes);
+                }
+            }
+        }
+    }
+
+
+    for(var i = 0; i < productArray.length;i++){
+        productArray[i].style.display = "none";
+        productCollection[i].setAttribute('name','offSearch');
+    }
+    for(var i= 0; i<searchResult.length;i++){
+        var j = searchResult[i].id-1;
+        //productArray[j].style.display = "flex";
+        productCollection[j].setAttribute('name','onSearch');
+        
+    }
+
+    //alert(searchResult.length);   
+    alert(onSearch);
+    testCollection = document.getElementsByName("onSearch");
+    testArray = Array.from(testCollection);
+    //location.reload(document.getElementById("pagination"));
+    self.Pagination.OnclickProduct();
+}
 
 
 
 
 var demoProducts = [];
-for(var i = 0; i < Object.keys(obj).length;i++){
+for(var i = 0; i < Object.keys(mobiles).length;i++){
     var tmp = {
-        "id":obj[i].id,
-        "title":obj[i].name,
-        "thumbnail":obj[i].img,
+        "id":mobiles[i].id,
+        "title":mobiles[i].name,
+        "thumbnail":mobiles[i].img,
     };
     demoProducts.push(tmp);
 }
@@ -99,9 +492,9 @@ const productContainer = new Shitonen({
         this.element.innerHTML = '';
         for(const product of demoProducts) {
             const title = product.title || 'しゅうごう';
-            const id = "obj" +product.id;
+            const id = "mobile" +product.id;
             const productEl = htmlToElement(`
-                <a onclick="onclickProduct(id)" class="product">
+                <a onclick="onclickProduct(id)" class="product" name ="offSearch">
                     <img class="product-thumbnail" src="${product.thumbnail}" onerror="this.src=''">
                     <span class="product-title">${title}</span>
                 </a>
@@ -118,15 +511,8 @@ var productCollection = document.getElementsByClassName("product");
 var productArray = Array.from(productCollection);
 
 
-// for(var i = 0; i<10;i++){
-//  y[i].style.display = "block";
-// }
-// for(var i = 10; i<y.length;i++){
-//  y[i].style.display = "none";
-// }
 var Pagination = {
     
-
     
     code: '',
     // --------------------
@@ -160,26 +546,57 @@ var Pagination = {
 
     OnclickProduct: function(){
         //alert(Pagination.page);
-        var start = (Pagination.page-1)*9;
-        var end = Pagination.page*9-1;
-        if(Pagination.page == 1){
-            for(var i = start;i<=end;i++){
-                productArray[i].style.display = "flex";
+        //pagination when start homepage
+        if(onSearch == 0){
+            console.log(productArray);
+            var start = (Pagination.page-1)*9;
+            var end = Pagination.page*9-1;
+            if(Pagination.page == 1){
+                for(var i = start;i<=end;i++){
+                    productArray[i].style.display = "flex";
+                }
+                for(var j = end+1; j<productArray.length;j++){
+                    productArray[j].style.display = "none";
+                }
             }
-            for(var j = end+1; j<productArray.length;j++){
-                productArray[j].style.display = "none";
+            else{
+                for(var i = 0 ; i<start;i++){
+                    productArray[i].style.display = "none";
+                }
+                for(var j = start; j<=end;j++){
+                    productArray[j].style.display = "flex";
+                }
+                for(var k = end+1; k<productArray.length ;k++){
+                    productArray[k].style.display = "none";
+                }
             }
         }
+        //run when apply click
         else{
-            for(var i = 0 ; i<start;i++){
-                productArray[i].style.display = "none";
+            console.log(testArray);
+            var start = (Pagination.page-1)*9;
+            var end = Pagination.page*9-1;
+            end = Math.min(end, testArray.length);
+            if(Pagination.page == 1){
+                for(var i = start;i<=end;i++){
+                    testArray[i].style.display = "flex";
+                }
+                for(var j = end+1; j<testArray.length;j++){
+                    testArray[j].style.display = "none";
+                }
             }
-            for(var j = start; j<=end;j++){
-                productArray[j].style.display = "flex";
+            else{
+                for(var i = 0 ; i<start;i++){
+                    testArray[i].style.display = "none";
+                }
+                for(var j = start; j<=end;j++){
+                    testArray[j].style.display = "flex";
+                }
+                for(var k = end+1; k<testArray.length ;k++){
+                    testArray[k].style.display = "none";
+                }
             }
-            for(var k = end+1; k<productArray.length ;k++){
-                productArray[k].style.display = "none";
-            }
+
         }
     },
 

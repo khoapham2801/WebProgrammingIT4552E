@@ -1,4 +1,4 @@
-
+var self = this;
 const searchSidebar = Modal({
     element: document.querySelector('.search-sidebar-wrapper'),
 });
@@ -456,7 +456,7 @@ function onclickApply(){
     }
     for(var i= 0; i<searchResult.length;i++){
         var j = searchResult[i].id-1;
-        productArray[j].style.display = "flex";
+        //productArray[j].style.display = "flex";
         productCollection[j].setAttribute('name','onSearch');
         
     }
@@ -466,6 +466,7 @@ function onclickApply(){
     testCollection = document.getElementsByName("onSearch");
     testArray = Array.from(testCollection);
     //location.reload(document.getElementById("pagination"));
+    self.Pagination.OnclickProduct();
 }
 
 
@@ -545,8 +546,9 @@ var Pagination = {
 
     OnclickProduct: function(){
         //alert(Pagination.page);
-
+        //pagination when start homepage
         if(onSearch == 0){
+            console.log(productArray);
             var start = (Pagination.page-1)*9;
             var end = Pagination.page*9-1;
             if(Pagination.page == 1){
@@ -569,9 +571,12 @@ var Pagination = {
                 }
             }
         }
+        //run when apply click
         else{
+            console.log(testArray);
             var start = (Pagination.page-1)*9;
             var end = Pagination.page*9-1;
+            end = Math.min(end, testArray.length);
             if(Pagination.page == 1){
                 for(var i = start;i<=end;i++){
                     testArray[i].style.display = "flex";
