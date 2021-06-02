@@ -1,3 +1,4 @@
+
 const searchSidebar = Modal({
     element: document.querySelector('.search-sidebar-wrapper'),
 });
@@ -10,7 +11,7 @@ searchSidebar.shit.body = `
     <div class="flex-1 pt-5 pb-5">
         <div class="search-sidebar-item">
             <div class="custom-search-bar">
-            <input type="text" placeholder="Search product name" style="height: 30px;
+            <input type="text" id="text-search" placeholder="Search product name" style="height: 30px;
             width: 400px;margin-bottom: 10px;">
             </div>
             <div class="custom-select"  style="order: 2">
@@ -43,7 +44,7 @@ searchSidebar.shit.body = `
         </div>
     </div>
     <div class="d-flex justify-center align-center mb-1" style="height:5rem;border-top: 1px solid #eee;">
-        <a class="apply-search-btn btn btn-warning w-100" style="line-height:2"><strong>Apply Search</strong></a>
+        <a class="apply-search-btn btn btn-warning w-100" style="line-height:2" id="apply-search-btn"><strong>Apply Search</strong></a>
     </div>
 </div>
 `;
@@ -84,9 +85,32 @@ for(var i = 0; i<Object.keys(brands).length; i++){
 	option.text = brands[i].name;
 	brandSelect.add(option);
 }
-// var option = document.createElement("option");
-// x.add(option);
 
+
+document.getElementById("apply-search-btn").addEventListener("click", onclickApply);
+function onclickApply(){
+
+    var textSearch = document.getElementById("text-search").value;
+    var selectBrand = document.getElementById("brands").value;
+    var selectMem = document.getElementById("mem-size").value;
+    var selectPrice = document.getElementById("price").value;
+
+
+    var searchArray = [];
+    var tmp ={
+        "textSearch":textSearch,
+        "selectBrand":selectBrand,
+        "selectMem":selectMem,
+        "selectPrice":selectPrice,
+
+    };
+    searchArray.push(tmp);
+
+
+    alert(searchArray[0].selectPrice);   
+
+    searchArray = null;
+}
 
 
 

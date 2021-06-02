@@ -1,10 +1,4 @@
 <?php 
-// Run this to test
-    // include_once("src/model/ModelMobile.php");
-    // $model = new ModelMobile();  
-    // $data = $model -> getMobilesByBrand("Vsmart"); 
-    // print_r($data);
-
     include_once("src/controller/MobileController.php");
     include_once("src/controller/BrandController.php");
 
@@ -71,7 +65,7 @@
     <script src="assets/js/shitty.bundle.js" defer></script>
     <script src="assets/js/components.js?nocache=true" defer></script>
     <script src="assets/js/layout.js?nocache=true" defer></script>
-    <script type="text/javascript" src="test.js?nocache=true" defer></script>
+    <script type="text/javascript" src="test_khang.js?nocache=true" defer></script>
   </head>
   <body>
     <div class="navbar-placeholder">
@@ -102,11 +96,6 @@
         </div>
         <div class="product-list" id="product-list"></div>
         <div class="pagination" id="pagination">
-          <!-- <a class="pagination-item prev disabled">Prev</a>
-          <a class="pagination-item active">1</a>
-          <a class="pagination-item">2</a>
-          <a class="pagination-item disabled">...</a>
-          <a class="pagination-item">next</a> -->
         </div>
       </div>
     </div>
