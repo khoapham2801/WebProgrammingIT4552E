@@ -4,7 +4,7 @@ include_once(__DIR__ . "/../controller/MobileController.php");
 
 $controller = new MobileController();
 $id = $_GET["id"];
-$id = substr($id, 3);
+$id = substr($id, 6);
 $data = $controller->getMobileById($id);
 
 function super_encode_utf8($var, $deep = TRUE)
