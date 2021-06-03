@@ -54,8 +54,8 @@ $data_encode = json_encode($data_utf8, JSON_FORCE_OBJECT);
   <link rel="stylesheet" href="../../assets/css/pages/product-details.css" />
   <script src="../../assets/js/shitty.bundle.js" defer></script>
   <script src="../../assets/js/calculate-style.js" defer></script>
-  <script src="../../assets/js/components.js" defer></script>
-  <script src="../../assets/js/layout.js" defer></script>
+  <script src="../../assets/js/components.js?nocache=true" defer></script>
+  <script src="../../assets/js/layout.js?nocache=true" defer></script>
   <script type="text/javascript">
     var mobileObj = JSON.parse('<?= $data_encode; ?>');
   </script>

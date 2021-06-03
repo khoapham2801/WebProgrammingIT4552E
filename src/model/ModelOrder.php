@@ -30,15 +30,13 @@ class ModelOrder {
         $user = 'root';
         $pass = '';
         $mydb = 'mobileshopdb';
-        $connect = mysqli_connect($server, $user, $pass);
+        $connect = mysqli_connect($server, $user, $pass, $mydb);
         if (!$connect) {
             die ("Cannot connect to $server using $user");
         } else {
-            mysqli_select_db($connect, $mydb);
-            
             if (mysqli_query($connect, $SQLcmd)){
                 $last_id = $connect -> insert_id;
-                return $last_id;
+                echo $last_id;
             } else {
                 echo "$SQLcmd";
                 die ($errorMessage);
@@ -49,10 +47,15 @@ class ModelOrder {
     }
 
     public function insertOrderToDB($name, $email, $address, $phone, $date, $totalCost) {
-        $table_name = 'order';
-        $SQLcmd = "INSERT INTO $table_name VALUES ('0','$name','$email','$address','$phone', '$date', $totalCost)";
+        $SQLcmd = "INSERT INTO donhang VALUES ('0','$name','$email','$address','$phone', '$date', $totalCost)";
         $errorMessage = "Can not insert order to database";
         return $this -> insertAPI($SQLcmd, $errorMessage); 
+    }
+
+    public function getOrderByIdFromDB($id) {
+        $SQLcmd = "SELECT * FROM donhang WHERE (donhang.id = '$id')";
+        $errorMessage = "Can not insert order to database";
+        return $this -> getAPI($SQLcmd, $errorMessage)[0]; 
     }
 }  
 

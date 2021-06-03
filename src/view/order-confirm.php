@@ -1,3 +1,38 @@
+<?php
+  include_once(__DIR__ . "/../controller/OrderController.php");
+
+  $orderController = new OrderController();
+  $id = $_GET["id"];
+  $data = $orderController -> getOrderById($id);
+
+  function super_encode_utf8($var, $deep = TRUE)
+  {
+    if (is_array($var)) {
+      foreach ($var as $key => $value) {
+        if ($deep) {
+          $var[$key] = super_encode_utf8($value, $deep);
+        } elseif (!is_array($value) && !is_object($value) && !mb_detect_encoding($value, 'utf-8', true)) {
+          $var[$key] = utf8_encode($var);
+        }
+      }
+      return $var;
+    } elseif (is_object($var)) {
+      foreach ($var as $key => $value) {
+        if ($deep) {
+          $var->$key = super_encode_utf8($value, $deep);
+        } elseif (!is_array($value) && !is_object($value) && !mb_detect_encoding($value, 'utf-8', true)) {
+          $var->$key = utf8_encode($var);
+        }
+      }
+      return $var;
+    } else {
+      return (!mb_detect_encoding($var, 'utf-8', true)) ? utf8_encode($var) : $var;
+    }
+  }
+
+  $data_utf8 = super_encode_utf8($data);
+  $data_encode = json_encode($data_utf8, JSON_FORCE_OBJECT);
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,6 +47,9 @@
     <link rel="stylesheet" href="../../assets/css/gg.css" />
     <link rel="stylesheet" href="../../assets/css/core.css?nocache=true" />
     <link rel="stylesheet" href="../../assets/css/layout.css?nocache=true" />
+    <script type="text/javascript">
+      var orderObj = JSON.parse('<?= $data_encode; ?>');
+    </script>
     <link
       rel="stylesheet"
       href="../../assets/css/pages/order-confirm.css?nocache=true"
@@ -19,6 +57,7 @@
     <script src="../../assets/js/shitty.bundle.js" defer></script>
     <script src="../../assets/js/components.js?nocache=true" defer></script>
     <script src="../../assets/js/layout.js?nocache=true" defer></script>
+    <script src="../../assets/js/pages/order-confirm.js" defer></script>
   </head>
   <body>
     <div class="navbar">
@@ -27,11 +66,11 @@
           <i class="gg-search"></i>
         </div>
         <div class="logo d-flex align-center">
-          <a href="index.html"> LKK Mobile Shop </a>
+          <a href="index.php"> LKK Mobile Shop </a>
         </div>
       </div>
       <div class="navbar-items">
-        <a href="index.html" class="navbar-item">Homepage</a>
+        <a href="index.php" class="navbar-item">Homepage</a>
         <a href="#" onclick="OnClickAboutUs()" class="navbar-item">About Us</a>
       </div>
       <div class="shopping-cart" style="visibility: hidden">
@@ -55,7 +94,7 @@
           class="d-flex justify-center align-center mb-5"
           style="height: 3rem"
         >
-          <span><strong>ORDER NO:</strong> <i>M12345</i></span>
+          <span><strong>ORDER NO:</strong><i class="txt-order-no"></i></span>
         </div>
       </div>
       <div class="order-info">
@@ -71,70 +110,36 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  <div class="as as-1-1">
-                    <div>
-                      <img src="" />
-                    </div>
-                  </div>
-                </td>
-                <td>いけばな</td>
-                <td>3</td>
-                <td>30 chaos</td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="as as-1-1">
-                    <div>
-                      <img src="" />
-                    </div>
-                  </div>
-                </td>
-                <td>わたしたち</td>
-                <td>2</td>
-                <td>20 chaos</td>
-              </tr>
             </tbody>
             <tfoot>
-              <tr>
-                <td></td>
-                <td style="border-left: none"></td>
-                <td style="border-left: none"></td>
-                <td>50 chaos</td>
-              </tr>
             </tfoot>
           </table>
         </div>
         <div class="billing-info">
           <h4>BILLING DETAILS</h4>
           <div class="billing-info-line">
-            <span class="info">FIRST NAME: </span>
-            <span>Khoa</span>
+            <span class="info">NAME: </span>
+            <span class='txt-name'></span>
           </div>
           <div class="billing-info-line">
-            <span class="info">LAST NAME: </span>
-            <span>Pham</span>
+            <span class="info">EMAIL: </span>
+            <span class='txt-email'></span>
           </div>
           <div class="billing-info-line">
             <span class="info">PHONE NUMBER: </span>
-            <span>0831231256</span>
+            <span class='txt-phone'></span>
           </div>
           <div class="billing-info-line">
             <span class="info">ADDRESS: </span>
-            <span>Abbey Road</span>
+            <span class='txt-address'></span>
           </div>
           <div class="billing-info-line">
-            <span class="info">CITY: </span>
-            <span>London</span>
+            <span class="info">DATE ORDER: </span>
+            <span class='txt-date-order'></span>
           </div>
           <div class="billing-info-line">
-            <span class="info">COUNTRY: </span>
-            <span>England</span>
-          </div>
-          <div class="billing-info-line">
-            <span class="info">POSTAL CODE: </span>
-            <span>555aa</span>
+            <span class="info">DATE RECEIVE: </span>
+            <span class='txt-date-receive'></span>
           </div>
         </div>
       </div>

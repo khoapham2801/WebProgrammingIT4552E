@@ -68,7 +68,39 @@ const navbar = new Shitonen({
             }
         };
         this.element.querySelector('.shopping-cart').onclick = _ => {
+            cartSidebar.shit.body = `
+            <div class="d-flex flex-column justify-space-between" style="height: 100vh;">
+            <div class="d-flex justify-center align-center" style="height:5rem;border-bottom: 1px solid #eee;">
+                <span><strong>Your items</strong></span>
+            </div>
+            <div class="flex-1 pt-5 pb-5">`
+            ;
+
+            var mobiles = JSON.parse(sessionStorage.getItem("mobiles"));
+            if (mobiles) {
+                for (var i = 0; i < mobiles.length; i++) {
+                    cartSidebar.shit.body += `
+                    <div class="cart-sidebar-item">
+                        <div class="product-quantity">
+                            <button class="dec-qty">-</button>
+                            <input type="number" value="`+mobiles[i]['quantity']+`" min="1">
+                            <button class="inc-qty">+</button>
+                        </div>
+                        <span class="ml-5 flex-1"><strong>`+mobiles[i]['name']+`</strong></span>
+                        <button class="btn remove-item" style="height:3rem;border:none;" onclick="showConfirm()">x</button>
+                    </div>`;
+                }
+            }
+            
+            cartSidebar.shit.body += 
+            `</div>
+            <div class="d-flex justify-center align-center mb-1" style="height:5rem;border-top: 1px solid #eee;">
+                <a href="checkout.php" class="checkout-btn btn btn-warning w-100" style="line-height:2"><strong>Checkout</strong></a>
+            </div>
+            </div>
+            `;
             cartSidebar.shit.show = true;
+            
         };
         this.element.querySelector('.search').onclick = _ =>{
             searchSidebar.shit.show = true;
@@ -94,13 +126,12 @@ const OnClickAboutUs = ()=>{
         behavior: 'smooth',
     });
 }
-// if(document.body.querySelector('.place-order-btn')){
-//     document.getElementsId("place-order-btn").onclick = function () {
-//     location.href = "order-confirm.html";
-// };
-// }
 
-
-function addToCart(itemID) {
-    // demo id
+function isEmptySession() {
+    var flag = '<%=Session["mobiles"] == null%>';
+    if (flag.toLowerCase() == 'true')
+    {
+        return true;
+    }
+    return false;
 }

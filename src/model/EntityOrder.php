@@ -7,12 +7,13 @@ class EntityOrder {
     public $date;
     public $totalCost;
   
-    public function __construct($id, $name, $address, $phone, $date, $totalCost)  
+    public function __construct($id, $name, $email, $address, $phone, $date, $totalCost)  
     {  
         $this->id = $id;  
         $this->name = $name; 
+        $this->email = $email; 
         $this->address = $address; 
-        $this->phoneNumber = $phoneNumber;
+        $this->phone = $phone;
         $this->date = $date; 
         $this->totalCost = $totalCost;
     } 

@@ -8,11 +8,10 @@ function OnClickLogin() {
 		}
 	}
 	if(loginSuccess){
-		alert("login success");
-		window.location.href = "admin-edit.html";
+		window.location.href = "admin.php";
 	}
 	else {
-		alert("wrong password or username");
+		alert("Wrong password or username");
 		console.log(usn);
 		console.log(pwd);
 	}

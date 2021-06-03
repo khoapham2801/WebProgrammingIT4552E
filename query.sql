@@ -24,7 +24,7 @@ CREATE TABLE mobileshopdb.mobile (
   FOREIGN KEY (brandId) REFERENCES brand(id)
 );
 
-CREATE TABLE mobileshopdb.order (
+CREATE TABLE mobileshopdb.donhang (
   id int(11) NOT NULL AUTO_INCREMENT,
   name varchar(50) DEFAULT NULL,
   email varchar(50) DEFAULT NULL,
@@ -35,12 +35,24 @@ CREATE TABLE mobileshopdb.order (
   PRIMARY KEY (id)
 );
 
+CREATE TABLE mobileshopdb.donhangdetail (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  donhangId int(11) DEFAULT NULL,
+  mobileId int(11) DEFAULT NULL,
+  quantity int(11) DEFAULT NULL,
+  FOREIGN KEY (donhangId) REFERENCES donhang(id),
+  FOREIGN KEY (mobileId) REFERENCES mobile(id),
+  PRIMARY KEY (id)
+);
+
 CREATE TABLE mobileshopdb.account (
   id int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   usn varchar(50) DEFAULT NULL,
   pwd varchar(50) DEFAULT NULL,
   PRIMARY KEY (id)
 );
+
+INSERT INTO mobileshopdb.account (usn, pwd) VALUES ('admin','admin');
 
 INSERT INTO mobileshopdb.brand (name, img) VALUES
 ('Xiaomi','assets/images/BrandLogo/xiaomi.png'),
@@ -144,8 +156,3 @@ INSERT INTO mobileshopdb.mobile (brandId,name,platform,chip,rear_camera,front_ca
 (7,'Iphone 12 pro','Ios 13',' Apple A14 Bionic','12 MP','12 MP','256G',29000000,6.6,0,'https://cdn.cellphones.com.vn/media/catalog/product/cache/7/image/9df78eab33525d08d6e5fb8d27136e95/p/h/photo_2020-10-13_22-12-24.jpg_1_4_1_1_2.png'),
 (7,'Iphone 12 pro max','Ios 13',' Apple A14 Bionic','12 MP','12 MP','512G',40000000,6.8,0,'https://cdn.cellphones.com.vn/media/catalog/product/cache/7/image/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-12-pro-max_3__5.jpg'),
 (7,'Iphone 12 pro max','Ios 13',' Apple A14 Bionic','12 MP','12 MP','256G',37000000,6.8,0,'https://cdn.cellphones.com.vn/media/catalog/product/cache/7/image/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-12-pro-max_3__5.jpg');
-
-INSERT INTO mobileshopdb.account (usn, pwd) VALUES
-('test1','test1'),
-('test2','test2'),
-('test3','test3');
