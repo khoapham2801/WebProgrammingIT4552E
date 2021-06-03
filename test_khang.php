@@ -1,12 +1,15 @@
 <?php 
     include_once("src/controller/MobileController.php");
     include_once("src/controller/BrandController.php");
+    include_once("src/controller/AccountController.php");
 
     $mobileController = new MobileController();
     $brandController = new BrandController();
+    $accountController = new AccountController();
 
     $mobiles = $mobileController -> getALLMobiles();
     $brands  = $brandController -> getAllBrands();
+    $accounts = $accountController -> getAllAccounts();
     
     function super_encode_utf8($var,$deep=TRUE){
             if(is_array($var)){
@@ -34,11 +37,12 @@
 
     $mobiles_utf8 = super_encode_utf8($mobiles);
     $mobiles_encode = json_encode($mobiles_utf8,JSON_FORCE_OBJECT);
+    //print($accounts);
     //print(gettype($data));
     //print(json_last_error());
     //print(gettype($data_encode));
     //print($brands_encode);
-?>
+    ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
