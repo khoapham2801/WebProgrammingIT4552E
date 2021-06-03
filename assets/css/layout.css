@@ -194,6 +194,9 @@ input::-webkit-inner-spin-button {
 
 .custom-search-bar input[type="text"] {
   size: 6px;
+  border-radius: 5px;
+  border-color: #ffb76e;
+  border-style: ridge;
 }
 
 .custom-search-bar {
@@ -206,6 +209,7 @@ input::-webkit-inner-spin-button {
   border: none;
   font-size: 17px;
   size: 6px;
+  border-radius: 2px;
 }
 
 .search-sidebar-label {
@@ -230,6 +234,8 @@ select {
   cursor: pointer;
   margin-top: 10px;
   margin-bottom: 10px;
+  border-radius: 5px;
+  border-color: #ffb76e;
 }
 
 .cart-sidebar-wrapper {
