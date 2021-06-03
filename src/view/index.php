@@ -124,7 +124,7 @@
           <h6>Quick links</h6>
           <li><a href="index.php">Homepage</a></li>
           <li><a href="checkout.php">Checkout</a></li>
-          <li> <a href="login.html">Login (for admin only)</a></li>
+          <li> <a href="login.php">Login (for admin only)</a></li>
         </div>
       </div>
     </div>

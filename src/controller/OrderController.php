@@ -13,6 +13,11 @@ class OrderController {
         $date   = new DateTime(); //this returns the current date time
         $date = $date -> format('d-m-Y');
         $orderId = $this -> modelOrder -> insertOrderToDB($name, $email, $address, $phone, $date, $totalCost);
+        return $orderId;
+    }
+
+    public function getOrderById($id) {
+        return $this -> modelOrder -> getOrderByIdFromDB($id);
     }
 }   
 

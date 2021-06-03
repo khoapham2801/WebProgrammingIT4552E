@@ -17,7 +17,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
         var newRow = tableBody.insertRow();
         newRow.innerHTML = myHtmlContent;
     }
-    newRow = tableBody.insertRow();
+    tableFooter = document.getElementsByClassName('table')[0].getElementsByTagName('tfoot')[0];
+    newRow = tableFooter.insertRow();
     newRow.innerHTML = 
     `
             <tr>
@@ -41,22 +42,22 @@ function placeOrder() {
     var email = document.getElementsByClassName('txt-email')[0].value;
     var address = document.getElementsByClassName('txt-address')[0].value;
     var phone = document.getElementsByClassName('txt-phone')[0].value;
+    var response;
 
     if (validateInput(name, email, address, phone)) {
+
         var request = new XMLHttpRequest();
-        var url = "../../src/controller/OrderHandler.php";
-        request.open("POST", url, true);
-        request.setRequestHeader("Content-Type", "application/json");
+        var url = "http://localhost/WebProgrammingIT4552E/src/controller/OrderHandler.php";
+        request.open("POST", url, false);
+        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         request.onreadystatechange = function () {
             if (request.readyState === 4 && request.status === 200) {
-                var response = this.responseText;
+                response = request.response;
             }
         };
         var totalCost =  Number(document.getElementsByClassName('total-cost')[0].innerHTML);
-        var data = {name: name, email: email, address: address, phone: phone, totalCost: totalCost};
-
-        request.send(JSON.stringify(data));
-        window.location.href="../../src/controller/OrderHandler.php";
+        request.send('name=' + name + '&email=' + email + '&address=' + address + '&phone=' + phone + '&totalCost=' + totalCost);
+        window.location.href="../../src/view/order-confirm.php?id=" + response;
     } else {
         alert("Please fill all the customer info!")
     }
