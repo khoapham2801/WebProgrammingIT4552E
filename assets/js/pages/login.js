@@ -1,3 +1,3 @@
-const OnClickLogin = ()=>{
-    location.href = "admin-edit.html";
+function OnClickLogin() {
+    window.location.href = "/admin-edit.html";
 }

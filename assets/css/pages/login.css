@@ -95,7 +95,7 @@ body :is(p, span, h1, h2, h3, h4, h5, h6, label, a) {
 
 .login-btn {
   margin: 1rem 0;
-  width: 100%;
+  width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
