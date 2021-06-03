@@ -1,3 +1,17 @@
+<?php 
+    include_once(__DIR__."/../../src/controller/AccountController.php");
+
+
+    $accountController = new AccountController();
+
+
+    $accounts = $accountController -> getAllAccounts();
+    
+   
+    //print($accounts);
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,10 +25,10 @@
     />
     <link rel="stylesheet" href="../../assets/css/gg.css" />
     <link rel="stylesheet" href="../../assets/css/core.css?nocache=true" />
-    <link
-      rel="stylesheet"
-      href="../../assets/css/pages/login.css?nocache=true"
-    />
+    <link rel="stylesheet" href="../../assets/css/pages/login.css" />
+    <script type="text/javascript"> 
+      var accounts = JSON.parse('<?= $accounts; ?>');
+    </script>
     <script src="../../assets/js/shitty.bundle.js" defer></script>
     <script src="../../assets/js/components.js?nocache=true" defer></script>
     <script src="../../assets/js/pages/login.js?nocache=true" defer></script>
@@ -27,11 +41,11 @@
           <form action="/">
             <div class="form-group">
               <label>Username</label>
-              <input type="text" class="form-control" />
+              <input type="text" class="form-control" id="usn" />
             </div>
             <div class="form-group">
               <label>Password</label>
-              <input type="password" class="form-control" />
+              <input type="password" class="form-control" id ="pwd"/>
             </div>
             <div class="login-form-footer">
               <!-- <div class="remember-me">
@@ -42,10 +56,8 @@
                 <a href="javascript:;">Forgot your password?</a>
               </div> -->
             </div>
-            <button onclick="OnClickLogin()" class="btn login-btn">
-              Login
-            </button>
           </form>
+          <button class="btn login-btn" onclick="OnClickLogin()">Login</button>
         </div>
         <div class="login-side-image"></div>
       </div>
