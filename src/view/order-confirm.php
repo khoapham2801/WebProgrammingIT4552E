@@ -66,11 +66,11 @@
           <i class="gg-search"></i>
         </div>
         <div class="logo d-flex align-center">
-          <a href="index.html"> LKK Mobile Shop </a>
+          <a href="index.php"> LKK Mobile Shop </a>
         </div>
       </div>
       <div class="navbar-items">
-        <a href="index.html" class="navbar-item">Homepage</a>
+        <a href="index.php" class="navbar-item">Homepage</a>
         <a href="#" onclick="OnClickAboutUs()" class="navbar-item">About Us</a>
       </div>
       <div class="shopping-cart" style="visibility: hidden">

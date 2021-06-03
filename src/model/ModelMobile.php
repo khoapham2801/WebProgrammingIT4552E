@@ -100,6 +100,12 @@ class ModelMobile {
         $errorMessage = "Cannot update mobile to DB";
         return $this -> updateAPI ($SQLcmd, $errorMessage);
     }
+
+    public function deleteMobileInDB ($id) {
+        $SQLcmd = "DELETE FROM mobile WHERE (mobile.id = '$id')";
+        $errorMessage = "Cannot delete mobile in DB";
+        return $this -> updateAPI ($SQLcmd, $errorMessage);
+    }
 }  
 
 ?>

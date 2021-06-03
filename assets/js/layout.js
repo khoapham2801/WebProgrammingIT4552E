@@ -75,8 +75,9 @@ const navbar = new Shitonen({
             </div>
             <div class="flex-1 pt-5 pb-5">`
             ;
-            if (!isEmptySession()) {
-                var mobiles = JSON.parse(sessionStorage.getItem("mobiles"));
+
+            var mobiles = JSON.parse(sessionStorage.getItem("mobiles"));
+            if (mobiles) {
                 for (var i = 0; i < mobiles.length; i++) {
                     cartSidebar.shit.body += `
                     <div class="cart-sidebar-item">

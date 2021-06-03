@@ -35,6 +35,16 @@ CREATE TABLE mobileshopdb.donhang (
   PRIMARY KEY (id)
 );
 
+CREATE TABLE mobileshopdb.donhangdetail (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  donhangId int(11) DEFAULT NULL,
+  mobileId int(11) DEFAULT NULL,
+  quantity int(11) DEFAULT NULL,
+  FOREIGN KEY (donhangId) REFERENCES donhang(id),
+  FOREIGN KEY (mobileId) REFERENCES mobile(id),
+  PRIMARY KEY (id)
+);
+
 CREATE TABLE mobileshopdb.account (
   id int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   usn varchar(50) DEFAULT NULL,
@@ -42,7 +52,7 @@ CREATE TABLE mobileshopdb.account (
   PRIMARY KEY (id)
 );
 
-INSERT INTO mobileshopdb.account (usn, pwd) VALUES ('admin','admin')
+INSERT INTO mobileshopdb.account (usn, pwd) VALUES ('admin','admin');
 
 INSERT INTO mobileshopdb.brand (name, img) VALUES
 ('Xiaomi','assets/images/BrandLogo/xiaomi.png'),

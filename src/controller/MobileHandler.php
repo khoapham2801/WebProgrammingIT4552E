@@ -13,10 +13,11 @@
     $screen = $_POST['screen'];
     $discount = $_POST['discount'];
     $img = $_POST['img'];
-    
+    $type = $_POST['type'];
     $mobileController = new MobileController();
-
-    if ($id == "-1") {
+    if ($type == 0) {
+        return $mobileController -> deleteMobile($id);
+    } else if ($type == 2) {
         return $mobileController -> insertMobile($brandId, $name, $platform, $chip, $rear_camera, $front_camera, $memory, $price, $screen, $discount, $img);
     } else {
         return $mobileController -> updateMobileById($id, $brandId, $name, $platform, $chip, $rear_camera, $front_camera, $memory, $price, $screen, $discount, $img);

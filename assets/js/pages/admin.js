@@ -23,7 +23,7 @@ function rowClick() {
                     onClickEditBtn(rIndex - 1);
                 }
                 if (cIndex == 12) {
-                    onClickRemoveBtn();
+                    onClickRemoveBtn(rIndex - 1);
                 }
             };
         }
@@ -156,7 +156,22 @@ const onClickEditBtn = (row)=>{
     editPopUp.shit.show = true;
 }
 
-const onClickRemoveBtn = ()=>{
+const onClickRemoveBtn = (row)=>{
+    var name = mobiles[row]['name'];
+    var mobileId = findMobileIdByName(name);
+    
+    var request = new XMLHttpRequest();
+    var url = "http://localhost/WebProgrammingIT4552E/src/controller/MobileHandler.php";
+    request.open("POST", url, true);
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            var response = request.response;
+        }
+    };
+    
+    request.send('mobileId=' + mobileId + '&type=' + 0);
+    document.getElementsByClassName('table')[0].deleteRow(row + 1);
 }
 
 const OnClickApplyBtn = ()=>{
@@ -173,7 +188,13 @@ const OnClickApplyBtn = ()=>{
     var screen = document.getElementsByClassName('txt-screen')[0].value;
     var discount = document.getElementsByClassName('txt-discount')[0].value;
     var mobileId = findMobileIdByName(pre_name);
+    var type;
 
+    if (mobileId == -1) {
+        type = 2;
+    } else {
+        type = 1;
+    }
     var request = new XMLHttpRequest();
     var url = "http://localhost/WebProgrammingIT4552E/src/controller/MobileHandler.php";
     request.open("POST", url, true);
@@ -186,7 +207,7 @@ const OnClickApplyBtn = ()=>{
     
     request.send('img=' + img + '&name=' + name + '&platform=' + platform + '&chip=' + chip + '&rearCamera=' + rearCamera
     + '&frontCamera=' + frontCamera + '&memory=' + memory + '&price=' + price + '&screen=' + screen 
-    + '&discount=' + discount + '&brandId=' + brandId  + '&mobileId=' + mobileId);
+    + '&discount=' + discount + '&brandId=' + brandId  + '&mobileId=' + mobileId + '&type=' + type);
 
     alert("Successfully Update DB!");
 }
