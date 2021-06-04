@@ -36,6 +36,7 @@ function renderOrderTable() {
                 <td class="total-cost">`+ totalCost +`</td>
             </tr>
     `;
+    sessionStorage.clear();
 }
 
 function renderBillDetail() {

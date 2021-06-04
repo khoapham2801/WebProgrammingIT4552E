@@ -161,7 +161,7 @@ const onClickRemoveBtn = (row)=>{
     var mobileId = findMobileIdByName(name);
     
     var request = new XMLHttpRequest();
-    var url = "http://localhost/WebProgrammingIT4552E/src/controller/MobileHandler.php";
+    var url = "../../src/controller/MobileHandler.php";
     request.open("POST", url, true);
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.onreadystatechange = function () {
@@ -196,7 +196,7 @@ const OnClickApplyBtn = ()=>{
         type = 1;
     }
     var request = new XMLHttpRequest();
-    var url = "http://localhost/WebProgrammingIT4552E/src/controller/MobileHandler.php";
+    var url = "../../src/controller/MobileHandler.php";
     request.open("POST", url, true);
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.onreadystatechange = function () {

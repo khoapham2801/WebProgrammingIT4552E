@@ -46,7 +46,7 @@ function placeOrder() {
 
     if (validateInput(name, email, address, phone)) {
         var request = new XMLHttpRequest();
-        var url = "http://localhost/WebProgrammingIT4552E/src/controller/OrderHandler.php";
+        var url = "../../src/controller/OrderHandler.php";
         request.open("POST", url, true);
         request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         request.onreadystatechange = function () {
