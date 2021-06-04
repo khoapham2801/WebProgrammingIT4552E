@@ -1,6 +1,16 @@
 var self = this;
 var pre_name;
-
+window.onload = function(){
+    var isLogin = 0;
+    isLogin = localStorage.getItem("test");
+    if(isLogin == 0){
+        location.replace("login.php"); 
+    }
+}
+window.onbeforeunload = function(){
+    isLogin = 0;
+    localStorage.setItem("test",isLogin);
+}
 document.addEventListener("DOMContentLoaded", function(event) { 
     self.renderData();
     self.rowClick();
@@ -8,11 +18,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 function rowClick() {
     var table = document.getElementsByClassName('table')[0], rIndex, cIndex;
-            
-    // table rows
+
     for(var i = 1; i < table.rows.length; i++)
     {
-        // row cells
         for(var j = 0; j < table.rows[i].cells.length; j++)
         {
             table.rows[i].cells[j].onclick = function()
