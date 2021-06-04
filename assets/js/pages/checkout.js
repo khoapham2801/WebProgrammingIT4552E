@@ -47,16 +47,17 @@ function placeOrder() {
     if (validateInput(name, email, address, phone)) {
         var request = new XMLHttpRequest();
         var url = "http://localhost/WebProgrammingIT4552E/src/controller/OrderHandler.php";
-        request.open("POST", url, false);
+        request.open("POST", url, true);
         request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         request.onreadystatechange = function () {
             if (request.readyState === 4 && request.status === 200) {
                 response = request.response;
+                window.location.href="../../src/view/order-confirm.php?id=" + response;
             }
         };
         var totalCost =  Number(document.getElementsByClassName('total-cost')[0].innerHTML);
         request.send('name=' + name + '&email=' + email + '&address=' + address + '&phone=' + phone + '&totalCost=' + totalCost);
-        window.location.href="../../src/view/order-confirm.php?id=" + response;
+        
     } else {
         alert("Please fill all the customer info!")
     }
