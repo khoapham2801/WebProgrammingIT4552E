@@ -1,5 +1,11 @@
-function showConfirm() {
-    confirmModal.shit.show = true;
+function showConfirm(i) {
+    // confirmModal.shit.show = true;
+    var mobiles = JSON.parse(sessionStorage.getItem("mobiles"));
+    //console.log(mobiles);
+    mobiles.pop(mobiles.slice(i,i+1));
+    //console.log(mobiles);
+    sessionStorage.setItem("mobiles", JSON.stringify(mobiles));
+    document.getElementById("item"+i).style.display = "none";
 }
 
 function closeConfirm() {
@@ -80,14 +86,14 @@ const navbar = new Shitonen({
             if (mobiles) {
                 for (var i = 0; i < mobiles.length; i++) {
                     cartSidebar.shit.body += `
-                    <div class="cart-sidebar-item">
+                    <div class="cart-sidebar-item" id="item`+i+`">
                         <div class="product-quantity">
-                            <button class="dec-qty">-</button>
+                            
                             <input type="number" value="`+mobiles[i]['quantity']+`" min="1">
-                            <button class="inc-qty">+</button>
+        
                         </div>
                         <span class="ml-5 flex-1"><strong>`+mobiles[i]['name']+`</strong></span>
-                        <button class="btn remove-item" style="height:3rem;border:none;" onclick="showConfirm()">x</button>
+                        <button class="btn remove-item" style="height:3rem;border:none;" onclick="showConfirm(`+i+`)">x</button>
                     </div>`;
                 }
             }
