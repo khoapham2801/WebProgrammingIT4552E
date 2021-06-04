@@ -1,11 +1,11 @@
 var self = this;
 var pre_name;
 window.onload = function(){
-    var isLogin = 0;
-    isLogin = localStorage.getItem("test");
-    if(isLogin == 0){
-        location.replace("login.php"); 
-    }
+    // var isLogin = 0;
+    // isLogin = localStorage.getItem("test");
+    // if(isLogin == 0){
+    //     location.replace("login.php"); 
+    // }
 }
 window.onbeforeunload = function(){
     isLogin = 0;
