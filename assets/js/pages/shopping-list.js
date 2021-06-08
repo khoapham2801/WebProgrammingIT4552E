@@ -127,7 +127,7 @@ function onclickApply(){
             for(var i = 0; i < Object.keys(mobiles).length;i++){
                 if(mobiles[i].price < 10000000){
                     var tmpRes = {
-                        "id":mobiles[i].id,
+                        "id":i,
                     };
                     searchResult.push(tmpRes);
                 }
@@ -137,7 +137,7 @@ function onclickApply(){
             for(var i = 0; i < Object.keys(mobiles).length;i++){
                 if(mobiles[i].price >= 10000000 && mobiles[i].price <=20000000){
                     var tmpRes = {
-                        "id":mobiles[i].id,
+                        "id":i,
                     };
                     searchResult.push(tmpRes);
                 }
@@ -147,7 +147,7 @@ function onclickApply(){
             for(var i = 0; i < Object.keys(mobiles).length;i++){
                 if(mobiles[i].price > 20000000){
                     var tmpRes = {
-                        "id":mobiles[i].id,
+                        "id":i,
                     };
                     searchResult.push(tmpRes);
                 }
@@ -158,7 +158,7 @@ function onclickApply(){
         for(var i = 0; i < Object.keys(mobiles).length;i++){
             if(mobiles[i].memory.includes(selectMem)){
                 var tmpRes = {
-                    "id":mobiles[i].id,
+                    "id":i,
                 };
                 searchResult.push(tmpRes);
             }
@@ -169,7 +169,7 @@ function onclickApply(){
             for(var i = 0; i < Object.keys(mobiles).length;i++){
                 if(mobiles[i].price < 10000000 && mobiles[i].memory.includes(selectMem)){
                     var tmpRes = {
-                        "id":mobiles[i].id,
+                        "id":i,
                     };
                     searchResult.push(tmpRes);
                 }
@@ -179,7 +179,7 @@ function onclickApply(){
             for(var i = 0; i < Object.keys(mobiles).length;i++){
                 if(mobiles[i].price >= 10000000 && mobiles[i].price <=20000000 && mobiles[i].memory.includes(selectMem)){
                     var tmpRes = {
-                        "id":mobiles[i].id,
+                        "id":i,
                     };
                     searchResult.push(tmpRes);
                 }
@@ -189,7 +189,7 @@ function onclickApply(){
             for(var i = 0; i < Object.keys(mobiles).length;i++){
                 if(mobiles[i].price > 20000000 && mobiles[i].memory.includes(selectMem)){
                     var tmpRes = {
-                        "id":mobiles[i].id,
+                        "id":i,
                     };
                     searchResult.push(tmpRes);
                 }
@@ -200,7 +200,7 @@ function onclickApply(){
         for(var i = 0; i < Object.keys(mobiles).length;i++){
             if(mobiles[i].brandId == selectBrand){
                 var tmpRes = {
-                    "id":mobiles[i].id,
+                    "id":i,
                 };
                 searchResult.push(tmpRes);
             }
@@ -211,7 +211,7 @@ function onclickApply(){
             for(var i = 0; i < Object.keys(mobiles).length;i++){
                 if(mobiles[i].price < 10000000 && mobiles[i].brandId == selectBrand){
                     var tmpRes = {
-                        "id":mobiles[i].id,
+                        "id":i,
                     };
                     searchResult.push(tmpRes);
                 }
@@ -221,7 +221,7 @@ function onclickApply(){
             for(var i = 0; i < Object.keys(mobiles).length;i++){
                 if(mobiles[i].price >= 10000000 && mobiles[i].price <=20000000 && mobiles[i].brandId == selectBrand){
                     var tmpRes = {
-                        "id":mobiles[i].id,
+                        "id":i,
                     };
                     searchResult.push(tmpRes);
                 }
@@ -231,7 +231,7 @@ function onclickApply(){
             for(var i = 0; i < Object.keys(mobiles).length;i++){
                 if(mobiles[i].price > 20000000 && mobiles[i].brandId == selectBrand){
                     var tmpRes = {
-                        "id":mobiles[i].id,
+                        "id":i,
                     };
                     searchResult.push(tmpRes);
                 }
@@ -242,7 +242,7 @@ function onclickApply(){
         for(var i = 0; i < Object.keys(mobiles).length;i++){
             if(mobiles[i].memory.includes(selectMem) && mobiles[i].brandId == selectBrand){
                 var tmpRes = {
-                    "id":mobiles[i].id,
+                    "id":i,
                 };
                 searchResult.push(tmpRes);
             }
@@ -253,7 +253,7 @@ function onclickApply(){
             for(var i = 0; i < Object.keys(mobiles).length;i++){
                 if(mobiles[i].price < 10000000 && mobiles[i].brandId == selectBrand && mobiles[i].memory.includes(selectMem)){
                     var tmpRes = {
-                        "id":mobiles[i].id,
+                        "id":i,
                     };
                     searchResult.push(tmpRes);
                 }
@@ -263,7 +263,7 @@ function onclickApply(){
             for(var i = 0; i < Object.keys(mobiles).length;i++){
                 if(mobiles[i].price >= 10000000 && mobiles[i].price <=20000000 && mobiles[i].brandId == selectBrand && mobiles[i].memory.includes(selectMem)){
                     var tmpRes = {
-                        "id":mobiles[i].id,
+                        "id":i,
                     };
                     searchResult.push(tmpRes);
                 }
@@ -273,7 +273,7 @@ function onclickApply(){
             for(var i = 0; i < Object.keys(mobiles).length;i++){
                 if(mobiles[i].price > 20000000 && mobiles[i].brandId == selectBrand && mobiles[i].memory.includes(selectMem)){
                     var tmpRes = {
-                        "id":mobiles[i].id,
+                        "id":i,
                     };
                     searchResult.push(tmpRes);
                 }
@@ -284,7 +284,7 @@ function onclickApply(){
         for(var i = 0; i < Object.keys(mobiles).length;i++){
             if(mobiles[i].name.toLowerCase().includes(textSearch)){
                 var tmpRes = {
-                    "id":mobiles[i].id,
+                    "id":i,
                 };
                 searchResult.push(tmpRes);
             }
@@ -295,7 +295,7 @@ function onclickApply(){
             for(var i = 0; i < Object.keys(mobiles).length;i++){
                 if(mobiles[i].price < 10000000 && mobiles[i].name.toLowerCase().includes(textSearch)){
                     var tmpRes = {
-                        "id":mobiles[i].id,
+                        "id":i,
                     };
                     searchResult.push(tmpRes);
                 }
@@ -305,7 +305,7 @@ function onclickApply(){
             for(var i = 0; i < Object.keys(mobiles).length;i++){
                 if(mobiles[i].price >= 10000000 && mobiles[i].price <=20000000 && mobiles[i].name.toLowerCase().includes(textSearch)){
                     var tmpRes = {
-                        "id":mobiles[i].id,
+                        "id":i,
                     };
                     searchResult.push(tmpRes);
                 }
@@ -315,7 +315,7 @@ function onclickApply(){
             for(var i = 0; i < Object.keys(mobiles).length;i++){
                 if(mobiles[i].price > 20000000 && mobiles[i].name.toLowerCase().includes(textSearch)){
                     var tmpRes = {
-                        "id":mobiles[i].id,
+                        "id":i,
                     };
                     searchResult.push(tmpRes);
                 }
@@ -326,7 +326,7 @@ function onclickApply(){
         for(var i = 0; i < Object.keys(mobiles).length;i++){
             if(mobiles[i].memory.includes(selectMem) && mobiles[i].name.toLowerCase().includes(textSearch)){
                 var tmpRes = {
-                    "id":mobiles[i].id,
+                    "id":i,
                 };
                 searchResult.push(tmpRes);
             }
@@ -337,7 +337,7 @@ function onclickApply(){
             for(var i = 0; i < Object.keys(mobiles).length;i++){
                 if(mobiles[i].price < 10000000 && mobiles[i].name.toLowerCase().includes(textSearch) && mobiles[i].memory.includes(selectMem)){
                     var tmpRes = {
-                        "id":mobiles[i].id,
+                        "id":i,
                     };
                     searchResult.push(tmpRes);
                 }
@@ -347,7 +347,7 @@ function onclickApply(){
             for(var i = 0; i < Object.keys(mobiles).length;i++){
                 if(mobiles[i].price >= 10000000 && mobiles[i].price <=20000000 && mobiles[i].name.toLowerCase().includes(textSearch) && mobiles[i].memory.includes(selectMem)){
                     var tmpRes = {
-                        "id":mobiles[i].id,
+                        "id":i,
                     };
                     searchResult.push(tmpRes);
                 }
@@ -357,7 +357,7 @@ function onclickApply(){
             for(var i = 0; i < Object.keys(mobiles).length;i++){
                 if(mobiles[i].price > 20000000 && mobiles[i].name.toLowerCase().includes(textSearch) && mobiles[i].memory.includes(selectMem)){
                     var tmpRes = {
-                        "id":mobiles[i].id,
+                        "id":i,
                     };
                     searchResult.push(tmpRes);
                 }
@@ -368,7 +368,7 @@ function onclickApply(){
         for(var i = 0; i < Object.keys(mobiles).length;i++){
             if(mobiles[i].name.toLowerCase().includes(textSearch) && mobiles[i].brandId == selectBrand){
                 var tmpRes = {
-                    "id":mobiles[i].id,
+                    "id":i,
                 };
                 searchResult.push(tmpRes);
             }
@@ -379,7 +379,7 @@ function onclickApply(){
             for(var i = 0; i < Object.keys(mobiles).length;i++){
                 if(mobiles[i].price < 10000000 && mobiles[i].name.toLowerCase().includes(textSearch) && mobiles[i].brandId == selectBrand){
                     var tmpRes = {
-                        "id":mobiles[i].id,
+                        "id":i,
                     };
                     searchResult.push(tmpRes);
                 }
@@ -389,7 +389,7 @@ function onclickApply(){
             for(var i = 0; i < Object.keys(mobiles).length;i++){
                 if(mobiles[i].price >= 10000000 && mobiles[i].price <=20000000 && mobiles[i].name.toLowerCase().includes(textSearch) && mobiles[i].brandId == selectBrand){
                     var tmpRes = {
-                        "id":mobiles[i].id,
+                        "id":i,
                     };
                     searchResult.push(tmpRes);
                 }
@@ -399,7 +399,7 @@ function onclickApply(){
             for(var i = 0; i < Object.keys(mobiles).length;i++){
                 if(mobiles[i].price > 20000000 && mobiles[i].name.toLowerCase().includes(textSearch) && mobiles[i].brandId == selectBrand){
                     var tmpRes = {
-                        "id":mobiles[i].id,
+                        "id":i,
                     };
                     searchResult.push(tmpRes);
                 }
@@ -410,7 +410,7 @@ function onclickApply(){
         for(var i = 0; i < Object.keys(mobiles).length;i++){
             if(mobiles[i].name.toLowerCase().includes(textSearch) && mobiles[i].brandId == selectBrand && mobiles[i].memory.includes(selectMem)){
                 var tmpRes = {
-                    "id":mobiles[i].id,
+                    "id":i,
                 };
                 searchResult.push(tmpRes);
             }
@@ -421,7 +421,7 @@ function onclickApply(){
             for(var i = 0; i < Object.keys(mobiles).length;i++){
                 if(mobiles[i].price < 10000000 && mobiles[i].name.toLowerCase().includes(textSearch) && mobiles[i].brandId == selectBrand && mobiles[i].memory.includes(selectMem)){
                     var tmpRes = {
-                        "id":mobiles[i].id,
+                        "id":i,
                     };
                     searchResult.push(tmpRes);
                 }
@@ -431,7 +431,7 @@ function onclickApply(){
             for(var i = 0; i < Object.keys(mobiles).length;i++){
                 if(mobiles[i].price >= 10000000 && mobiles[i].price <=20000000 && mobiles[i].name.toLowerCase().includes(textSearch) && mobiles[i].brandId == selectBrand && mobiles[i].memory.includes(selectMem)){
                     var tmpRes = {
-                        "id":mobiles[i].id,
+                        "id":i,
                     };
                     searchResult.push(tmpRes);
                 }
@@ -441,7 +441,7 @@ function onclickApply(){
             for(var i = 0; i < Object.keys(mobiles).length;i++){
                 if(mobiles[i].price > 20000000 && mobiles[i].name.toLowerCase().includes(textSearch) && mobiles[i].brandId == selectBrand && mobiles[i].memory.includes(selectMem)){
                     var tmpRes = {
-                        "id":mobiles[i].id,
+                        "id":i,
                     };
                     searchResult.push(tmpRes);
                 }
@@ -455,8 +455,8 @@ function onclickApply(){
         productCollection[i].setAttribute('name','offSearch');
     }
     for(var i= 0; i<searchResult.length;i++){
-        var j = searchResult[i].id-1;
-        //productArray[j].style.display = "flex";
+        var j = searchResult[i].id;
+        productArray[j].style.display = "flex";
         productCollection[j].setAttribute('name','onSearch');
         
     }
@@ -478,6 +478,9 @@ for(var i = 0; i < Object.keys(mobiles).length;i++){
         "id":mobiles[i].id,
         "title":mobiles[i].name,
         "thumbnail":mobiles[i].img,
+        "brandId":mobiles[i].brandId,
+        "memory":mobiles[i].memory,
+        "price":mobiles[i].price
     };
     demoProducts.push(tmp);
 }
@@ -509,6 +512,8 @@ const productContainer = new Shitonen({
 
 var productCollection = document.getElementsByClassName("product");
 var productArray = Array.from(productCollection);
+
+//console.log(productArray[10].id);
 
 
 var Pagination = {
@@ -545,17 +550,19 @@ var Pagination = {
     },
 
     OnclickProduct: function(){
-        //alert(Pagination.page);
         //pagination when start homepage
         if(onSearch == 0){
             console.log(productArray);
             var start = (Pagination.page-1)*9;
-            var end = Pagination.page*9-1;
+            var end = Pagination.page*9;
+            end = Math.min(end, productArray.length);
+            //console.log(start);
+            //console.log(end);
             if(Pagination.page == 1){
-                for(var i = start;i<=end;i++){
+                for(var i = start;i<end;i++){
                     productArray[i].style.display = "flex";
                 }
-                for(var j = end+1; j<productArray.length;j++){
+                for(var j = end; j<productArray.length;j++){
                     productArray[j].style.display = "none";
                 }
             }
@@ -563,10 +570,11 @@ var Pagination = {
                 for(var i = 0 ; i<start;i++){
                     productArray[i].style.display = "none";
                 }
-                for(var j = start; j<=end;j++){
+                for(var j = start; j<end; j++){
                     productArray[j].style.display = "flex";
+                    //console.log(j);
                 }
-                for(var k = end+1; k<productArray.length ;k++){
+                for(var k = end; k<productArray.length ;k++){
                     productArray[k].style.display = "none";
                 }
             }
@@ -575,28 +583,33 @@ var Pagination = {
         else{
             console.log(testArray);
             var start = (Pagination.page-1)*9;
-            var end = Pagination.page*9-1;
+            var end = Pagination.page*9;
             end = Math.min(end, testArray.length);
+            //console.log(start);
+            //console.log(end);
             if(Pagination.page == 1){
-                for(var i = start;i<=end;i++){
+                for(var i = start;i<end;i++){
                     testArray[i].style.display = "flex";
                 }
-                for(var j = end+1; j<testArray.length;j++){
+                for(var j = end; j<testArray.length;j++){
                     testArray[j].style.display = "none";
                 }
             }
             else{
+                // if(start>testArray.length){
+                //     start -=1;
+                // }
                 for(var i = 0 ; i<start;i++){
                     testArray[i].style.display = "none";
                 }
-                for(var j = start; j<=end;j++){
+                for(var j = start; j<end; j++){
                     testArray[j].style.display = "flex";
+                    //console.log(j);
                 }
-                for(var k = end+1; k<testArray.length ;k++){
+                for(var k = end; k<testArray.length ;k++){
                     testArray[k].style.display = "none";
                 }
             }
-
         }
     },
 
