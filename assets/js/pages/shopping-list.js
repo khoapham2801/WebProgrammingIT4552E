@@ -94,8 +94,8 @@ document.getElementById("apply-search-btn").addEventListener("click", onclickApp
 
 var onSearch = 0;
 
-var testCollection = [];
-var testArray = [];
+var searchCollection = [];
+var searchArray = [];
  
 
 function onclickApply(){
@@ -461,12 +461,13 @@ function onclickApply(){
         
     }
 
-    //alert(searchResult.length);   
-    //alert(onSearch);
-    testCollection = document.getElementsByName("onSearch");
-    testArray = Array.from(testCollection);
-    //location.reload(document.getElementById("pagination"));
-    self.Pagination.OnclickProduct();
+    searchCollection = document.getElementsByName("onSearch");
+    searchArray = Array.from(searchCollection);
+    document.addEventListener('DOMContentLoaded', init({
+        size: (searchArray.length%9 == 0)?(searchArray.length/9):(~~(searchArray.length/9)+1), // pages size
+        page: 1,  // selected page
+        step: 1   // pages before and after current
+    }), false);
 }
 
 
@@ -552,7 +553,7 @@ var Pagination = {
     OnclickProduct: function(){
         //pagination when start homepage
         if(onSearch == 0){
-            console.log(productArray);
+            //console.log(productArray);
             var start = (Pagination.page-1)*9;
             var end = Pagination.page*9;
             end = Math.min(end, productArray.length);
@@ -581,33 +582,31 @@ var Pagination = {
         }
         //run when apply click
         else{
-            console.log(testArray);
+            //console.log(searchArray);
+            Pagination.size = (searchArray.length%9 == 0)?(searchArray.length/9):(~~(searchArray.length/9)+1)
             var start = (Pagination.page-1)*9;
             var end = Pagination.page*9;
-            end = Math.min(end, testArray.length);
+            end = Math.min(end, searchArray.length);
             //console.log(start);
             //console.log(end);
             if(Pagination.page == 1){
                 for(var i = start;i<end;i++){
-                    testArray[i].style.display = "flex";
+                    searchArray[i].style.display = "flex";
                 }
-                for(var j = end; j<testArray.length;j++){
-                    testArray[j].style.display = "none";
+                for(var j = end; j<searchArray.length;j++){
+                    searchArray[j].style.display = "none";
                 }
             }
             else{
-                // if(start>testArray.length){
-                //     start -=1;
-                // }
                 for(var i = 0 ; i<start;i++){
-                    testArray[i].style.display = "none";
+                    searchArray[i].style.display = "none";
                 }
                 for(var j = start; j<end; j++){
-                    testArray[j].style.display = "flex";
+                    searchArray[j].style.display = "flex";
                     //console.log(j);
                 }
-                for(var k = end; k<testArray.length ;k++){
-                    testArray[k].style.display = "none";
+                for(var k = end; k<searchArray.length ;k++){
+                    searchArray[k].style.display = "none";
                 }
             }
         }
@@ -734,13 +733,13 @@ var Pagination = {
 * Initialization
 * * * * * * * * * * * * * * * * */
 
-var init = function() {
-    Pagination.Init(document.getElementById('pagination'), {
-        size:11, // pages size
-        page: 1,  // selected page
-        step: 1   // pages before and after current
-    });
+var init = function(e) {
+    Pagination.Init(document.getElementById('pagination'),e);
 };
 
-document.addEventListener('DOMContentLoaded', init, false);
+document.addEventListener('DOMContentLoaded', init({
+        size: (productArray.length%9 == 0)?(productArray.length/9):(~~(productArray.length/9)+1), // pages size
+        page: 1,  // selected page
+        step: 1   // pages before and after current
+    }), false);
 
