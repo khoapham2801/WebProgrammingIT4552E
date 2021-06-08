@@ -477,6 +477,7 @@ for(var i = 0; i < Object.keys(mobiles).length;i++){
     var tmp = {
         "id":mobiles[i].id,
         "title":mobiles[i].name,
+        "price":mobiles[i].price,
         "thumbnail":mobiles[i].img,
     };
     demoProducts.push(tmp);
@@ -491,12 +492,13 @@ const productContainer = new Shitonen({
     init() {
         this.element.innerHTML = '';
         for(const product of demoProducts) {
-            const title = product.title || 'しゅうごう';
+            const title = product.title;
+            const price = product.price
             const id = "mobile" +product.id;
             const productEl = htmlToElement(`
                 <a onclick="onclickProduct(id)" class="product" name ="offSearch">
                     <img class="product-thumbnail" src="${product.thumbnail}" onerror="this.src=''">
-                    <span class="product-title">${title}</span>
+                    <span class="product-title">${title}<br>${Number(price).toLocaleString('en')}</span>
                 </a>
             `);
             productEl.id = id;

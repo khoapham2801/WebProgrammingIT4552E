@@ -109,7 +109,7 @@
   max-width: 90%;
   overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis;
+  /* text-overflow: ellipsis; */
 }
 
 .product:hover .product-title {

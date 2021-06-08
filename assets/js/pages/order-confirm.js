@@ -17,7 +17,7 @@ function renderOrderTable() {
                 <td><img src=` + mobiles[i]['img'] + `></td>
                 <td>`+ mobiles[i]['name'] +`</td>
                 <td>`+ mobiles[i]['quantity'] +`</td>
-                <td>`+ mobiles[i]['quantity'] * Number(mobiles[i]['price'])+`</td>
+                <td>`+ Number(mobiles[i]['quantity'] * Number(mobiles[i]['price'])).toLocaleString('en')+`</td>
             </tr>
         `;
         totalCost += mobiles[i]['quantity'] * Number(mobiles[i]['price']);
@@ -33,7 +33,7 @@ function renderOrderTable() {
                 <td></td>
                 <td></td>
                 <td><strong>Total Cost:</strong></td>
-                <td class="total-cost">`+ totalCost +`</td>
+                <td class="total-cost">`+ Number(totalCost).toLocaleString('en') +`</td>
             </tr>
     `;
     sessionStorage.clear();

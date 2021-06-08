@@ -1,44 +1,45 @@
 <?php
 
-    include_once(__DIR__ . "/../controller/MobileController.php");
-    include_once(__DIR__ . "/../controller/BrandController.php");
+include_once(__DIR__ . "/../controller/MobileController.php");
+include_once(__DIR__ . "/../controller/BrandController.php");
 
-    $mobileController = new MobileController();
-    $brandController = new BrandController();
+$mobileController = new MobileController();
+$brandController = new BrandController();
 
-    $mobiles = $mobileController -> getALLMobiles();
-    $brands  = $brandController -> getAllBrands();
-    
-    function super_encode_utf8($var,$deep=TRUE){
-            if(is_array($var)){
-                foreach($var as $key => $value){
-                    if($deep){
-                        $var[$key] = super_encode_utf8($value,$deep);
-                    }elseif(!is_array($value) && !is_object($value) && !mb_detect_encoding($value,'utf-8',true)){
-                         $var[$key] = utf8_encode($var);
-                    }
-                }
-                return $var;
-            }elseif(is_object($var)){
-                foreach($var as $key => $value){
-                    if($deep){
-                        $var->$key = super_encode_utf8($value,$deep);
-                    }elseif(!is_array($value) && !is_object($value) && !mb_detect_encoding($value,'utf-8',true)){
-                         $var->$key = utf8_encode($var);
-                    }
-                }
-                return $var;
-            }else{
-                return (!mb_detect_encoding($var,'utf-8',true))?utf8_encode($var):$var;
-            }
-        }
+$mobiles = $mobileController->getALLMobiles();
+$brands  = $brandController->getAllBrands();
 
-    $mobiles_utf8 = super_encode_utf8($mobiles);
-    $mobiles_encode = json_encode($mobiles_utf8,JSON_FORCE_OBJECT);
-    //print(gettype($data));
-    //print(json_last_error());
-    //print(gettype($data_encode));
-    //print($brands_encode);
+function super_encode_utf8($var, $deep = TRUE)
+{
+  if (is_array($var)) {
+    foreach ($var as $key => $value) {
+      if ($deep) {
+        $var[$key] = super_encode_utf8($value, $deep);
+      } elseif (!is_array($value) && !is_object($value) && !mb_detect_encoding($value, 'utf-8', true)) {
+        $var[$key] = utf8_encode($var);
+      }
+    }
+    return $var;
+  } elseif (is_object($var)) {
+    foreach ($var as $key => $value) {
+      if ($deep) {
+        $var->$key = super_encode_utf8($value, $deep);
+      } elseif (!is_array($value) && !is_object($value) && !mb_detect_encoding($value, 'utf-8', true)) {
+        $var->$key = utf8_encode($var);
+      }
+    }
+    return $var;
+  } else {
+    return (!mb_detect_encoding($var, 'utf-8', true)) ? utf8_encode($var) : $var;
+  }
+}
+
+$mobiles_utf8 = super_encode_utf8($mobiles);
+$mobiles_encode = json_encode($mobiles_utf8, JSON_FORCE_OBJECT);
+//print(gettype($data));
+//print(json_last_error());
+//print(gettype($data_encode));
+//print($brands_encode);
 ?>
 
 <!DOCTYPE html>
@@ -52,17 +53,17 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
   <link rel="stylesheet" href="../../assets/css/gg.css" />
   <link rel="stylesheet" href="../../assets/css/core.css?nocache=true" />
-  <link rel="stylesheet" href="../../assets/css/layout.css?nocache=true" />
+  <link rel="stylesheet" href="../../assets/css/layout.css" />
   <link href="https://css.gg/search.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/css/pages/shopping-list.css?nocache=true" />
+  <link rel="stylesheet" href="../../assets/css/pages/shopping-list.css" />
   <script type="text/javascript">
     var mobiles = JSON.parse('<?= $mobiles_encode; ?>');
     var brands = JSON.parse('<?= $brands; ?>');
   </script>
   <script src="../../assets/js/shitty.bundle.js" defer></script>
   <script src="../../assets/js/components.js?nocache=true" defer></script>
-  <script src="../../assets/js/layout.js?nocache=true" defer></script>
-  <script type="text/javascript" src="../../assets/js/pages/shopping-list.js?nocache=true" defer></script>
+  <script src="../../assets/js/layout.js?" defer></script>
+  <script type="text/javascript" src="../../assets/js/pages/shopping-list.js" defer></script>
 </head>
 
 <body>

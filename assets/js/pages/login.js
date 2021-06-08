@@ -15,6 +15,5 @@ function OnClickLogin() {
 		console.log(usn);
 		console.log(pwd);
 	}
-	localStorage.setItem("test",loginSuccess);
     
 }

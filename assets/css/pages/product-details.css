@@ -19,7 +19,7 @@ tr:nth-child(even) {
   padding: 2rem 10%;
   width: 100%;
   background: url(../../images/background.jpg);
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   background-attachment: fixed;
   display: flex;
   flex-direction: column;
