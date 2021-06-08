@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 <td><img src=` + mobiles[i]['img'] + `></td>
                 <td>`+ mobiles[i]['name'] +`</td>
                 <td>`+ mobiles[i]['quantity'] +`</td>
-                <td>`+ mobiles[i]['quantity'] * Number(mobiles[i]['price'])+`</td>
+                <td>`+ Number(mobiles[i]['quantity'] * Number(mobiles[i]['price'])).toLocaleString('en')+`</td>
             </tr>
         `;
         totalCost += mobiles[i]['quantity'] * Number(mobiles[i]['price']);
