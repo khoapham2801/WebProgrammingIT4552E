@@ -39,8 +39,8 @@
   <div class="main-content-wrapper">
     <div class="main-content">
       <div class="cart-summary">
-        <div class="d-flex justify-center align-center mb-5" style="height: 3rem">
-          <span><strong>Your Items</strong></span>
+        <div class="d-flex justify-center align-center mb-5" style="height: 3rem" >
+          <span><strong id="table-title">Your Items</strong></span>
         </div>
         <table class="table w-100">
           <thead>
@@ -57,13 +57,13 @@
           </tfoot>
         </table>
         <div class="d-flex justify-end">
-          <button class="place-order-btn btn btn-warning" onclick="placeOrder()">
+          <button class="place-order-btn btn btn-warning" onclick="placeOrder()" id ="place-order-btn">
             Place Order
             <i class="gg-arrow-right ml-3"></i>
           </button>
         </div>
       </div>
-      <div class="customer-info">
+      <div class="customer-info" id ="customer-info">
         <div class="d-flex justify-center align-center mb-5" style="height: 3rem">
           <span><strong>Customer Info</strong></span>
         </div>
