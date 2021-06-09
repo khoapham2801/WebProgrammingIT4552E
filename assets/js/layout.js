@@ -2,16 +2,18 @@ function showConfirm(i) {
     // confirmModal.shit.show = true;
     var mobiles = JSON.parse(sessionStorage.getItem("mobiles"));
     console.log(i);
-    console.log(mobiles);
+    //console.log(mobiles);
     mobiles.splice(i,1);
+    //mobiles[i] = {"flag":empty};
     console.log(mobiles);
     sessionStorage.setItem("mobiles", JSON.stringify(mobiles));
     document.getElementById("item"+i).style.display = "none";
     if(window.location.href == "http://localhost/Project/WebProgrammingIT4552E/src/view/checkout.php"){
         location.reload();
     }
-    cartSidebar.shit.show = false;
-    cartSidebar.shit.show = true;
+    //document.getElementsByClassName("cart-sidebar modal").location.reload();
+    // cartSidebar.shit.show = false;
+    // cartSidebar.shit.show = true;
 
 }
 
@@ -92,16 +94,21 @@ const navbar = new Shitonen({
             var mobiles = JSON.parse(sessionStorage.getItem("mobiles"));
             if (mobiles) {
                 for (var i = 0; i < mobiles.length; i++) {
-                    cartSidebar.shit.body += `
-                    <div class="cart-sidebar-item" id="item`+i+`">
-                        <div class="product-quantity">
-                            
-                            <input type="number" value="`+mobiles[i]['quantity']+`" min="1">
-        
-                        </div>
-                        <span class="ml-5 flex-1"><strong>`+mobiles[i]['name']+`</strong></span>
-                        <button class="btn remove-item" style="height:3rem;border:none;" onclick="showConfirm(`+i+`)">x</button>
-                    </div>`;
+                    console.log(Object.values(mobiles[i]));
+                    // if(Object.values(mobiles[i]) != []){
+                        cartSidebar.shit.body += `
+                        <div class="cart-sidebar-item" id="item`+i+`">
+                            <div class="product-quantity">
+                                
+                                <input type="number" value="`+mobiles[i]['quantity']+`" min="1">
+            
+                            </div>
+                            <span class="ml-5 flex-1"><strong>`+mobiles[i]['name']+`</strong></span>
+                            <form method ="link" action = "javascript:document.location.reload()">
+                            <button class="btn remove-item" style="height:3rem;border:none;" onclick="showConfirm(`+i+`)">x</button>
+                            </form>
+                        </div>`;
+                    // }
                 }
             }
             

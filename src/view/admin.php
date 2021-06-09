@@ -53,6 +53,14 @@ $mobiles_encode = json_encode($mobiles_utf8, JSON_FORCE_OBJECT);
   <link href="https://css.gg/user.css" rel="stylesheet" />
   <!-- <link href="https://css.gg/pen.css" rel="stylesheet" />
     <link href="https://css.gg/trash.css" rel="stylesheet" /> -->
+  <script type="module" async>
+    var isLogin = 0;
+    isLogin = localStorage.getItem("test");
+    console.log(localStorage.getItem("test"));
+    if(isLogin == 0){
+          location.replace("login.php"); 
+    }
+  </script>
   <script src="../../assets/js/shitty.bundle.js" defer></script>
   <script src="../../assets/js/components.js?nocache=true" defer></script>
   <script src="../../assets/js/layout.js?nocache=true" defer></script>

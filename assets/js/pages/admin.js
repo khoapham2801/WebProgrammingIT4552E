@@ -1,6 +1,21 @@
 var self = this;
 var pre_name;
 
+window.onload = function(){
+    // var isLogin = 0;
+    // isLogin = localStorage.getItem("test");
+    // if(isLogin == 0){
+    //     location.replace("login.php"); 
+    // }
+    isLogin = 0;
+    localStorage.setItem("test",isLogin);
+    console.log(localStorage.getItem("test"));
+}
+// window.onbeforeunload = function(){
+//     isLogin = 0;
+//     localStorage.setItem("test",isLogin);
+//     console.log(localStorage.getItem("test"));
+// }
 document.addEventListener("DOMContentLoaded", function(event) { 
     self.renderData();
     self.rowClick();
