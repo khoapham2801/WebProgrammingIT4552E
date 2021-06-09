@@ -1,11 +1,18 @@
 function showConfirm(i) {
     // confirmModal.shit.show = true;
     var mobiles = JSON.parse(sessionStorage.getItem("mobiles"));
-    //console.log(mobiles);
-    mobiles.pop(mobiles.slice(i,i+1));
-    //console.log(mobiles);
+    console.log(i);
+    console.log(mobiles);
+    mobiles.splice(i,1);
+    console.log(mobiles);
     sessionStorage.setItem("mobiles", JSON.stringify(mobiles));
     document.getElementById("item"+i).style.display = "none";
+    if(window.location.href == "http://localhost/Project/WebProgrammingIT4552E/src/view/checkout.php"){
+        location.reload();
+    }
+    cartSidebar.shit.show = false;
+    cartSidebar.shit.show = true;
+
 }
 
 function closeConfirm() {

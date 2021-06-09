@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
     var mobiles = JSON.parse(sessionStorage.getItem("mobiles"));
-    
+    console.log(mobiles);
     tableBody = document.getElementsByClassName('table')[0].getElementsByTagName('tbody')[0];
     var totalCost = 0;
     for (var i = 0; i < mobiles.length; i++) {
