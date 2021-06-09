@@ -24,7 +24,6 @@ $accounts = $accountController->getAllAccounts();
   <link rel="stylesheet" href="../../assets/css/gg.css" />
   <link rel="stylesheet" href="../../assets/css/core.css?nocache=true" />
   <link rel="stylesheet" href="../../assets/css/pages/login.css" />
-  <link rel="stylesheet" href="../../assets/css/pages/layout.css" />
   <script type="text/javascript">
     var accounts = JSON.parse('<?= $accounts; ?>');
   </script>
