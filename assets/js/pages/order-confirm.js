@@ -11,18 +11,21 @@ function renderOrderTable() {
     tableBody = document.getElementsByClassName('table')[0].getElementsByTagName('tbody')[0];
     var totalCost = 0;
     for (var i = 0; i < mobiles.length; i++) {
-        var myHtmlContent = 
-        `
-            <tr>
-                <td><img src=` + mobiles[i]['img'] + `></td>
-                <td>`+ mobiles[i]['name'] +`</td>
-                <td>`+ mobiles[i]['quantity'] +`</td>
-                <td>`+ Number(mobiles[i]['quantity'] * Number(mobiles[i]['price'])).toLocaleString('en')+`</td>
-            </tr>
-        `;
-        totalCost += mobiles[i]['quantity'] * Number(mobiles[i]['price']);
-        var newRow = tableBody.insertRow();
-        newRow.innerHTML = myHtmlContent;
+        //console.log(mobiles[i].id);
+        if(mobiles[i].id != -1){
+            var myHtmlContent = 
+            `
+                <tr>
+                    <td><img src=` + mobiles[i]['img'] + `></td>
+                    <td>`+ mobiles[i]['name'] +`</td>
+                    <td>`+ mobiles[i]['quantity'] +`</td>
+                    <td>`+ Number(mobiles[i]['quantity'] * Number(mobiles[i]['price'])).toLocaleString('en')+`</td>
+                </tr>
+            `;
+            totalCost += mobiles[i]['quantity'] * Number(mobiles[i]['price']);
+            var newRow = tableBody.insertRow();
+            newRow.innerHTML = myHtmlContent;
+        }
     }
 
     tableFooter = document.getElementsByClassName('table')[0].getElementsByTagName('tfoot')[0];
