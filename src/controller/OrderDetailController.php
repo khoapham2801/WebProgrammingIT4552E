@@ -2,20 +2,20 @@
 include_once(__DIR__."/../model/ModelOrderDetail.php");  
   
 class OrderDetailController {  
-    public $modelOrder;   
+    public $modelOrderDetail;   
 
     public function __construct()  
     {  
-        $this -> modelOrder = new ModelOrder();  
+        $this -> modelOrderDetail = new ModelOrderDetail();  
     }   
 
     public function insertOrderDetail($orderId, $mobileId, $quantity) {
-        $orderId = $this -> modelOrder -> insertOrderDetailToDB($orderId, $mobileId, $quantity);
+        $orderId = $this -> modelOrderDetail -> insertOrderDetailToDB($orderId, $mobileId, $quantity);
         return $orderId;
     }
 
     public function getOrderDetailByOrderId($id) {
-        return $this -> modelOrder -> getOrderDetailByOrderIdFromDB($id);
+        return $this -> modelOrderDetail -> getOrderDetailByOrderIdFromDB($id);
     }
 }   
 

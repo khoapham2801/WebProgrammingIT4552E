@@ -92,7 +92,7 @@ $data_encode = json_encode($data_utf8, JSON_FORCE_OBJECT);
               <td class="w-15">Image</td>
               <td class="w-50">Product name</td>
               <td>Quantity</td>
-              <td>Total</td>
+              <td>Total Cost</td>
             </tr>
           </thead>
           <tbody>

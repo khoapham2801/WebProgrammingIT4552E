@@ -54,8 +54,14 @@ class ModelOrder {
 
     public function getOrderByIdFromDB($id) {
         $SQLcmd = "SELECT * FROM donhang WHERE (donhang.id = '$id')";
-        $errorMessage = "Can not insert order to database";
+        $errorMessage = "Can not get order by id from database";
         return $this -> getAPI($SQLcmd, $errorMessage)[0]; 
+    }
+
+    public function getAllOrdersFromDB() {
+        $SQLcmd = "SELECT * FROM donhang";
+        $errorMessage = "Can not get all orders from database";
+        return $this -> getAPI($SQLcmd, $errorMessage); 
     }
 }  
 

@@ -37,10 +37,10 @@ CREATE TABLE mobileshopdb.donhang (
 
 CREATE TABLE mobileshopdb.donhangdetail (
   id int(11) NOT NULL AUTO_INCREMENT,
-  donhangId int(11) DEFAULT NULL,
+  orderId int(11) DEFAULT NULL,
   mobileId int(11) DEFAULT NULL,
   quantity int(11) DEFAULT NULL,
-  FOREIGN KEY (donhangId) REFERENCES donhang(id),
+  FOREIGN KEY (orderId) REFERENCES donhang(id),
   FOREIGN KEY (mobileId) REFERENCES mobile(id),
   PRIMARY KEY (id)
 );
