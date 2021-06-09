@@ -28,7 +28,8 @@
   border-color: #ffb76e;
 }
 .editbtn,
-.removebtn {
+.removebtn,
+.detailbtn {
   align-self: flex-end;
   /* margin-bottom: 18px; */
   background-color: #ffb76e;

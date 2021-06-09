@@ -233,3 +233,7 @@ function getBrandNameById(id) {
         return brands[i]['name'];
     }
 }
+
+function OnClickDetail(){
+    window.location.href="../../src/view/admin-order-detail.php"
+}

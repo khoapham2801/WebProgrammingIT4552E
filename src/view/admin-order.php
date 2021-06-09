@@ -60,12 +60,29 @@
                     <td>Phone Number</td>
                     <td>Address</td>
                     <td>Date Order</td>
-                    <td>Date Receive</td>
-                    <td>Edit</td>
+                    <td>Date Received</td>
+                    <td>Total Cost</td>
+                    <td>Detail</td>
                     <td>Remove</td>
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td>LKK777</td>
+                    <td>John Doe</td>
+                    <td>johndoe@gmail.com</td>
+                    <td>064884134</td>
+                    <td>Baker Street, London</td>
+                    <td>6/9/2021</td>
+                    <td>6/9/2021</td>
+                    <td>1678000</td>
+                    <td> <button class="detailbtn btn btn-warning" onclick="OnClickDetail()">
+                            Detail
+                        </button></td>
+                    <td> <button class="removebtn btn btn-warning">
+                            Remove
+                        </button></td>
+                </tr>
             </tbody>
         </table>
     </div>

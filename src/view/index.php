@@ -52,7 +52,7 @@ $mobiles_encode = json_encode($mobiles_utf8, JSON_FORCE_OBJECT);
   <title>Homepage</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
   <link rel="stylesheet" href="../../assets/css/gg.css" />
-  <link rel="stylesheet" href="../../assets/css/core.css?nocache=true" />
+  <link rel="stylesheet" href="../../assets/css/core.css" />
   <link rel="stylesheet" href="../../assets/css/layout.css" />
   <link href="https://css.gg/search.css" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/css/pages/shopping-list.css" />
@@ -61,9 +61,9 @@ $mobiles_encode = json_encode($mobiles_utf8, JSON_FORCE_OBJECT);
     var brands = JSON.parse('<?= $brands; ?>');
   </script>
   <script src="../../assets/js/shitty.bundle.js" defer></script>
-  <script src="../../assets/js/components.js?nocache=true" defer></script>
-  <script src="../../assets/js/layout.js?" defer></script>
-  <script type="text/javascript" src="../../assets/js/pages/shopping-list.js" defer></script>
+  <script src="../../assets/js/components.js" defer></script>
+  <script src="../../assets/js/layout.js" defer></script>
+  <script src="../../assets/js/pages/shopping-list.js" defer></script>
 </head>
 
 <body>
