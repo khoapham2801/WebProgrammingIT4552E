@@ -70,7 +70,8 @@ function callHttpRequest(orderId, mobileId, quantity) {
 function createOrderDetail() {
     var mobiles = JSON.parse(sessionStorage.getItem("mobiles"));
 
-    for (var i = 0; i < mobiles.length; i++) {
+    for (var i = 0; i < mobiles.length; i++) 
+    if (mobiles[i]['id'] != -1) {
         self.callHttpRequest(Number(orderObj['id']), mobiles[i]['id'], mobiles[i]['quantity']);
     }
 
