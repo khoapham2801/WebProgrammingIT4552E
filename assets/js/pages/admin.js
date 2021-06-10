@@ -1,5 +1,8 @@
 var self = this;
 var pre_name;
+var clickedRow;
+var clickedEdit = 0;
+var clickedAdd = 0;
 var mobileArr = [];
 function changeMobileObjectToArray(){
     for(var i = 0; i< Object.keys(mobiles).length;i++){
@@ -8,9 +11,9 @@ function changeMobileObjectToArray(){
 }
 
 window.onload = function(){
-    // isLogin = 0;
-    // localStorage.setItem("test",isLogin);
-    // console.log(localStorage.getItem("test"));
+    isLogin = 0;
+    localStorage.setItem("test",isLogin);
+    console.log(localStorage.getItem("test"));
 }
 
 document.addEventListener("DOMContentLoaded", function(event) { 
@@ -18,8 +21,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     self.renderData();
     self.rowClick();
 });
-// console.log(mobiles);
-//console.log(mobileArr);
 
 function rowClick() {
     var table = document.getElementsByClassName('table')[0], rIndex, cIndex;
@@ -47,11 +48,12 @@ function rowClick() {
 
 function renderData() {
     tableBody = document.getElementsByClassName('table')[0].getElementsByTagName('tbody')[0];
+    tableBody.innerHTML = "";
     for (var i = 0; i < mobileArr.length; i++) {
         var myHtmlContent = 
         `
             <tr>
-                <td>` + (i + 1) + `</td>
+                <td>` + (i+1) + `</td>
                 <td><img src=` + mobileArr[i]['img'] + `></td>
                 <td>`+ mobileArr[i]['name'] +`</td>
                 <td>`+ mobileArr[i]['platform'] +`</td>
@@ -59,7 +61,7 @@ function renderData() {
                 <td>`+ mobileArr[i]['rear_camera'] + `</td>
                 <td>`+ mobileArr[i]['front_camera'] + `</td>
                 <td>`+ mobileArr[i]['memory'] +`</td>
-                <td>`+ mobileArr[i]['price'] +`</td>
+                <td>`+ Number(mobileArr[i]['price']).toLocaleString('en') +`</td>
                 <td>`+ mobileArr[i]['screen'] + `</td>
                 <td>`+ mobileArr[i]['discount'] +`</td>
                 <td>
@@ -86,7 +88,7 @@ function editPopUpBody($type) {
     editPopUp.shit.body = `
     <div class="d-flex flex-column justify-space-between" style="height: 100vh;">
         <div class="d-flex justify-center align-center" style="height:5rem;border-bottom: 1px solid #eee;">
-            <span style="font-size:large"><strong>` + $type + `</strong></span>
+            <span style="font-size:large"><strong id="pop-up-type">` + $type + `</strong></span>
         </div>
         <div class="flex-1 pt-5 pb-5" style="padding-bottom: 10px; padding-top: 20px">
             <div class="edit-popup-wrapper">
@@ -147,6 +149,7 @@ function editPopUpBody($type) {
 
 const onClickAddBtn = ()=>{
     self.editPopUpBody("ADD");
+    clickedAdd = 1;
     editPopUp.shit.show = true;
 }
 
@@ -165,7 +168,10 @@ const onClickEditBtn = (row)=>{
     document.getElementsByClassName('txt-discount')[0].value = mobileArr[row]['discount'];
 
     pre_name = mobileArr[row]['name'];
+    clickedRow = row;
+    //clickedEdit = 1;
     editPopUp.shit.show = true;
+
 }
 
 const onClickRemoveBtn = (row)=>{
@@ -202,6 +208,42 @@ const OnClickApplyBtn = ()=>{
     var price = document.getElementsByClassName('txt-price')[0].value;
     var screen = document.getElementsByClassName('txt-screen')[0].value;
     var discount = document.getElementsByClassName('txt-discount')[0].value;
+    if(document.getElementById("pop-up-type").innerHTML == "EDIT"){
+        mobileArr[clickedRow]['img'] = img;
+        mobileArr[clickedRow]['brandId']= brand;
+        mobileArr[clickedRow]['name'] = name;
+        mobileArr[clickedRow]['platform'] = platform;
+        mobileArr[clickedRow]['chip'] = chip;
+        mobileArr[clickedRow]['rear_camera'] = rearCamera;
+        mobileArr[clickedRow]['front_camera'] = frontCamera;
+        mobileArr[clickedRow]['memory'] = memory;
+        mobileArr[clickedRow]['price'] = price;
+        mobileArr[clickedRow]['screen'] = screen;
+        mobileArr[clickedRow]['discount'] = discount;
+        //clickedEdit = 0;
+        //console.log(clickedEdit);
+    }
+
+    if(document.getElementById("pop-up-type").innerHTML == "ADD"){
+        var tmpAdd = {
+            'img':img,
+            'brandId':brandId,
+            'name':name,
+            'platform':platform,
+            'chip':chip,
+            'rear_camera':rearCamera,
+            'front_camera':frontCamera,
+            'memory':memory,
+            'price':price,
+            'screen':screen,
+            'discount':discount
+        }
+        mobileArr.push(tmpAdd);
+        //console.log(mobileArr);
+
+        //clickAdd = 0;
+    }
+
     var mobileId = findMobileIdByName(pre_name);
     var type;
 
@@ -224,8 +266,11 @@ const OnClickApplyBtn = ()=>{
     + '&frontCamera=' + frontCamera + '&memory=' + memory + '&price=' + price + '&screen=' + screen 
     + '&discount=' + discount + '&brandId=' + brandId  + '&mobileId=' + mobileId + '&type=' + type);
 
-    alert("Successfully Update DB!");
     self.renderData();
+    self.rowClick();
+    alert("Successfully Update DB!");
+    
+    //location.reload();
 }
 
 function findMobileIdByName(name) {
