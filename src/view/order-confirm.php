@@ -129,6 +129,11 @@ $data_encode = json_encode($data_utf8, JSON_FORCE_OBJECT);
         </div>
       </div>
     </div>
+    <div style="display: grid; justify-content: center">
+      <button class="confirm-orderdtl-btn btn btn-warning" onclick="OnClickConfirmOrderDtl()">
+        Confirm
+      </button>
+    </div>
   </div>
   <!-- Site footer -->
   <div class="footer-wrapper">

@@ -76,3 +76,7 @@ function createOrderDetail() {
 
     sessionStorage.clear();
 }
+
+function OnClickConfirmOrderDtl(){
+    window.location.href="index.php"
+}
