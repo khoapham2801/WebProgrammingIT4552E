@@ -54,3 +54,6 @@ function renderBillDetail() {
     document.getElementsByClassName('txt-date-receive')[0].innerHTML = orderObj['date'];
 }
 
+function OnClickConfirmOrderDtl(){
+    window.location.href = "admin-order.php"
+}

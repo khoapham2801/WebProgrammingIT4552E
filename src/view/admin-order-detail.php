@@ -9,11 +9,11 @@ $mobileController = new MobileController();
 
 $id = $_GET["id"];
 $data = $orderController->getOrderById($id);
-$orderDetail = $orderDetailController -> getOrderDetailByOrderId($id);
+$orderDetail = $orderDetailController->getOrderDetailByOrderId($id);
 
 $mobiles = [];
 for ($i = 0; $i < count($orderDetail); $i++) {
-    $mobile = $mobileController -> getMobileById($orderDetail[$i] -> mobileId);
+    $mobile = $mobileController->getMobileById($orderDetail[$i]->mobileId);
     array_push($mobiles, $mobile);
 }
 
@@ -149,6 +149,11 @@ $mobiles_encode = json_encode($mobiles_utf8, JSON_FORCE_OBJECT);
                     <span class='txt-date-receive'></span>
                 </div>
             </div>
+        </div>
+        <div style="display: grid; justify-content: center">
+            <button class="confirm-orderdtl-btn btn btn-warning" onclick="OnClickConfirmOrderDtl()">
+                Confirm
+            </button>
         </div>
     </div>
     <div class="footer-wrapper">
