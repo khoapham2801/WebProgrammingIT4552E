@@ -68,7 +68,7 @@ $mobiles_encode = json_encode($mobiles_utf8, JSON_FORCE_OBJECT);
     var mobiles = JSON.parse('<?= $mobiles_encode; ?>');
     var brands = JSON.parse('<?= $brands; ?>');
   </script>
-  <script type="text/javascript" src="../../assets/js/pages/admin.js?nocache=true" defer></script>
+  <script type="text/javascript" src="../../assets/js/pages/admin.js" defer></script>
 </head>
 
 <body>
@@ -108,6 +108,7 @@ $mobiles_encode = json_encode($mobiles_utf8, JSON_FORCE_OBJECT);
     <table class="table w-100">
       <thead>
         <tr>
+          <td>Number</td>
           <td class="w-15">Image</td>
           <td class="w-30">Name</td>
           <td>Platform</td>

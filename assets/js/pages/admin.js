@@ -7,9 +7,10 @@ window.onload = function(){
     // if(isLogin == 0){
     //     location.replace("login.php"); 
     // }
-    isLogin = 0;
-    localStorage.setItem("test",isLogin);
-    console.log(localStorage.getItem("test"));
+
+    // isLogin = 0;
+    // localStorage.setItem("test",isLogin);
+    // console.log(localStorage.getItem("test"));
 }
 // window.onbeforeunload = function(){
 //     isLogin = 0;
@@ -34,10 +35,10 @@ function rowClick() {
             {
                 rIndex = this.parentElement.rowIndex;
                 cIndex = this.cellIndex + 1;
-                if (cIndex == 11) {
+                if (cIndex == 12) {
                     onClickEditBtn(rIndex - 1);
                 }
-                if (cIndex == 12) {
+                if (cIndex == 13) {
                     onClickRemoveBtn(rIndex - 1);
                 }
             };
@@ -51,6 +52,7 @@ function renderData() {
         var myHtmlContent = 
         `
             <tr>
+                <td>` + (i + 1) + `</td>
                 <td><img src=` + mobiles[i]['img'] + `></td>
                 <td>`+ mobiles[i]['name'] +`</td>
                 <td>`+ mobiles[i]['platform'] +`</td>
@@ -62,14 +64,10 @@ function renderData() {
                 <td>`+ mobiles[i]['screen'] + `</td>
                 <td>`+ mobiles[i]['discount'] +`</td>
                 <td>
-                    <button class="editbtn btn btn-warning">
-                    Edit
-                    </button>
+                    <button class="editbtn btn btn-warning">Edit</button>
                 </td>
                 <td>
-                    <button class="removebtn btn btn-warning">
-                    Remove
-                    </button>
+                    <button class="removebtn btn btn-warning">Remove</button>
                 </td>
             </tr>
         `;
@@ -187,6 +185,8 @@ const onClickRemoveBtn = (row)=>{
     
     request.send('mobileId=' + mobileId + '&type=' + 0);
     document.getElementsByClassName('table')[0].deleteRow(row + 1);
+
+    //TODO: DELETE the removed mobile from mobiles
 }
 
 const OnClickApplyBtn = ()=>{

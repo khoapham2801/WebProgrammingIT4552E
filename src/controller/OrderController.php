@@ -19,6 +19,10 @@ class OrderController {
     public function getOrderById($id) {
         return $this -> modelOrder -> getOrderByIdFromDB($id);
     }
+
+    public function getAllOrders() {
+        return $this -> modelOrder -> getAllOrdersFromDB();
+    }
 }   
 
 ?>

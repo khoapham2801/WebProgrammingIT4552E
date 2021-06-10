@@ -1,3 +1,40 @@
+<?php
+
+include_once(__DIR__ . "/../controller/OrderController.php");
+
+$orderController = new OrderController();
+
+$orders = $orderController->getAllOrders();
+
+function super_encode_utf8($var, $deep = TRUE)
+{
+  if (is_array($var)) {
+    foreach ($var as $key => $value) {
+      if ($deep) {
+        $var[$key] = super_encode_utf8($value, $deep);
+      } elseif (!is_array($value) && !is_object($value) && !mb_detect_encoding($value, 'utf-8', true)) {
+        $var[$key] = utf8_encode($var);
+      }
+    }
+    return $var;
+  } elseif (is_object($var)) {
+    foreach ($var as $key => $value) {
+      if ($deep) {
+        $var->$key = super_encode_utf8($value, $deep);
+      } elseif (!is_array($value) && !is_object($value) && !mb_detect_encoding($value, 'utf-8', true)) {
+        $var->$key = utf8_encode($var);
+      }
+    }
+    return $var;
+  } else {
+    return (!mb_detect_encoding($var, 'utf-8', true)) ? utf8_encode($var) : $var;
+  }
+}
+
+$orders_utf8 = super_encode_utf8($orders);
+$orders_encode = json_encode($orders_utf8, JSON_FORCE_OBJECT);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +54,10 @@
     <script src="../../assets/js/shitty.bundle.js" defer></script>
     <script src="../../assets/js/components.js?nocache=true" defer></script>
     <script src="../../assets/js/layout.js?nocache=true" defer></script>
-    <script type="text/javascript" src="../../assets/js/pages/admin.js?nocache=true" defer></script>
+    <script type="text/javascript">
+        var orders = JSON.parse('<?= $orders_encode; ?>');
+    </script>
+    <script type="text/javascript" src="../../assets/js/pages/admin-order.js" defer></script>
 </head>
 
 <body>
@@ -34,10 +74,7 @@
             <a href="admin.php" class="navbar-item">Manage Product</a>
             <a href="admin-order.php" class="navbar-item">Manage Order</a>
         </div>
-        <!-- <div class="navbar-items">
-        <a href="/" class="navbar-item">Homepage</a>
-        <a href="#" onclick="OnClickAboutUs()" class="navbar-item">About Us</a>
-      </div> -->
+        
         <div class="shopping-cart" style="visibility: hidden">
             <i class="gg-shopping-cart"></i>
         </div>
@@ -59,42 +96,18 @@
                     <td>Email</td>
                     <td>Phone Number</td>
                     <td>Address</td>
-                    <td>Date Order</td>
-                    <td>Date Received</td>
+                    <td>Date Receive Order</td>
+                    <td>Date Delivery Order</td>
                     <td>Total Cost</td>
                     <td>Detail</td>
                     <td>Remove</td>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>LKK777</td>
-                    <td>John Doe</td>
-                    <td>johndoe@gmail.com</td>
-                    <td>064884134</td>
-                    <td>Baker Street, London</td>
-                    <td>6/9/2021</td>
-                    <td>6/9/2021</td>
-                    <td>1678000</td>
-                    <td> <button class="detailbtn btn btn-warning" onclick="OnClickDetail()">
-                            Detail
-                        </button></td>
-                    <td> <button class="removebtn btn btn-warning">
-                            Remove
-                        </button></td>
-                </tr>
             </tbody>
         </table>
     </div>
-    <div class="edit-popup-wrapper modal-wrapper">
-        <div class="modal-backdrop"></div>
-        <div class="edit-popup modal">
-            <div class="modal-body">
-
-                {{body}}
-            </div>
-        </div>
-    </div>
+    
     <div class="confirm-modal-wrapper modal-wrapper">
         <div class="modal-backdrop"></div>
         <div class="confirm-modal modal">

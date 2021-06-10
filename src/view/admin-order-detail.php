@@ -1,9 +1,13 @@
 <?php
 include_once(__DIR__ . "/../controller/OrderController.php");
+include_once(__DIR__ . "/../controller/OrderDetailController.php");
 
 $orderController = new OrderController();
+$orderDetailController = new OrderDetailController();
+
 $id = $_GET["id"];
 $data = $orderController->getOrderById($id);
+$orderDetail = $orderDetailController -> getOrderDetailByOrderId($id);
 
 function super_encode_utf8($var, $deep = TRUE)
 {
@@ -32,6 +36,9 @@ function super_encode_utf8($var, $deep = TRUE)
 
 $data_utf8 = super_encode_utf8($data);
 $data_encode = json_encode($data_utf8, JSON_FORCE_OBJECT);
+
+$orderDetail_utf8 = super_encode_utf8($orderDetail);
+$orderDetail_encode = json_encode($orderDetail_utf8, JSON_FORCE_OBJECT);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,12 +54,13 @@ $data_encode = json_encode($data_utf8, JSON_FORCE_OBJECT);
     <link rel="stylesheet" href="../../assets/css/layout.css?nocache=true" />
     <script type="text/javascript">
         var orderObj = JSON.parse('<?= $data_encode; ?>');
+        var orderDetailObj = JSON.parse('<?= $orderDetail_encode; ?>');
     </script>
     <link rel="stylesheet" href="../../assets/css/pages/order-confirm.css?nocache=true" />
     <script src="../../assets/js/shitty.bundle.js" defer></script>
     <script src="../../assets/js/components.js?nocache=true" defer></script>
     <script src="../../assets/js/layout.js?nocache=true" defer></script>
-    <script src="../../assets/js/pages/order-confirm.js" defer></script>
+    <script src="../../assets/js/pages/admin-order-detail.js" defer></script>
 </head>
 
 <body>
@@ -92,7 +100,7 @@ $data_encode = json_encode($data_utf8, JSON_FORCE_OBJECT);
                             <td class="w-15">Image</td>
                             <td class="w-50">Product name</td>
                             <td>Quantity</td>
-                            <td>Total</td>
+                            <td>Total Cost</td>
                         </tr>
                     </thead>
                     <tbody>
