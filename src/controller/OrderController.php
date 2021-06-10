@@ -23,6 +23,10 @@ class OrderController {
     public function getAllOrders() {
         return $this -> modelOrder -> getAllOrdersFromDB();
     }
+
+    public function deleteOrderById($orderId) {
+        return $this -> modelOrder -> deleteOrderById($orderId);
+    }
 }   
 
 ?>

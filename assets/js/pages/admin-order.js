@@ -1,21 +1,14 @@
 var self = this;
+var orderArr = [];
 
 window.onload = function(){
-    // var isLogin = 0;
-    // isLogin = localStorage.getItem("test");
-    // if(isLogin == 0){
-    //     location.replace("login.php"); 
-    // }
-    isLogin = 0;
-    localStorage.setItem("test",isLogin);
-    console.log(localStorage.getItem("test"));
+    // isLogin = 0;
+    // localStorage.setItem("test",isLogin);
+    // console.log(localStorage.getItem("test"));
 }
-// window.onbeforeunload = function(){
-//     isLogin = 0;
-//     localStorage.setItem("test",isLogin);
-//     console.log(localStorage.getItem("test"));
-// }
+
 document.addEventListener("DOMContentLoaded", function(event) { 
+    self.changeOrderObjToArray();
     self.renderData();
     self.rowClick();
 });
@@ -46,18 +39,19 @@ function rowClick() {
 
 function renderData() {
     tableBody = document.getElementsByClassName('table')[0].getElementsByTagName('tbody')[0];
-    for (var i = 0; i < Object.keys(orders).length; i++) {
+    
+    for (var i = 0; i < orderArr.length; i++) {
         var myHtmlContent = 
         `
             <tr>
                 <td>`+ (i + 1) + `</td>
-                <td>`+ orders[i]['name'] +`</td>
-                <td>`+ orders[i]['email'] +`</td>
-                <td>`+ orders[i]['phone'] +`</td>
-                <td>`+ orders[i]['address'] + `</td>
-                <td>`+ orders[i]['date'] + `</td>
-                <td>`+ orders[i]['date'] +`</td>
-                <td>`+ Number(orders[i]['totalCost']).toLocaleString('en') +`</td>
+                <td>`+ orderArr[i]['name'] +`</td>
+                <td>`+ orderArr[i]['email'] +`</td>
+                <td>`+ orderArr[i]['phone'] +`</td>
+                <td>`+ orderArr[i]['address'] + `</td>
+                <td>`+ orderArr[i]['date'] + `</td>
+                <td>`+ orderArr[i]['date'] +`</td>
+                <td>`+ Number(orderArr[i]['totalCost']).toLocaleString('en') +`</td>
                 <td>
                     <button class="detailbtn btn btn-warning">Detail</button>
                 </td>
@@ -72,9 +66,30 @@ function renderData() {
 }
 
 function onClickDetailBtn(row) {
-    window.location.href = "admin-order-detail.php?id=" + orders[row]['id'];
+    window.location.href = "admin-order-detail.php?id=" + orderArr[row]['id'];
 }
 
 function onClickRemoveBtn(row) {
+    var orderId = orderArr[row]['id'];
     
+    var request = new XMLHttpRequest();
+    var url = "../../src/controller/OrderHandler.php";
+    request.open("POST", url, true);
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            var response = request.response;
+        }
+    };
+    
+    request.send('orderId=' + orderId + '&type=1');
+    document.getElementsByClassName('table')[0].deleteRow(row + 1);
+    orderArr.splice(row, 1);
+    //self.renderData();
+}
+
+function changeOrderObjToArray() {
+    for (var i = 0; i < Object.keys(orders).length; i++) {
+        orderArr.push(orders[i]);
+    }
 }

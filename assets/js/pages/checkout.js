@@ -72,7 +72,7 @@ function placeOrder() {
                     window.location.href="../../src/view/order-confirm.php?id=" + response;
                 }
             };
-            request.send('name=' + name + '&email=' + email + '&address=' + address + '&phone=' + phone + '&totalCost=' + totalCost);
+            request.send('name=' + name + '&email=' + email + '&address=' + address + '&phone=' + phone + '&totalCost=' + totalCost + '&type=0');
             
         } else {
             alert("Please fill all the customer info!");

@@ -1,13 +1,21 @@
 <?php
 include_once(__DIR__ . "/../controller/OrderController.php");
 include_once(__DIR__ . "/../controller/OrderDetailController.php");
+include_once(__DIR__ . "/../controller/MobileController.php");
 
 $orderController = new OrderController();
 $orderDetailController = new OrderDetailController();
+$mobileController = new MobileController();
 
 $id = $_GET["id"];
 $data = $orderController->getOrderById($id);
 $orderDetail = $orderDetailController -> getOrderDetailByOrderId($id);
+
+$mobiles = [];
+for ($i = 0; $i < count($orderDetail); $i++) {
+    $mobile = $mobileController -> getMobileById($orderDetail[$i] -> mobileId);
+    array_push($mobiles, $mobile);
+}
 
 function super_encode_utf8($var, $deep = TRUE)
 {
@@ -39,6 +47,11 @@ $data_encode = json_encode($data_utf8, JSON_FORCE_OBJECT);
 
 $orderDetail_utf8 = super_encode_utf8($orderDetail);
 $orderDetail_encode = json_encode($orderDetail_utf8, JSON_FORCE_OBJECT);
+
+
+$mobiles_utf8 = super_encode_utf8($mobiles);
+$mobiles_encode = json_encode($mobiles_utf8, JSON_FORCE_OBJECT);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,6 +68,7 @@ $orderDetail_encode = json_encode($orderDetail_utf8, JSON_FORCE_OBJECT);
     <script type="text/javascript">
         var orderObj = JSON.parse('<?= $data_encode; ?>');
         var orderDetailObj = JSON.parse('<?= $orderDetail_encode; ?>');
+        var mobiles = JSON.parse('<?= $mobiles_encode; ?>');
     </script>
     <link rel="stylesheet" href="../../assets/css/pages/order-confirm.css?nocache=true" />
     <script src="../../assets/js/shitty.bundle.js" defer></script>
@@ -81,7 +95,6 @@ $orderDetail_encode = json_encode($orderDetail_utf8, JSON_FORCE_OBJECT);
             <i class="gg-shopping-cart"></i>
         </div>
     </div>
-    <!-- <div class="main-content-wrapper"> -->
     <div class="main-content">
         <div class="order-number">
             <div class="d-flex justify-center align-center mb-5" style="height: 3rem; margin: 0px">
@@ -138,7 +151,6 @@ $orderDetail_encode = json_encode($orderDetail_utf8, JSON_FORCE_OBJECT);
             </div>
         </div>
     </div>
-    <!-- Site footer -->
     <div class="footer-wrapper">
         <div class="footer-content">
             <div class="about-content">
@@ -170,7 +182,6 @@ $orderDetail_encode = json_encode($orderDetail_utf8, JSON_FORCE_OBJECT);
         </div>
     </div>
     <small>Copyright © 2021 LKK Mobile Shop. All Rights Reserved</small>
-    <!-- </div> -->
     <div class="scroll-top-btn">
         <i class="gg-chevron-double-up"></i>
     </div>

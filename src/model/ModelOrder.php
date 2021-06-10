@@ -46,6 +46,24 @@ class ModelOrder {
         mysqli_close ($connect);
     }
 
+    public function updateAPI ($SQLcmd, $errorMessage) {
+        $server = 'localhost';
+        $user = 'root';
+        $pass = '';
+        $mydb = 'mobileshopdb';
+        $connect = mysqli_connect($server, $user, $pass, $mydb);
+        if (!$connect) {
+            die ("Cannot connect to $server using $user");
+        } else {
+            if (!mysqli_query($connect, $SQLcmd)){
+                echo "$SQLcmd";
+                die ($errorMessage);
+            } 
+        }
+        
+        mysqli_close($connect);
+    }
+
     public function insertOrderToDB($name, $email, $address, $phone, $date, $totalCost) {
         $SQLcmd = "INSERT INTO donhang VALUES ('0','$name','$email','$address','$phone', '$date', $totalCost)";
         $errorMessage = "Can not insert order to database";
@@ -62,6 +80,12 @@ class ModelOrder {
         $SQLcmd = "SELECT * FROM donhang";
         $errorMessage = "Can not get all orders from database";
         return $this -> getAPI($SQLcmd, $errorMessage); 
+    }
+
+    public function deleteOrderById($orderId) {
+        $SQLcmd = "DELETE FROM donhang WHERE (donhang.id = '$orderId')";
+        $errorMessage = "Cannot delete order in DB";
+        return $this -> updateAPI ($SQLcmd, $errorMessage);
     }
 }  
 
