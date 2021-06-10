@@ -130,7 +130,7 @@ function editPopUpBody($type) {
                 </div>  
                 <div class="custom-edit-field">
                     <label>Screen</label>
-                    <input class="txt-screen" type="text" placeholder='6.8"'>
+                    <input class="txt-screen" type="text" placeholder='6.8'>
                 </div>  
                 <div class="custom-edit-field">
                     <label>Discount</label>

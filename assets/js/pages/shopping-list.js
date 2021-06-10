@@ -463,6 +463,9 @@ function onclickApply(){
 
     searchCollection = document.getElementsByName("onSearch");
     searchArray = Array.from(searchCollection);
+    console.log(searchArray);
+    if(searchArray.length == 0) document.getElementById("pagination").style.display = "none";
+    else document.getElementById("pagination").style.display = "flex";
     document.addEventListener('DOMContentLoaded', init({
         size: (searchArray.length%9 == 0)?(searchArray.length/9):(~~(searchArray.length/9)+1), // pages size
         page: 1,  // selected page
