@@ -1,26 +1,25 @@
 var self = this;
 var pre_name;
+var mobileArr = [];
+function changeMobileObjectToArray(){
+    for(var i = 0; i< Object.keys(mobiles).length;i++){
+        mobileArr.push(mobiles[i]);
+    }
+}
 
 window.onload = function(){
-    // var isLogin = 0;
-    // isLogin = localStorage.getItem("test");
-    // if(isLogin == 0){
-    //     location.replace("login.php"); 
-    // }
-
     // isLogin = 0;
     // localStorage.setItem("test",isLogin);
     // console.log(localStorage.getItem("test"));
 }
-// window.onbeforeunload = function(){
-//     isLogin = 0;
-//     localStorage.setItem("test",isLogin);
-//     console.log(localStorage.getItem("test"));
-// }
+
 document.addEventListener("DOMContentLoaded", function(event) { 
+    self.changeMobileObjectToArray();
     self.renderData();
     self.rowClick();
 });
+// console.log(mobiles);
+//console.log(mobileArr);
 
 function rowClick() {
     var table = document.getElementsByClassName('table')[0], rIndex, cIndex;
@@ -48,21 +47,21 @@ function rowClick() {
 
 function renderData() {
     tableBody = document.getElementsByClassName('table')[0].getElementsByTagName('tbody')[0];
-    for (var i = 0; i < Object.keys(mobiles).length; i++) {
+    for (var i = 0; i < mobileArr.length; i++) {
         var myHtmlContent = 
         `
             <tr>
                 <td>` + (i + 1) + `</td>
-                <td><img src=` + mobiles[i]['img'] + `></td>
-                <td>`+ mobiles[i]['name'] +`</td>
-                <td>`+ mobiles[i]['platform'] +`</td>
-                <td>`+ mobiles[i]['chip'] +`</td>
-                <td>`+ mobiles[i]['rear_camera'] + `</td>
-                <td>`+ mobiles[i]['front_camera'] + `</td>
-                <td>`+ mobiles[i]['memory'] +`</td>
-                <td>`+ mobiles[i]['price'] +`</td>
-                <td>`+ mobiles[i]['screen'] + `</td>
-                <td>`+ mobiles[i]['discount'] +`</td>
+                <td><img src=` + mobileArr[i]['img'] + `></td>
+                <td>`+ mobileArr[i]['name'] +`</td>
+                <td>`+ mobileArr[i]['platform'] +`</td>
+                <td>`+ mobileArr[i]['chip'] +`</td>
+                <td>`+ mobileArr[i]['rear_camera'] + `</td>
+                <td>`+ mobileArr[i]['front_camera'] + `</td>
+                <td>`+ mobileArr[i]['memory'] +`</td>
+                <td>`+ mobileArr[i]['price'] +`</td>
+                <td>`+ mobileArr[i]['screen'] + `</td>
+                <td>`+ mobileArr[i]['discount'] +`</td>
                 <td>
                     <button class="editbtn btn btn-warning">Edit</button>
                 </td>
@@ -153,24 +152,24 @@ const onClickAddBtn = ()=>{
 
 const onClickEditBtn = (row)=>{
     self.editPopUpBody("EDIT");
-    document.getElementsByClassName('txt-img')[0].value = mobiles[row]['img'];
-    document.getElementsByClassName('txt-brand')[0].value = self.getBrandNameById(mobiles[row]['brandId']);
-    document.getElementsByClassName('txt-name')[0].value = mobiles[row]['name'];
-    document.getElementsByClassName('txt-platform')[0].value = mobiles[row]['platform'];
-    document.getElementsByClassName('txt-chip')[0].value = mobiles[row]['chip'];
-    document.getElementsByClassName('txt-rear-camera')[0].value = mobiles[row]['rear_camera'];
-    document.getElementsByClassName('txt-front-camera')[0].value = mobiles[row]['front_camera'];
-    document.getElementsByClassName('txt-memory')[0].value = mobiles[row]['memory'];
-    document.getElementsByClassName('txt-price')[0].value = mobiles[row]['price'];
-    document.getElementsByClassName('txt-screen')[0].value = mobiles[row]['screen'];
-    document.getElementsByClassName('txt-discount')[0].value = mobiles[row]['discount'];
+    document.getElementsByClassName('txt-img')[0].value = mobileArr[row]['img'];
+    document.getElementsByClassName('txt-brand')[0].value = self.getBrandNameById(mobileArr[row]['brandId']);
+    document.getElementsByClassName('txt-name')[0].value = mobileArr[row]['name'];
+    document.getElementsByClassName('txt-platform')[0].value = mobileArr[row]['platform'];
+    document.getElementsByClassName('txt-chip')[0].value = mobileArr[row]['chip'];
+    document.getElementsByClassName('txt-rear-camera')[0].value = mobileArr[row]['rear_camera'];
+    document.getElementsByClassName('txt-front-camera')[0].value = mobileArr[row]['front_camera'];
+    document.getElementsByClassName('txt-memory')[0].value = mobileArr[row]['memory'];
+    document.getElementsByClassName('txt-price')[0].value = mobileArr[row]['price'];
+    document.getElementsByClassName('txt-screen')[0].value = mobileArr[row]['screen'];
+    document.getElementsByClassName('txt-discount')[0].value = mobileArr[row]['discount'];
 
-    pre_name = mobiles[row]['name'];
+    pre_name = mobileArr[row]['name'];
     editPopUp.shit.show = true;
 }
 
 const onClickRemoveBtn = (row)=>{
-    var name = mobiles[row]['name'];
+    var name = mobileArr[row]['name'];
     var mobileId = findMobileIdByName(name);
     
     var request = new XMLHttpRequest();
@@ -187,6 +186,7 @@ const onClickRemoveBtn = (row)=>{
     document.getElementsByClassName('table')[0].deleteRow(row + 1);
 
     //TODO: DELETE the removed mobile from mobiles
+    mobileArr.splice(row,1);
 }
 
 const OnClickApplyBtn = ()=>{
@@ -225,12 +225,13 @@ const OnClickApplyBtn = ()=>{
     + '&discount=' + discount + '&brandId=' + brandId  + '&mobileId=' + mobileId + '&type=' + type);
 
     alert("Successfully Update DB!");
+    self.renderData();
 }
 
 function findMobileIdByName(name) {
-    for (var i = 0; i < Object.keys(mobiles).length; i++) 
-    if (mobiles[i]['name'] == name) {
-        return mobiles[i]['id'];
+    for (var i = 0; i < mobileArr.length; i++) 
+    if (mobileArr[i]['name'] == name) {
+        return mobileArr[i]['id'];
     }
     return -1;
 }
