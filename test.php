@@ -6,13 +6,13 @@
     // print_r($data);
 
     include_once("src/controller/MobileController.php");
-    include_once("src/controller/BrandController.php");
 
-    $mobileController = new MobileController();
-    $brandController = new BrandController();
-
-    $mobiles = $mobileController -> getALLMobiles();
-    $brands  = $brandController -> getAllBrands();
+    $controller = new MobileController();
+<<<<<<< HEAD
+    $data = $controller -> getAllMobiles();
+    print_r($data);
+=======
+    $data = $controller -> getALLMobiles();
     
     function super_encode_utf8($var,$deep=TRUE){
             if(is_array($var)){
@@ -37,13 +37,14 @@
                 return (!mb_detect_encoding($var,'utf-8',true))?utf8_encode($var):$var;
             }
         }
+>>>>>>> 7485351e9b59bc240963ef1ae5c2cabde81a3d23
 
-    $mobiles_utf8 = super_encode_utf8($mobiles);
-    $mobiles_encode = json_encode($mobiles_utf8,JSON_FORCE_OBJECT);
+    $data_utf8 = super_encode_utf8($data);
+    $data_encode = json_encode($data_utf8,JSON_FORCE_OBJECT);
     //print(gettype($data));
     //print(json_last_error());
     //print(gettype($data_encode));
-    //print($brands_encode);
+    //print($data_encode);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,8 +66,7 @@
       href="assets/css/pages/shopping-list.css?nocache=true"
     />
     <script type="text/javascript">
-      var mobiles = JSON.parse('<?= $mobiles_encode; ?>');
-      var brands = JSON.parse('<?= $brands; ?>');
+      var obj = JSON.parse('<?= $data_encode; ?>');
     </script>
     <script src="assets/js/shitty.bundle.js" defer></script>
     <script src="assets/js/components.js?nocache=true" defer></script>
