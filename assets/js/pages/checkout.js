@@ -1,9 +1,16 @@
 var totalCost = 0;
-
+var self = this;
 document.addEventListener("DOMContentLoaded", function(event) { 
+    self.renderData()
+});
+
+
+function renderData(){
+    totalCost = 0;
     var mobiles = JSON.parse(sessionStorage.getItem("mobiles"));
     //console.log(mobiles);
     tableBody = document.getElementsByClassName('table')[0].getElementsByTagName('tbody')[0];
+    tableBody.innerHTML = "";
     
     if(mobiles!= null){
         for (var i = 0; i < mobiles.length; i++) {
@@ -23,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
         }
         tableFooter = document.getElementsByClassName('table')[0].getElementsByTagName('tfoot')[0];
+        tableFooter.innerHTML ="";
         newRow = tableFooter.insertRow();
         newRow.innerHTML = 
         `
@@ -43,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
         document.getElementById("table-title").innerText = "Your Cart Is Empty!!!";
     }
-});
+}
 
 function validateInput(name, email, address, phone) {
     if (!name || !email || !address || !phone) {
