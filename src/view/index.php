@@ -90,7 +90,54 @@ $mobiles_encode = json_encode($mobiles_utf8, JSON_FORCE_OBJECT);
   <div class="background"></div>
   <div class="main-content-wrapper">
     <div class="main-content">
-      <div class="d-flex justify-center mt-5">
+      <div class="d-flex brand-logo-category-container">
+        <div class="brand-logo-container">
+          <div class="brand-logo-bounder">
+            <img class="brand-logo" src="/WebProgrammingIT4552E/assets/images/BrandLogo/iphone.png">
+          </div>
+        </div>
+        <div class="brand-logo-container">
+          <div class="brand-logo-bounder">
+            <img class="brand-logo" src="/WebProgrammingIT4552E/assets/images/BrandLogo/oppo.png">
+          </div>
+        </div>
+        <div class="brand-logo-container">
+          <div class="brand-logo-bounder">
+            <a href="brand-product-list.php">
+              <img class="brand-logo" src="/WebProgrammingIT4552E/assets/images/BrandLogo/samsung.png">
+            </a>
+          </div>
+        </div>
+        <div class="brand-logo-container">
+          <div class="brand-logo-bounder">
+            <a href="brand-product-list.php">
+              <img class="brand-logo" src="/WebProgrammingIT4552E/assets/images/BrandLogo/realme.jpg">
+            </a>
+          </div>
+        </div>
+        <div class="brand-logo-container">
+          <div class="brand-logo-bounder">
+            <a href="brand-product-list.php">
+              <img class="brand-logo" src="/WebProgrammingIT4552E/assets/images/BrandLogo/vivo.png">
+            </a>
+          </div>
+        </div>
+        <div class="brand-logo-container">
+          <div class="brand-logo-bounder">
+            <a href="brand-product-list.php">
+              <img class="brand-logo" src="/WebProgrammingIT4552E/assets/images/BrandLogo/vsmart.png">
+            </a>
+          </div>
+        </div>
+        <div class="brand-logo-container">
+          <div class="brand-logo-bounder">
+            <a href="brand-product-list.php">
+              <img class="brand-logo" src="/WebProgrammingIT4552E/assets/images/BrandLogo/xiaomi.jpg">
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-center mt-5" style="margin-top: 20px;">
         <span class="main-content-title"> Products </span>
       </div>
       <div class="product-list" id="product-list"></div>
@@ -113,13 +160,13 @@ $mobiles_encode = json_encode($mobiles_utf8, JSON_FORCE_OBJECT);
       <div class="right-content">
         <div class="categories-content">
           <h6>Categories</h6>
-          <li>Iphone</li>
-          <li>Samsung</li>
-          <li>Xiaomi</li>
-          <li>Oppo</li>
-          <li>Realme</li>
-          <li>Vivo</li>
-          <li>Vsmart</li>
+          <li><a href="brand-product-list.php">Iphone</a></li>
+          <li><a href="brand-product-list.php">Samsung</a></li>
+          <li><a href="brand-product-list.php">Xiaomi</a></li>
+          <li><a href="brand-product-list.php">Oppo</a></li>
+          <li><a href="brand-product-list.php">Realme</a></li>
+          <li><a href="brand-product-list.php">Vivo</a></li>
+          <li><a href="brand-product-list.php">Vsmart</a></li>
         </div>
         <div class="quicklinks-content">
           <h6>Quick links</h6>

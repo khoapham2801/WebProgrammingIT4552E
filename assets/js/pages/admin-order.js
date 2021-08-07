@@ -52,11 +52,11 @@ function renderData() {
                 <td>`+ orderArr[i]['date'] + `</td>
                 <td>`+ orderArr[i]['date'] +`</td>
                 <td>`+ Number(orderArr[i]['totalCost']).toLocaleString('en') +`</td>
-                <td>
+                <td style="padding-right: 0px;">
                     <button class="detailbtn btn btn-warning">Detail</button>
                 </td>
-                <td>
-                    <button class="removebtn btn btn-warning">Remove</button>
+                <td style="padding-right: 0px;">
+                    <button class="removebtn btn btn-warning">Cancel</button>
                 </td>
             </tr>
         `;

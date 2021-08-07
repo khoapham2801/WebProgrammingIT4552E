@@ -57,6 +57,7 @@ $accounts = $accountController->getAllAccounts();
           </div>
         </form>
         <button class="btn login-btn" onclick="OnClickLogin()">Login</button>
+        <a href="index.php" sty;e="margin-top:20px;">Back to Homepage</a>
       </div>
       <div class="login-side-image"></div>
     </div>

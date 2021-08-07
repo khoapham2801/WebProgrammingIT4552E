@@ -113,6 +113,18 @@
   /* text-overflow: ellipsis; */
 }
 
+/* .product-price {
+  background-color: transparent;
+  color: transparent;
+  border-radius: 0.25rem;
+  transition: 0.25s;
+  z-index: 1;
+  max-width: 90%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+} */
+
 .product:hover .product-title {
   color: #6a5a4a;
   background-color: #fff;
