@@ -491,6 +491,7 @@ function onclickProduct(id){
     location.href = "product-details.php" + "?id=" + id;
 };
 
+
 const productContainer = new Shitonen({
     element: document.querySelector('.product-list'),
     init() {
@@ -520,6 +521,10 @@ const productContainer = new Shitonen({
     }
 });
 
+// document.getElementById("apply-search-btn").addEventListener("click", onclickApply);
+function onclickBrand(id){
+    location.href = "brand-product-list.php" + "?name=" + id;
+}
 
 var productCollection = document.getElementsByClassName("product");
 var productArray = Array.from(productCollection);

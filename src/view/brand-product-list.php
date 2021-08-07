@@ -9,6 +9,8 @@ $brandController = new BrandController();
 $mobiles = $mobileController->getALLMobiles();
 $brands  = $brandController->getAllBrands();
 
+$brand_name = $_GET["name"];
+
 function super_encode_utf8($var, $deep = TRUE)
 {
     if (is_array($var)) {
@@ -93,52 +95,56 @@ $mobiles_encode = json_encode($mobiles_utf8, JSON_FORCE_OBJECT);
             <div class="d-flex brand-logo-category-container">
                 <div class="brand-logo-container">
                     <div class="brand-logo-bounder">
-                        <img class="brand-logo" src="/WebProgrammingIT4552E/assets/images/BrandLogo/iphone.png">
-                    </div>
-                </div>
-                <div class="brand-logo-container">
-                    <div class="brand-logo-bounder">
-                        <img class="brand-logo" src="/WebProgrammingIT4552E/assets/images/BrandLogo/oppo.png">
-                    </div>
-                </div>
-                <div class="brand-logo-container">
-                    <div class="brand-logo-bounder">
-                        <a href="brand-product-list.php">
-                            <img class="brand-logo" src="/WebProgrammingIT4552E/assets/images/BrandLogo/samsung.png">
+                        <a id= "iphone" onclick="onclickBrand(id)">
+                            <img class="brand-logo" src="../../assets/images/BrandLogo/iphone.png">
                         </a>
                     </div>
                 </div>
                 <div class="brand-logo-container">
                     <div class="brand-logo-bounder">
-                        <a href="brand-product-list.php">
-                            <img class="brand-logo" src="/WebProgrammingIT4552E/assets/images/BrandLogo/realme.jpg">
+                        <a id= "oppo" onclick="onclickBrand(id)">
+                            <img class="brand-logo" src="../../assets/images/BrandLogo/oppo.png">
                         </a>
                     </div>
                 </div>
                 <div class="brand-logo-container">
                     <div class="brand-logo-bounder">
-                        <a href="brand-product-list.php">
-                            <img class="brand-logo" src="/WebProgrammingIT4552E/assets/images/BrandLogo/vivo.png">
+                        <a id= "samsung" onclick="onclickBrand(id)">
+                            <img class="brand-logo" src="../../assets/images/BrandLogo/samsung.png">
                         </a>
                     </div>
                 </div>
                 <div class="brand-logo-container">
                     <div class="brand-logo-bounder">
-                        <a href="brand-product-list.php">
-                            <img class="brand-logo" src="/WebProgrammingIT4552E/assets/images/BrandLogo/vsmart.png">
+                        <a id= "realme" onclick="onclickBrand(id)">
+                            <img class="brand-logo" src="../../assets/images/BrandLogo/realme.jpg">
                         </a>
                     </div>
                 </div>
                 <div class="brand-logo-container">
                     <div class="brand-logo-bounder">
-                        <a href="brand-product-list.php">
-                            <img class="brand-logo" src="/WebProgrammingIT4552E/assets/images/BrandLogo/xiaomi.jpg">
+                        <a id= "vivo" onclick="onclickBrand(id)">
+                            <img class="brand-logo" src="../../assets/images/BrandLogo/vivo.png">
+                        </a>
+                    </div>
+                </div>
+                <div class="brand-logo-container">
+                    <div class="brand-logo-bounder">
+                        <a id= "vsmart" onclick="onclickBrand(id)">
+                            <img class="brand-logo" src="../../assets/images/BrandLogo/vsmart.png">
+                        </a>
+                    </div>
+                </div>
+                <div class="brand-logo-container">
+                    <div class="brand-logo-bounder">
+                        <a id= "xiaomi" onclick="onclickBrand(id)">
+                            <img class="brand-logo" src="../../assets/images/BrandLogo/xiaomi.jpg">
                         </a>
                     </div>
                 </div>
             </div>
             <div class="d-flex justify-center mt-5" style="margin-top: 20px;">
-                <span class="main-content-title"> Xiaomi </span>
+                <span class="main-content-title"> <?php echo $brand_name; ?> </span>
             </div>
             <div class="product-list" id="product-list"></div>
             <div class="pagination" id="pagination">
