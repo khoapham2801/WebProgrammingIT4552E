@@ -507,3 +507,23 @@ select {
   margin-top: 0px;
   margin-bottom: 0px;
 }
+
+.brand-logo-bounder {
+  border: 1px solid #eee;
+}
+
+.brand-logo {
+  object-fit: contain;
+  width: 150px;
+  height: 70px;
+  padding: 5px;
+}
+
+.brand-logo-container {
+  /* flex-basis: 20%; */
+}
+
+.brand-logo-category-container {
+  justify-content: center;
+  padding-top: 20px;
+}
