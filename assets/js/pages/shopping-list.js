@@ -508,11 +508,14 @@ const productContainer = new Shitonen({
                         <img class="product-thumbnail" src="${product.thumbnail}" onerror="this.src=''">
                         <span class="product-title">
                             ${title}<br>
-                            <span class="product-title" style="text-decoration:line-through; padding: 0px; background-color:transparent;">
+                            <span class="product-title" style="padding: 0px; background-color:transparent;">
+                                ${Number(price*(100-discount)/100).toLocaleString('en')}
+                            </span>
+                            <span class="product-title" style="text-decoration:line-through; padding: 0px; background-color:transparent;"><br>
                                 ${Number(price).toLocaleString('en')}
                             </span>
                             <span class="product-title" style="padding: 0px; background-color:transparent;"><br>
-                                ${Number(price*(100-discount)/100).toLocaleString('en')}
+                                ${'-'+Number(discount).toLocaleString('en')+'%'}
                             </span>
                         </span>
                     </a>
