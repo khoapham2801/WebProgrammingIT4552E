@@ -19,6 +19,10 @@ class MobileController {
         $mobile = $this -> modelMobile -> getMobileById($id);
         return $mobile;
     }
+    public function getMobileByBrandId($brandId){
+        $mobileList = $this -> modelMobile -> getMobileByBrandId($brandId);
+        return $mobileList;
+    }
 
     public function insertMobile($brandId, $name, $platform, $chip, $rear_camera, $front_camera, $memory, $price, $screen, $discount, $img) {
         return $this -> modelMobile -> inSertMobileToDB($brandId, $name, $platform, $chip, $rear_camera, $front_camera, $memory, $price, $screen, $discount, $img);

@@ -1,16 +1,9 @@
 var totalCost = 0;
-var self = this;
+
 document.addEventListener("DOMContentLoaded", function(event) { 
-    self.renderData()
-});
-
-
-function renderData(){
-    totalCost = 0;
     var mobiles = JSON.parse(sessionStorage.getItem("mobiles"));
     //console.log(mobiles);
     tableBody = document.getElementsByClassName('table')[0].getElementsByTagName('tbody')[0];
-    tableBody.innerHTML = "";
     
     if(mobiles!= null){
         for (var i = 0; i < mobiles.length; i++) {
@@ -21,16 +14,15 @@ function renderData(){
                         <td><img src=` + mobiles[i]['img'] + `></td>
                         <td>`+ mobiles[i]['name'] +`</td>
                         <td>`+ mobiles[i]['quantity'] +`</td>
-                        <td>`+ Number(mobiles[i]['quantity'] * Number(mobiles[i]['price'])).toLocaleString('en')+`</td>
+                        <td>`+ Number(mobiles[i]['quantity'] * Number(mobiles[i]['price'] * (100 - mobiles[i]['discount'])/100)).toLocaleString('en')+`</td>
                     </tr>
                 `;
-                totalCost += mobiles[i]['quantity'] * Number(mobiles[i]['price']);
+                totalCost += mobiles[i]['quantity'] * Number(mobiles[i]['price'] * (100 - mobiles[i]['discount'])/100);
                 var newRow = tableBody.insertRow();
                 newRow.innerHTML = myHtmlContent;
             }
         }
         tableFooter = document.getElementsByClassName('table')[0].getElementsByTagName('tfoot')[0];
-        tableFooter.innerHTML ="";
         newRow = tableFooter.insertRow();
         newRow.innerHTML = 
         `
@@ -51,7 +43,7 @@ function renderData(){
         }
         document.getElementById("table-title").innerText = "Your Cart Is Empty!!!";
     }
-}
+});
 
 function validateInput(name, email, address, phone) {
     if (!name || !email || !address || !phone) {

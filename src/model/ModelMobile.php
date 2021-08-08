@@ -77,7 +77,14 @@ class ModelMobile {
         $errorMessage = "Cannot get the specific mobile";
         return $this -> getAPI ($SQLcmd, $errorMessage)[0];
     } 
-    
+
+    public function getMobileByBrandId($brandId)  
+    {  
+        $SQLcmd = "SELECT * FROM mobile WHERE (mobile.brandId = '$brandId')";
+        $errorMessage = "Cannot get the specific mobile";
+        return $this -> getAPI ($SQLcmd, $errorMessage);
+    } 
+
     public function getMobilesByBrand($brand)  
     {  
         $SQLcmd = "SELECT * FROM mobile, brand 

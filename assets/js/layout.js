@@ -1,5 +1,4 @@
 function showConfirm(i) {
-    var self = this;
     // confirmModal.shit.show = true;
     var mobiles = JSON.parse(sessionStorage.getItem("mobiles"));
     //console.log(i);
@@ -11,8 +10,7 @@ function showConfirm(i) {
     sessionStorage.setItem("mobiles", JSON.stringify(mobiles));
     document.getElementById("item"+i).style.display = "none";
     if(window.location.href == "http://localhost/Project/WebProgrammingIT4552E/src/view/checkout.php"){
-        // location.reload();
-        self.renderData();
+        location.reload();
     }
     //console.log(mobiles);
     // const isEmpty = mobiles.every(item => mobiles.id == -1);
@@ -29,16 +27,6 @@ function showConfirm(i) {
     }
     //console.log(isEmpty);
     if(isEmpty == 1) sessionStorage.clear();
-    if(isEmpty == 1 && (window.location.href == "http://localhost/Project/WebProgrammingIT4552E/src/view/checkout.php") ) {
-        // location.reload();
-        document.getElementById("place-order-btn").style.display = "none";
-        var tableCollection = document.getElementsByClassName('table');
-        var tableArray = Array.from(tableCollection);
-        for(var i = 0; i<tableArray.length;i++){
-            tableArray[i].style.display = "none";
-        }
-        document.getElementById("table-title").innerText = "Your Cart Is Empty!!!";
-    }
 
 
 

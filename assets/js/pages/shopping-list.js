@@ -6,16 +6,16 @@ searchSidebar.shit.show =false;
 searchSidebar.shit.body = `
 <div class="d-flex flex-column justify-space-between" style="height: 100vh;">
     <div class="d-flex justify-center align-center" style="height:5rem;border-bottom: 1px solid #eee;">
-        <span><strong>Search</strong></span>
+        <span><strong style="font-size:larger;">Search</strong></span>
     </div>
     <div class="flex-1 pt-5 pb-5">
         <div class="search-sidebar-item">
             <div class="custom-search-bar">
-            <input type="text" id="text-search" placeholder="Search product name" style="height: 30px;
+            <input type="text" id="text-search" placeholder="Search product name" style="height: 40px;
             width: 400px;margin-bottom: 10px;">
             </div>
             <div class="custom-select"  style="order: 2">
-            <label class="search-sidebar-label">Brand: </label>
+            <label class="search-sidebar-label" style="padding-right:50px;">Brand: </label>
             <select id="brands" name="brands">
             <option value="none">none</option>
             </select>
@@ -33,7 +33,7 @@ searchSidebar.shit.body = `
             </select>
             </div>
             <div class="custom-select"  style="order: 4">
-            <label class="search-sidebar-label">Price: </label>
+            <label class="search-sidebar-label" style="padding-right:55px;">Price: </label>
             <select id="price" name="price">
             <option value="none">none</option>
             <option value="<10tr"><10tr</option>
@@ -463,9 +463,6 @@ function onclickApply(){
 
     searchCollection = document.getElementsByName("onSearch");
     searchArray = Array.from(searchCollection);
-    console.log(searchArray);
-    if(searchArray.length == 0) document.getElementById("pagination").style.display = "none";
-    else document.getElementById("pagination").style.display = "flex";
     document.addEventListener('DOMContentLoaded', init({
         size: (searchArray.length%9 == 0)?(searchArray.length/9):(~~(searchArray.length/9)+1), // pages size
         page: 1,  // selected page
@@ -485,7 +482,8 @@ for(var i = 0; i < Object.keys(mobiles).length;i++){
         "thumbnail":mobiles[i].img,
         "brandId":mobiles[i].brandId,
         "memory":mobiles[i].memory,
-        "price":mobiles[i].price
+        "price":mobiles[i].price,
+        "discount":mobiles[i].discount
     };
     demoProducts.push(tmp);
 }
@@ -494,27 +492,62 @@ function onclickProduct(id){
     location.href = "product-details.php" + "?id=" + id;
 };
 
+
 const productContainer = new Shitonen({
     element: document.querySelector('.product-list'),
     init() {
         this.element.innerHTML = '';
         for(const product of demoProducts) {
             const title = product.title;
-            const price = product.price
+            const price = product.price;
+            const discount = product.discount;
             const id = "mobile" +product.id;
-            const productEl = htmlToElement(`
-                <a onclick="onclickProduct(id)" class="product" name ="offSearch">
-                    <img class="product-thumbnail" src="${product.thumbnail}" onerror="this.src=''">
-                    <span class="product-title">${title}<br>${Number(price).toLocaleString('en')}</span>
-                </a>
-            `);
-            productEl.id = id;
-            // productEl.value = id;
-            this.element.appendChild(productEl);
+            if(discount != 0){
+                const productEl = htmlToElement(`
+                    <a onclick="onclickProduct(id)" class="product" name ="offSearch">
+                        <img class="product-thumbnail" src="${product.thumbnail}" onerror="this.src=''">
+                        <span class="product-title">
+                            ${title}<br>
+                            <span class="product-title" style="padding: 0px; background-color:transparent;">
+                                ${Number(price*(100-discount)/100).toLocaleString('en')}
+                            </span>
+                            <span class="product-title" style="text-decoration:line-through; padding: 0px; background-color:transparent;"><br>
+                                ${Number(price).toLocaleString('en')}
+                            </span>
+                            <span class="product-title" style="padding: 0px; background-color:transparent;"><br>
+                                ${'-'+Number(discount).toLocaleString('en')+'%'}
+                            </span>
+                        </span>
+                    </a>
+                `);
+                productEl.id = id;
+                // productEl.value = id;
+                this.element.appendChild(productEl);
+            }
+            else {
+                const productEl = htmlToElement(`
+                    <a onclick="onclickProduct(id)" class="product" name ="offSearch">
+                        <img class="product-thumbnail" src="${product.thumbnail}" onerror="this.src=''">
+                        <span class="product-title">
+                            ${title}<br>
+                            <span class="product-title" style="padding: 0px; background-color:transparent;">
+                                ${Number(price).toLocaleString('en')}
+                            </span>
+                        </span>
+                    </a>
+                `);
+                productEl.id = id;
+                // productEl.value = id;
+                this.element.appendChild(productEl);
+            }
         }
     }
 });
 
+// document.getElementById("apply-search-btn").addEventListener("click", onclickApply);
+function onclickBrand(id){
+    location.href = "brand-product-list.php" + "?name=" + id;
+}
 
 var productCollection = document.getElementsByClassName("product");
 var productArray = Array.from(productCollection);

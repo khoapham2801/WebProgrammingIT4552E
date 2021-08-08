@@ -109,7 +109,9 @@ $data_encode = json_encode($data_utf8, JSON_FORCE_OBJECT);
         </div>
         <div class="product-details">
           <h2 class="product-title"><?php echo $data->name; ?></h2>
-          <span class="product-price"><?php echo number_format($data->price); ?></span>
+          <span class="product-price" style="padding: 0px; background-color:transparent;"><?php echo number_format($data->price * (100-$data->discount)/100); ?></span>
+          <span class="product-price" style="text-decoration:line-through; padding: 0px; background-color:transparent;"><?php echo number_format($data->price); ?></span>
+          <span class="product-price" style="padding: 0px; background-color:transparent;"><?php echo "(","-",number_format($data->discount),"%)"; ?></span>
           <div class="d-flex add-to-cart-wrapper">
             <div class="product-quantity">
               <button class="dec-qty">-</button>
