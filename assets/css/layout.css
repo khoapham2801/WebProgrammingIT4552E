@@ -510,6 +510,7 @@ select {
 
 .brand-logo-bounder {
   border: 1px solid #eee;
+  cursor: pointer;
 }
 
 .brand-logo {
