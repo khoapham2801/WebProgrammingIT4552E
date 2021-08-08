@@ -6,10 +6,18 @@ include_once(__DIR__ . "/../controller/BrandController.php");
 $mobileController = new MobileController();
 $brandController = new BrandController();
 
-$mobiles = $mobileController->getALLMobiles();
+//$mobiles = $mobileController->getALLMobiles();
 $brands  = $brandController->getAllBrands();
 
 $brand_name = $_GET["name"];
+
+if($brand_name === "samsung") $mobiles = $mobileController ->getMobileByBrandId('2');
+if($brand_name === "iphone") $mobiles = $mobileController ->getMobileByBrandId('7');
+if($brand_name === "vivo") $mobiles = $mobileController ->getMobileByBrandId('5');
+if($brand_name === "oppo") $mobiles = $mobileController ->getMobileByBrandId('3');
+if($brand_name === "vsmart") $mobiles = $mobileController ->getMobileByBrandId('6');
+if($brand_name === "realme") $mobiles = $mobileController ->getMobileByBrandId('4');
+if($brand_name === "xiaomi") $mobiles = $mobileController ->getMobileByBrandId('1');
 
 function super_encode_utf8($var, $deep = TRUE)
 {

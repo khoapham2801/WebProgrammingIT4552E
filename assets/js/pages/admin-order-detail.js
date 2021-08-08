@@ -22,10 +22,10 @@ function renderOrderTable() {
                     <td><img src=` + mobiles[i]['img'] + `></td>
                     <td>`+ mobiles[i]['name'] +`</td>
                     <td>`+ mobiles[i]['quantity'] +`</td>
-                    <td>`+ Number(mobiles[i]['quantity'] * Number(mobiles[i]['price'])).toLocaleString('en')+`</td>
+                    <td>`+ Number(mobiles[i]['quantity'] * Number(mobiles[i]['price'] * (100 - mobiles[i]['discount'])/100)).toLocaleString('en')+`</td>
                 </tr>
             `;
-            totalCost += mobiles[i]['quantity'] * Number(mobiles[i]['price']);
+            totalCost += mobiles[i]['quantity'] * Number(mobiles[i]['price'] * (100 - mobiles[i]['discount'])/100);
             var newRow = tableBody.insertRow();
             newRow.innerHTML = myHtmlContent;
         }
