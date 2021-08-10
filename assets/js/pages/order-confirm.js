@@ -7,6 +7,22 @@ document.addEventListener("DOMContentLoaded", function(event) {
     self.createOrderDetail();
 });
 
+function deleteFirstColumn() {
+    // Getting the table
+    var tble = document.getElementsByClassName('table')[0].cloneNode(true);
+
+    // Getting the rows in table.
+    var row = tble.rows;  
+
+    // Removing the column at index(1).  
+    var i = 0; 
+    for (var j = 0; j < row.length; j++) {
+        // Deleting the ith cell of each row.
+        row[j].deleteCell(i);
+    }
+    return tble.outerHTML;
+}
+
 function renderOrderTable() {
     var mobiles = JSON.parse(sessionStorage.getItem("mobiles"));
     
@@ -53,7 +69,7 @@ function renderBillDetail() {
     document.getElementsByClassName('txt-date-receive')[0].innerHTML = orderObj['date'];
 }
 
-function callHttpRequest(orderId, mobileId, quantity) {
+function callHttpRequest(orderId, mobileId, quantity, tableInfo, email) {
     var response;
     var request = new XMLHttpRequest();
     var url = "../../src/controller/OrderDetailHandler.php";
@@ -64,15 +80,21 @@ function callHttpRequest(orderId, mobileId, quantity) {
             response = request.response;
         }
     };
-    request.send('orderId=' + orderId + '&mobileId=' + mobileId + '&quantity=' + quantity);
+    request.send('orderId=' + orderId + '&mobileId=' + mobileId + '&quantity=' + quantity + '&tableInfo=' + tableInfo + '&email=' + email);
 }
 
 function createOrderDetail() {
     var mobiles = JSON.parse(sessionStorage.getItem("mobiles"));
-
+    var tableInfo = self.deleteFirstColumn();
+    var email = orderObj['email'];
     for (var i = 0; i < mobiles.length; i++) 
     if (mobiles[i]['id'] != -1) {
-        self.callHttpRequest(Number(orderObj['id']), mobiles[i]['id'], mobiles[i]['quantity']);
+        if (i !== 0) {
+            tableInfo = "";
+            email = "";
+        }
+        self.callHttpRequest(Number(orderObj['id']), mobiles[i]['id'], mobiles[i]['quantity'], tableInfo, email);
+        console.log("Insert order to DB ", Number(orderObj['id']), " ", mobiles[i]['id'], " ", mobiles[i]['quantity'], " ", tableInfo, " ", email);
     }
 
     sessionStorage.clear();
