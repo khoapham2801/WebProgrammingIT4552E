@@ -83,7 +83,7 @@
   display: block;
   width: 100%;
   height: 100%;
-  background-color: #ffc87833;
+  /* background-color: #ffc87833; */
   pointer-events: none;
   transition: 0.25s;
 }
