@@ -49,7 +49,7 @@ class MailService {
         </body> 
         </html>'; 
 
-        echo ($mailto . $subject . $htmlContent);
+        // echo ($mailto . $subject . $htmlContent);
 
         if (mail($mailto, $subject, $htmlContent, $headers)) {
             echo 'Your mail has been sent successfully.';
