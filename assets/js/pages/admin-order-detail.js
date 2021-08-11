@@ -4,7 +4,28 @@ var totalCost = 0;
 document.addEventListener("DOMContentLoaded", function(event) { 
     self.renderOrderTable();
     self.renderBillDetail();
+    self.setButtonAction();
 });
+
+function deleteFirstColumn() {
+    // Getting the table
+    var tble = document.getElementsByClassName('table')[0].cloneNode(true);
+
+    // Getting the rows in table.
+    var row = tble.rows;  
+
+    // Removing the column at index(1).  
+    var i = 0; 
+    for (var j = 0; j < row.length; j++) {
+        // Deleting the ith cell of each row.
+        row[j].deleteCell(i);
+    }
+    return tble.outerHTML;
+}
+
+function setButtonAction() {
+    document.getElementById('btn-action').innerHTML = action;
+}
 
 function renderOrderTable() {
     
@@ -55,5 +76,22 @@ function renderBillDetail() {
 }
 
 function OnClickConfirmOrderDtl(){
-    window.location.href = "admin-order.php"
+    if (action == 'Cancel') {
+         // Getting the table
+        var tableInfo = self.deleteFirstColumn();
+        var email = orderObj['email'];
+
+        var request = new XMLHttpRequest();
+        var url = "../../src/controller/OrderHandler.php";
+        request.open("POST", url, true);
+        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        request.onreadystatechange = function () {
+            if (request.readyState === 4 && request.status === 200) {
+                var response = request.response;
+                window.location.href = "admin-order.php";
+            }
+        };
+        
+        request.send('orderId=' + orderId + '&type=1' + '&tableInfo=' + tableInfo + '&email=' + email);
+    }
 }

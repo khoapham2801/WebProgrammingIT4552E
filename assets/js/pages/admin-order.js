@@ -66,26 +66,11 @@ function renderData() {
 }
 
 function onClickDetailBtn(row) {
-    window.location.href = "admin-order-detail.php?id=" + orderArr[row]['id'];
+    window.location.href = "admin-order-detail.php?id=" + orderArr[row]['id'] + "&action=Confirm";
 }
 
 function onClickRemoveBtn(row) {
-    var orderId = orderArr[row]['id'];
-    
-    var request = new XMLHttpRequest();
-    var url = "../../src/controller/OrderHandler.php";
-    request.open("POST", url, true);
-    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    request.onreadystatechange = function () {
-        if (request.readyState === 4 && request.status === 200) {
-            var response = request.response;
-        }
-    };
-    
-    request.send('orderId=' + orderId + '&type=1');
-    document.getElementsByClassName('table')[0].deleteRow(row + 1);
-    orderArr.splice(row, 1);
-    //self.renderData();
+    window.location.href = "admin-order-detail.php?id=" + orderArr[row]['id'] + "&action=Cancel";
 }
 
 function changeOrderObjToArray() {

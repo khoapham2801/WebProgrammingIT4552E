@@ -13,6 +13,8 @@
         return $orderController -> insertOrder($name, $email, $address, $phone, $totalCost);
     } else {
         $orderId = $_POST['orderId'];
-        $orderController -> deleteOrderById($orderId);
+        $tableInfo = $_POST['tableInfo'];
+        $email = $_POST['email'];
+        $orderController -> deleteOrderById($orderId, $tableInfo, $email);
     }
 ?>

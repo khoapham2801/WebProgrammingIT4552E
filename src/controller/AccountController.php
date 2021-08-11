@@ -9,10 +9,6 @@ class AccountController {
         $this -> modelAccount = new ModelAccount();  
     }   
 
-    public function init()  
-    {  
-        
-    }  
     public function getAllAccounts(){
     	$accList = $this -> modelAccount -> getAllAccounts();
         return $accList;
