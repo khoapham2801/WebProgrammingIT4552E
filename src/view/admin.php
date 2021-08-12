@@ -57,8 +57,8 @@ $mobiles_encode = json_encode($mobiles_utf8, JSON_FORCE_OBJECT);
     var isLogin = 0;
     isLogin = localStorage.getItem("test");
     console.log(localStorage.getItem("test"));
-    if(isLogin == 0){
-          location.replace("login.php"); 
+    if (isLogin == 0) {
+      location.replace("login.php");
     }
   </script>
   <script src="../../assets/js/shitty.bundle.js" defer></script>
