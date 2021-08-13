@@ -1,5 +1,5 @@
 <?php
-include_once("EntityAccount.php");
+include_once("../entity/EntityAccount.php");
 
 class ModelAccount {
     public function getAPI ($SQLcmd, $errorMessage) {

@@ -1,5 +1,5 @@
 <?php 
-    include_once(__DIR__."/OrderController.php");  
+    include_once("../controller/OrderController.php");  
 
     $orderController = new OrderController();
     $type = $_POST['type'];

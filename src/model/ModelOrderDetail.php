@@ -1,5 +1,5 @@
 <?php
-include_once("EntityOrderDetail.php"); 
+include_once("../entity/EntityOrderDetail.php"); 
 
 class ModelOrderDetail {  
     public function getAPI ($SQLcmd, $errorMessage) {

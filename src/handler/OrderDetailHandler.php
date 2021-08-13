@@ -1,5 +1,5 @@
 <?php 
-    include_once(__DIR__."/OrderDetailController.php"); 
+    include_once("../controller/OrderDetailController.php"); 
 
     $orderId = $_POST['orderId'];
     $mobileId = $_POST['mobileId'];

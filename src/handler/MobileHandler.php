@@ -1,5 +1,5 @@
 <?php 
-    include_once(__DIR__."/MobileController.php"); 
+    include_once("../controller/MobileController.php"); 
     
     $id = $_POST['mobileId'];
     $brandId = $_POST['brandId'];
