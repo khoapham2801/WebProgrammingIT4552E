@@ -55,6 +55,7 @@ $mobiles_encode = json_encode($mobiles_utf8, JSON_FORCE_OBJECT);
   <link rel="stylesheet" href="../../assets/css/core.css" />
   <link rel="stylesheet" href="../../assets/css/layout.css" />
   <link href="https://css.gg/search.css" rel="stylesheet" />
+  <link href="https://css.gg/user.css" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/css/pages/shopping-list.css" />
   <script type="text/javascript">
     var mobiles = JSON.parse('<?= $mobiles_encode; ?>');
@@ -83,8 +84,24 @@ $mobiles_encode = json_encode($mobiles_utf8, JSON_FORCE_OBJECT);
       <a href="index.php" class="navbar-item">Homepage</a>
       <a onclick="OnClickAboutUs()" class="navbar-item">About Us</a>
     </div>
-    <div class="shopping-cart">
-      <i class="gg-shopping-cart"></i>
+    <div class="navbar-icons">
+      <div class="user-indicator">
+        <div class="user-icon">
+          <i class="gg-user">
+            <div class="user" style="padding-left: 15px; font-style: normal;">
+              User
+            </div>
+          </i>
+        </div>
+        <div class="dropdown-content">
+          <a href="register-user.php">Sign up new account</a>
+          <a href="index.php">Log out</a>
+          <a href="login-user.php">Switch account</a>
+        </div>
+      </div>
+      <div class="shopping-cart-icon">
+        <i class="gg-shopping-cart"></i>
+      </div>
     </div>
   </div>
   <div class="background"></div>
@@ -93,49 +110,49 @@ $mobiles_encode = json_encode($mobiles_utf8, JSON_FORCE_OBJECT);
       <div class="d-flex brand-logo-category-container">
         <div class="brand-logo-container">
           <div class="brand-logo-bounder">
-            <a id= "iphone" onclick="onclickBrand(id)">
+            <a id="iphone" onclick="onclickBrand(id)">
               <img class="brand-logo" src="../../assets/images/BrandLogo/iphone.png">
             </a>
           </div>
         </div>
         <div class="brand-logo-container">
           <div class="brand-logo-bounder">
-            <a id= "oppo" onclick="onclickBrand(id)">
+            <a id="oppo" onclick="onclickBrand(id)">
               <img class="brand-logo" src="../../assets/images/BrandLogo/oppo.png">
             </a>
           </div>
         </div>
         <div class="brand-logo-container">
           <div class="brand-logo-bounder">
-            <a id= "samsung" onclick="onclickBrand(id)">
+            <a id="samsung" onclick="onclickBrand(id)">
               <img class="brand-logo" src="../../assets/images/BrandLogo/samsung.png">
             </a>
           </div>
         </div>
         <div class="brand-logo-container">
           <div class="brand-logo-bounder">
-            <a id= "realme" onclick="onclickBrand(id)">
+            <a id="realme" onclick="onclickBrand(id)">
               <img class="brand-logo" src="../../assets/images/BrandLogo/realme.jpg">
             </a>
           </div>
         </div>
         <div class="brand-logo-container">
           <div class="brand-logo-bounder">
-            <a id= "vivo" onclick="onclickBrand(id)">
+            <a id="vivo" onclick="onclickBrand(id)">
               <img class="brand-logo" src="../../assets/images/BrandLogo/vivo.png">
             </a>
           </div>
         </div>
         <div class="brand-logo-container">
           <div class="brand-logo-bounder">
-            <a id= "vsmart" onclick="onclickBrand(id)">
+            <a id="vsmart" onclick="onclickBrand(id)">
               <img class="brand-logo" src="../../assets/images/BrandLogo/vsmart.png">
             </a>
           </div>
         </div>
         <div class="brand-logo-container">
           <div class="brand-logo-bounder">
-            <a id= "xiaomi" onclick="onclickBrand(id)">
+            <a id="xiaomi" onclick="onclickBrand(id)">
               <img class="brand-logo" src="../../assets/images/BrandLogo/xiaomi.jpg">
             </a>
           </div>
@@ -152,32 +169,28 @@ $mobiles_encode = json_encode($mobiles_utf8, JSON_FORCE_OBJECT);
   <!-- Site footer -->
   <div class="footer-wrapper">
     <div class="footer-content">
-      <div class="about-content">
-        <h6>About us</h6>
-        <p class="text-justify">LKK Mobile Shop</p>
-        <br />
-        <p class="text-justify">
-          We provide the best flagships and smartphones from top branches in
-          the world with the best price.
-        </p>
+      <div class="left-content">
+        <div class="about-content">
+          <h6>About us</h6>
+          <p class="text-justify">LKK Mobile Shop</p>
+          <br />
+          <p class="text-justify">
+            We provide the best flagships and smartphones from top branches in
+            the world with the best price.
+          </p>
+        </div>
+        <div class="maps-wrapper">
+          <div class="maps">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.689034814013!2d105.84475154867548!3d21.005098736993332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ad440e32b4d5%3A0x5f05cb80b7eae7db!2zQsOhY2ggS2hvYSBIw6AgTuG7mWk!5e0!3m2!1svi!2s!4v1628743278604!5m2!1svi!2s" width="500" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
+          </div>
+        </div>
       </div>
       <div class="right-content">
-        <div class="categories-content">
-          <h6>Categories</h6>
-          <li><a href="brand-product-list.php">Iphone</a></li>
-          <li><a href="brand-product-list.php">Samsung</a></li>
-          <li><a href="brand-product-list.php">Xiaomi</a></li>
-          <li><a href="brand-product-list.php">Oppo</a></li>
-          <li><a href="brand-product-list.php">Realme</a></li>
-          <li><a href="brand-product-list.php">Vivo</a></li>
-          <li><a href="brand-product-list.php">Vsmart</a></li>
-        </div>
-        <div class="quicklinks-content">
-          <h6>Quick links</h6>
-          <li><a href="index.php">Homepage</a></li>
-          <li><a href="checkout.php">Checkout</a></li>
-          <li> <a href="login.php">Login (for admin only)</a></li>
-        </div>
+        <h6>Quick links</h6>
+        <li><a href="index.php">Homepage</a></li>
+        <li><a href="checkout.php">Checkout</a></li>
+        <li> <a href="login.php">Login (for admin only)</a></li>
       </div>
     </div>
   </div>

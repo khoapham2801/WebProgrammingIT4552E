@@ -31,15 +31,31 @@
       <a href="index.php" class="navbar-item">Homepage</a>
       <a onclick="OnClickAboutUs()" class="navbar-item">About Us</a>
     </div>
-    <div class="shopping-cart">
-      <i class="gg-shopping-cart"></i>
+    <div class="navbar-icons">
+      <div class="user-indicator">
+        <div class="user-icon">
+          <i class="gg-user">
+            <div class="user" style="padding-left: 15px; font-style: normal;">
+              User
+            </div>
+          </i>
+        </div>
+        <div class="dropdown-content">
+          <a href="register-user.php">Sign up new account</a>
+          <a href="index.php">Log out</a>
+          <a href="login-user.php">Switch account</a>
+        </div>
+      </div>
+      <div class="shopping-cart-icon">
+        <i class="gg-shopping-cart"></i>
+      </div>
     </div>
   </div>
   <div class="background"></div>
   <div class="main-content-wrapper">
     <div class="main-content">
       <div class="cart-summary">
-        <div class="d-flex justify-center align-center mb-5" style="height: 3rem" >
+        <div class="d-flex justify-center align-center mb-5" style="height: 3rem">
           <span><strong id="table-title">Your Items</strong></span>
         </div>
         <table class="table w-100">
@@ -57,31 +73,31 @@
           </tfoot>
         </table>
         <div class="d-flex justify-end">
-          <button class="place-order-btn btn btn-warning" onclick="placeOrder()" id ="place-order-btn">
+          <button class="place-order-btn btn btn-warning" onclick="placeOrder()" id="place-order-btn">
             Place Order
             <i class="gg-arrow-right ml-3"></i>
           </button>
         </div>
       </div>
-      <div class="customer-info" id ="customer-info">
+      <div class="customer-info" id="customer-info">
         <div class="d-flex justify-center align-center mb-5" style="height: 3rem">
           <span><strong>Customer Info</strong></span>
         </div>
         <div class="form-group">
           <label>Full Name</label>
-          <input type="text" class="form-control txt-name"/>
+          <input type="text" class="form-control txt-name" />
         </div>
         <div class="form-group mt-3">
           <label>Email</label>
-          <input type="text" class="form-control txt-email"/>
+          <input type="text" class="form-control txt-email" />
         </div>
         <div class="form-group mt-3">
           <label>Address</label>
-          <input type="text" class="form-control txt-address"/>
+          <input type="text" class="form-control txt-address" />
         </div>
         <div class="form-group mt-3">
           <label>Phone</label>
-          <input type="text" class="form-control txt-phone"/>
+          <input type="text" class="form-control txt-phone" />
         </div>
       </div>
     </div>
@@ -89,31 +105,28 @@
   <!-- Site footer -->
   <div class="footer-wrapper">
     <div class="footer-content">
-      <div class="about-content">
-        <h6>About us</h6>
-        <p class="text-justify">LKK Mobile Shop</p>
-        <br />
-        <p class="text-justify">
-          We provide the best flagships and smartphones from top branches in
-          the world with the best price.
-        </p>
+      <div class="left-content">
+        <div class="about-content">
+          <h6>About us</h6>
+          <p class="text-justify">LKK Mobile Shop</p>
+          <br />
+          <p class="text-justify">
+            We provide the best flagships and smartphones from top branches in
+            the world with the best price.
+          </p>
+        </div>
+        <div class="maps-wrapper">
+          <div class="maps">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.689034814013!2d105.84475154867548!3d21.005098736993332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ad440e32b4d5%3A0x5f05cb80b7eae7db!2zQsOhY2ggS2hvYSBIw6AgTuG7mWk!5e0!3m2!1svi!2s!4v1628743278604!5m2!1svi!2s" width="500" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
+          </div>
+        </div>
       </div>
       <div class="right-content">
-        <div class="categories-content">
-          <h6>Categories</h6>
-          <li>Iphone</li>
-          <li>Samsung</li>
-          <li>Xiaomi</li>
-          <li>Oppo</li>
-          <li>Realme</li>
-          <li>Vivo</li>
-          <li>Vsmart</li>
-        </div>
-        <div class="quicklinks-content">
-          <h6>Quick links</h6>
-          <li>Homepage</li>
-          <li>Checkout</li>
-        </div>
+        <h6>Quick links</h6>
+        <li><a href="index.php">Homepage</a></li>
+        <li><a href="checkout.php">Checkout</a></li>
+        <li> <a href="login.php">Login (for admin only)</a></li>
       </div>
     </div>
   </div>
