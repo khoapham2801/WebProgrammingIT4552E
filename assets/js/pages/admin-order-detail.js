@@ -93,5 +93,7 @@ function OnClickConfirmOrderDtl(){
         };
         
         request.send('orderId=' + orderId + '&type=1' + '&tableInfo=' + tableInfo + '&email=' + email);
+    } else {
+        window.location.href = "admin-order.php";
     }
 }
