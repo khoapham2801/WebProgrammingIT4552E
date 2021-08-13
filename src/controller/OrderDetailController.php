@@ -3,7 +3,7 @@ include_once(__DIR__."/../model/ModelOrderDetail.php");
 include_once(__DIR__."/../service/MailService.php");
 
 class OrderDetailController {  
-    public $modelOrderDetail;   
+    private $modelOrderDetail;   
     private $mailService;
 
     public function __construct()  

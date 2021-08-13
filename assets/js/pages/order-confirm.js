@@ -72,7 +72,7 @@ function renderBillDetail() {
 function callHttpRequest(orderId, mobileId, quantity, tableInfo, email) {
     var response;
     var request = new XMLHttpRequest();
-    var url = "../../src/controller/OrderDetailHandler.php";
+    var url = "../../src/handler/OrderDetailHandler.php";
     request.open("POST", url, true);
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.onreadystatechange = function () {

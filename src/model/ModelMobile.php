@@ -1,5 +1,5 @@
 <?php
-include_once("EntityMobile.php"); 
+include_once("../entity/EntityMobile.php"); 
 
 class ModelMobile {  
     public function getAPI ($SQLcmd, $errorMessage) {

@@ -49,10 +49,13 @@ CREATE TABLE mobileshopdb.account (
   id int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   usn varchar(50) DEFAULT NULL,
   pwd varchar(50) DEFAULT NULL,
+  role int(1) DEFAULT NULL,
   PRIMARY KEY (id)
 );
 
-INSERT INTO mobileshopdb.account (usn, pwd) VALUES ('admin','admin');
+INSERT INTO mobileshopdb.account (usn, pwd, role) VALUES 
+('admin','admin', 0),
+('customer','customer', 1);
 
 INSERT INTO mobileshopdb.brand (name, img) VALUES
 ('Xiaomi','assets/images/BrandLogo/xiaomi.png'),

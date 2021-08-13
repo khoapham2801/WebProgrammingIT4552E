@@ -8,6 +8,7 @@ $orderDetailController = new OrderDetailController();
 $mobileController = new MobileController();
 
 $id = $_GET["id"];
+$action = $_GET["action"];
 $data = $orderController->getOrderById($id);
 $orderDetail = $orderDetailController->getOrderDetailByOrderId($id);
 
@@ -69,6 +70,8 @@ $mobiles_encode = json_encode($mobiles_utf8, JSON_FORCE_OBJECT);
         var orderObj = JSON.parse('<?= $data_encode; ?>');
         var orderDetailObj = JSON.parse('<?= $orderDetail_encode; ?>');
         var mobiles = JSON.parse('<?= $mobiles_encode; ?>');
+        var action = '<?php echo $action; ?>';
+        var orderId = '<?php echo $id; ?>';
     </script>
     <link rel="stylesheet" href="../../assets/css/pages/order-confirm.css?nocache=true" />
     <script src="../../assets/js/shitty.bundle.js" defer></script>
@@ -151,7 +154,7 @@ $mobiles_encode = json_encode($mobiles_utf8, JSON_FORCE_OBJECT);
             </div>
         </div>
         <div style="display: grid; justify-content: center">
-            <button class="confirm-orderdtl-btn btn btn-warning" onclick="OnClickConfirmOrderDtl()">
+            <button id="btn-action" class="confirm-orderdtl-btn btn btn-warning" onclick="OnClickConfirmOrderDtl()">
                 Confirm
             </button>
         </div>

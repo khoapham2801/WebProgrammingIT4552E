@@ -1,16 +1,7 @@
 <?php
 include_once(__DIR__ . "/../../src/controller/AccountController.php");
-
-
 $accountController = new AccountController();
-
-
 $accounts = $accountController->getAllAccounts();
-
-
-//print($accounts);
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
