@@ -251,6 +251,7 @@ input::-webkit-inner-spin-button {
   display: flex;
   align-items: center;
   margin-right: 10px;
+  width: 94px;
 }
 
 .custom-select {

@@ -82,7 +82,7 @@ function OnClickConfirmOrderDtl(){
         var email = orderObj['email'];
 
         var request = new XMLHttpRequest();
-        var url = "../../src/controller/OrderHandler.php";
+        var url = "../../src/handler/OrderHandler.php";
         request.open("POST", url, true);
         request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         request.onreadystatechange = function () {
