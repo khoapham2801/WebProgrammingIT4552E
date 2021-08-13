@@ -108,6 +108,7 @@ input::-webkit-inner-spin-button {
 .navbar .navbar-item {
   text-decoration: none;
   position: relative;
+  cursor: pointer;
 }
 
 .navbar .navbar-item + .navbar-item {
@@ -131,17 +132,34 @@ input::-webkit-inner-spin-button {
   background-color: #ffb76e;
 }
 
-.navbar .shopping-cart {
-  width: 5rem;
+.navbar-icons {
+  width: 10rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   padding: 0 2rem;
   justify-self: right;
   color: #6a5a4a;
   user-select: none;
+}
+
+.navbar-icons .user-indicator {
+  display: flex;
   cursor: pointer;
 }
+
+.navbar-icons .shopping-cart-icon {
+  cursor: pointer;
+}
+
+.user-icon .user {
+  flex-basis: 50%;
+}
+
+/* .shopping-cart-icon .user-icon {
+  flex-basis: 50%;
+  justify-content: space-between;
+} */
 
 @keyframes searchsidebar-slidein {
   from {
@@ -486,21 +504,28 @@ select {
   margin: 10px 100px;
 }
 
-.about-content {
-  flex-basis: 50%;
-  padding-right: 70px;
-}
-.right-content {
+.left-content {
   display: flex;
-  flex-basis: 50%;
+  flex-flow: row;
+  flex-basis: 70%;
+  /* padding-right: 70px; */
 }
 
-.categories-content {
-  flex-basis: 50%;
+.about-content {
+  flex-basis: 30%;
+  /* padding-right: 50px; */
 }
 
-.quicklinks-content {
-  flex-basis: 50%;
+.maps-wrapper {
+  flex-basis: 70%;
+}
+
+.maps {
+  text-align: center;
+}
+
+.right-content {
+  flex-basis: 30%;
 }
 
 .text-justify {
