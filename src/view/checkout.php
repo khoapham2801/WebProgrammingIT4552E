@@ -34,10 +34,16 @@
     <div class="navbar-icons">
       <div class="user-indicator">
         <div class="user-icon">
-          <i class="gg-user"></i>
+          <i class="gg-user">
+            <div class="user" style="padding-left: 15px; font-style: normal;">
+              User
+            </div>
+          </i>
         </div>
-        <div class="user" style="padding-left: 5px;">
-          User
+        <div class="dropdown-content">
+          <a href="register-user.php">Sign up new account</a>
+          <a href="index.php">Log out</a>
+          <a href="login-user.php">Switch account</a>
         </div>
       </div>
       <div class="shopping-cart-icon">
