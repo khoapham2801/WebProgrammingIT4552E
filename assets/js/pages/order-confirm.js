@@ -85,21 +85,30 @@ function callHttpRequest(orderId, mobileId, quantity, tableInfo, email) {
 
 function createOrderDetail() {
     var mobiles = JSON.parse(sessionStorage.getItem("mobiles"));
-    var tableInfo = self.deleteFirstColumn();
-    var email = orderObj['email'];
+    
     for (var i = 0; i < mobiles.length; i++) 
     if (mobiles[i]['id'] != -1) {
-        if (i !== 0) {
-            tableInfo = "";
-            email = "";
-        }
-        self.callHttpRequest(Number(orderObj['id']), mobiles[i]['id'], mobiles[i]['quantity'], tableInfo, email);
-        console.log("Insert order to DB ", Number(orderObj['id']), " ", mobiles[i]['id'], " ", mobiles[i]['quantity'], " ", tableInfo, " ", email);
+        self.callHttpRequest(Number(orderObj['id']), mobiles[i]['id'], mobiles[i]['quantity'], "", "");
     }
 
     sessionStorage.clear();
 }
 
 function OnClickConfirmOrderDtl(){
-    window.location.href="index.php"
+    var tableInfo = self.deleteFirstColumn();
+    var email = orderObj['email'];
+
+    var response;
+    var request = new XMLHttpRequest();
+    var url = "../../src/handler/OrderDetailHandler.php";
+    request.open("POST", url, true);
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            response = request.response;
+            window.location.href="index.php";
+        }
+    };
+    request.send('orderId=' + -1 + '&mobileId=' + -1 + '&quantity=' + -1 + '&tableInfo=' + tableInfo + '&email=' + email);
+    
 }
