@@ -13,11 +13,14 @@ class OrderDetailController {
     }   
 
     public function insertOrderDetail($orderId, $mobileId, $quantity, $tableInfo, $email) {
-        $orderId = $this -> modelOrderDetail -> insertOrderDetailToDB($orderId, $mobileId, $quantity);
+        $orderDetailId = -1;
+        if ($orderId != -1) {
+            $orderDetailId = $this -> modelOrderDetail -> insertOrderDetailToDB($orderId, $mobileId, $quantity);
+        }
         if (strcmp($tableInfo, "") !== 0) {
             $this -> mailService -> sendingEmail($tableInfo, $email);
         }
-        return $orderId;
+        return $orderDetailId;
     }
 
     public function getOrderDetailByOrderId($id) {
