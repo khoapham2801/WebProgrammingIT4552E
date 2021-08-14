@@ -97,7 +97,7 @@ const navbar = new Shitonen({
                 document.body.classList.remove('sticky');
             }
         };
-        this.element.querySelector('.shopping-cart').onclick = _ => {
+        this.element.querySelector('.shopping-cart-icon').onclick = _ => {
             cartSidebar.shit.body = `
             <div class="d-flex flex-column justify-space-between" style="height: 100vh;">
             <div class="d-flex justify-center align-center" style="height:5rem;border-bottom: 1px solid #eee;">
@@ -169,3 +169,4 @@ function isEmptySession() {
     }
     return false;
 }
+

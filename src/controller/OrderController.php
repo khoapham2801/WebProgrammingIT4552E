@@ -1,12 +1,15 @@
 <?php 
 include_once(__DIR__."/../model/ModelOrder.php");  
+include_once(__DIR__."/../service/MailService.php");
 
 class OrderController {  
-    public $modelOrder;   
+    private $modelOrder;   
+    private $mailService;
 
     public function __construct()  
     {  
         $this -> modelOrder = new ModelOrder();  
+        $this -> mailService = new MailService(); 
     }   
 
     public function insertOrder($name, $email, $address, $phone, $totalCost) {
@@ -24,7 +27,10 @@ class OrderController {
         return $this -> modelOrder -> getAllOrdersFromDB();
     }
 
-    public function deleteOrderById($orderId) {
+    public function deleteOrderById($orderId, $tableInfo, $email) {
+        if (strcmp($tableInfo, "") !== 0) {
+            $this -> mailService -> cancelOrder($tableInfo, $email);
+        }
         return $this -> modelOrder -> deleteOrderById($orderId);
     }
 }   

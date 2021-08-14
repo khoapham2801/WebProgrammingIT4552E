@@ -1,5 +1,5 @@
 <?php
-include_once("EntityBrand.php");
+include_once("../entity/EntityBrand.php");
 
 class ModelBrand {
     public function getAPI ($SQLcmd, $errorMessage) {

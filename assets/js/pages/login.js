@@ -1,21 +1,25 @@
 function OnClickLogin() {
-	var loginSuccess = 0;
+	var loginRole = -1;
+	var account;
+
 	var usn = document.getElementById("usn").value;
 	var pwd = document.getElementById("pwd").value;
+	
 	for(var i = 0 ; i < accounts.length; i++){
 		if(accounts[i].usn == usn && accounts[i].pwd == pwd){
-			loginSuccess = 1;
+			loginRole = accounts[i].role;
+			account = accounts[i];
 		}
 	}
-	if(loginSuccess){
+
+	if(loginRole == 0){
 		window.location.href = "admin.php";
 	}
-	else {
+	else if (loginRole == 1) {
+		window.location.href = "index.php";
+	} else {
 		alert("Wrong password or username");
-		console.log(usn);
-		console.log(pwd);
 	}
-	localStorage.setItem("test",loginSuccess);
-	console.log(localStorage.getItem("test"));
-    
+
+	localStorage.setItem("account", account);
 }

@@ -54,10 +54,7 @@ $mobiles_encode = json_encode($mobiles_utf8, JSON_FORCE_OBJECT);
   <!-- <link href="https://css.gg/pen.css" rel="stylesheet" />
     <link href="https://css.gg/trash.css" rel="stylesheet" /> -->
   <script type="module" async>
-    var isLogin = 0;
-    isLogin = localStorage.getItem("test");
-    console.log(localStorage.getItem("test"));
-    if(isLogin == 0){
+    if(localStorage.getItem("account") === null){
           location.replace("login.php"); 
     }
   </script>

@@ -1,5 +1,5 @@
 <?php
-include_once("EntityAccount.php");
+include_once("../entity/EntityAccount.php");
 
 class ModelAccount {
     public function getAPI ($SQLcmd, $errorMessage) {
@@ -15,7 +15,7 @@ class ModelAccount {
             if ($resource = mysqli_query($connect, $SQLcmd)){
                 $accList = [];
                 while ($row = mysqli_fetch_object($resource) ) {
-                    array_push($accList, new EntityAccount($row->id, $row->usn, $row->pwd));
+                    array_push($accList, new EntityAccount($row->id, $row->usn, $row->pwd, $row->role));
                 }
                 $jsonString = json_encode($accList);
                 return $jsonString;

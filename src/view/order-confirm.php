@@ -138,31 +138,28 @@ $data_encode = json_encode($data_utf8, JSON_FORCE_OBJECT);
   <!-- Site footer -->
   <div class="footer-wrapper">
     <div class="footer-content">
-      <div class="about-content">
-        <h6>About us</h6>
-        <p class="text-justify">LKK Mobile Shop</p>
-        <br />
-        <p class="text-justify">
-          We provide the best flagships and smartphones from top branches in
-          the world with the best price.
-        </p>
+      <div class="left-content">
+        <div class="about-content">
+          <h6>About us</h6>
+          <p class="text-justify">LKK Mobile Shop</p>
+          <br />
+          <p class="text-justify">
+            We provide the best flagships and smartphones from top branches in
+            the world with the best price.
+          </p>
+        </div>
+        <div class="maps-wrapper">
+          <div class="maps">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.689034814013!2d105.84475154867548!3d21.005098736993332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ad440e32b4d5%3A0x5f05cb80b7eae7db!2zQsOhY2ggS2hvYSBIw6AgTuG7mWk!5e0!3m2!1svi!2s!4v1628743278604!5m2!1svi!2s" width="500" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
+          </div>
+        </div>
       </div>
       <div class="right-content">
-        <div class="categories-content">
-          <h6>Categories</h6>
-          <li>Iphone</li>
-          <li>Samsung</li>
-          <li>Xiaomi</li>
-          <li>Oppo</li>
-          <li>Realme</li>
-          <li>Vivo</li>
-          <li>Vsmart</li>
-        </div>
-        <div class="quicklinks-content">
-          <h6>Quick links</h6>
-          <li>Homepage</li>
-          <li>Checkout</li>
-        </div>
+        <h6>Quick links</h6>
+        <li><a href="index.php">Homepage</a></li>
+        <li><a href="checkout.php">Checkout</a></li>
+        <li> <a href="login.php">Login (for admin only)</a></li>
       </div>
     </div>
   </div>
