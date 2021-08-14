@@ -217,6 +217,8 @@ const OnClickApplyBtn = ()=>{
     request.onreadystatechange = function () {
         if (request.readyState === 4 && request.status === 200) {
             var response = request.response;
+            alert("Successfully Update DB!");
+            location.reload();
         }
     };
     
@@ -224,8 +226,7 @@ const OnClickApplyBtn = ()=>{
     + '&frontCamera=' + frontCamera + '&memory=' + memory + '&price=' + price + '&screen=' + screen 
     + '&discount=' + discount + '&brandId=' + brandId  + '&mobileId=' + mobileId + '&type=' + type);
 
-    alert("Successfully Update DB!");
-    self.renderData();
+    
 }
 
 function findMobileIdByName(name) {
