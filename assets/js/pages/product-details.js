@@ -50,7 +50,7 @@ function addToCart() {
     mobileObj['quantity'] = parseInt(document.getElementById("quantity-mobiles").value);
     //console.log(mobileObj);
     var mobiles = [];
-    if (sessionStorage.length != 0) {
+    if (sessionStorage.getItem("mobiles") !== null) {
         mobiles = JSON.parse(sessionStorage.getItem("mobiles"));
         //console.log(mobiles);
         var tmpMobile = mobiles.find(mobile => mobile['id'] == mobileObj['id']);
