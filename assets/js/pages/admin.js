@@ -225,6 +225,7 @@ const OnClickApplyBtn = ()=>{
     + '&discount=' + discount + '&brandId=' + brandId  + '&mobileId=' + mobileId + '&type=' + type);
 
     alert("Successfully Update DB!");
+    // self.changeMobileObjectToArray();
     self.renderData();
 }
 
