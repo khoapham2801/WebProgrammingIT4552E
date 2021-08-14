@@ -11,6 +11,7 @@ function OnClickLogin() {
 			account = accounts[i];
 		}
 	}
+	sessionStorage.setItem("account", account);
 
 	if(loginRole == 0){
 		window.location.href = "admin.php";
@@ -21,5 +22,5 @@ function OnClickLogin() {
 		alert("Wrong password or username");
 	}
 
-	localStorage.setItem("account", account);
+	
 }

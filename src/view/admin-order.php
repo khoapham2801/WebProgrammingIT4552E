@@ -57,6 +57,11 @@ $orders_encode = json_encode($orders_utf8, JSON_FORCE_OBJECT);
   <script type="text/javascript">
     var orders = JSON.parse('<?= $orders_encode; ?>');
   </script>
+  <script type="module" async>
+    if(sessionStorage.getItem("account") === null){
+          location.replace("login.php"); 
+    }
+  </script>
   <script type="text/javascript" src="../../assets/js/pages/admin-order.js" defer></script>
 </head>
 

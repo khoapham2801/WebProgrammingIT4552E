@@ -73,6 +73,11 @@ $mobiles_encode = json_encode($mobiles_utf8, JSON_FORCE_OBJECT);
         var action = '<?php echo $action; ?>';
         var orderId = '<?php echo $id; ?>';
     </script>
+    <script type="module" async>
+        if (sessionStorage.getItem("account") === null) {
+            location.replace("login.php");
+        }
+    </script>
     <link rel="stylesheet" href="../../assets/css/pages/order-confirm.css?nocache=true" />
     <script src="../../assets/js/shitty.bundle.js" defer></script>
     <script src="../../assets/js/components.js?nocache=true" defer></script>
